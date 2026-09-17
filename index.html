@@ -68,12 +68,16 @@
             <img
               src="assets/vaste-prik-1.jpg"
               alt="Activiteit bij Buurtzorgcafé Vaste Prik"
+              data-lightbox
+              tabindex="0"
             />
           </div>
           <img
             src="assets/bordje-vaste-prik.png"
             alt="Geborduurd bordje met de tekst Apotheek Vaste Prik"
             class="hero-badge"
+            data-lightbox
+            tabindex="0"
           />
         </div>
       </div>
@@ -87,11 +91,15 @@
             src="assets/vaste-prik-2.jpeg"
             alt="Bijscholing bij Buurtzorgcafé Vaste Prik"
             class="wat-img wat-img-1"
+            data-lightbox
+            tabindex="0"
           />
           <img
             src="assets/vaste-prik-3.jpeg"
             alt="Verjaardag bij Buurtzorgcafé Vaste Prik"
             class="wat-img wat-img-2"
+            data-lightbox
+            tabindex="0"
           />
         </div>
         <div class="wat-copy">
@@ -319,7 +327,12 @@
         <div class="contact-side">
           <div>
             <div class="contact-person">
-              <img src="assets/marjolijn-onvlee.jpg" alt="Marjolijn Onvlee bij Radio Steunkous" />
+              <img
+                src="assets/marjolijn-onvlee.jpg"
+                alt="Marjolijn Onvlee bij Radio Steunkous"
+                data-lightbox
+                tabindex="0"
+              />
               <div>
                 <p class="contact-person-role">Initiatiefnemer</p>
                 <h3>Marjolijn Onvlee</h3>
@@ -391,6 +404,11 @@
       <span id="footer-year"></span> Buurtzorgcafé Vaste Prik &middot; haal je wekelijkse dosis energie
     </div>
   </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Vergrote afbeelding">
+    <button class="lightbox-close" type="button" aria-label="Afbeelding sluiten">&times;</button>
+    <img class="lightbox-image" alt="" />
+  </dialog>
 
   <script src="script.js"></script>
 </body>
