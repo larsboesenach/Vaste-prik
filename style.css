@@ -294,6 +294,48 @@ p {
   height: 420px;
   object-fit: cover;
 }
+.hero-photo-frame img,
+.hero-badge,
+.wat-img,
+.contact-person img {
+  cursor: zoom-in;
+}
+[data-lightbox]:focus-visible {
+  outline: 3px solid var(--vp-orange);
+  outline-offset: 4px;
+}
+.lightbox {
+  width: min(92vw, 72rem);
+  max-width: none;
+  max-height: 92vh;
+  border: 0;
+  padding: 3rem 1rem 1rem;
+  background: rgba(63, 83, 39, 0.96);
+  color: var(--vp-cream);
+}
+.lightbox::backdrop {
+  background: rgba(24, 31, 15, 0.86);
+}
+.lightbox-image {
+  width: 100%;
+  max-height: calc(92vh - 4rem);
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--vp-cream);
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+}
+.lightbox-close:focus-visible {
+  outline: 3px solid var(--vp-orange);
+  outline-offset: 3px;
+}
 @media (min-width: 768px) {
   .hero-photo-frame img {
     height: 520px;
