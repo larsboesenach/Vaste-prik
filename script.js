@@ -15,6 +15,41 @@
 
   const DAGNAMEN = ["ma", "di", "wo", "do", "vr", "za", "zo"];
 
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = lightbox.querySelector(".lightbox-image");
+  const lightboxClose = lightbox.querySelector(".lightbox-close");
+  let lightboxTrigger;
+
+  function sluitLightbox() {
+    lightbox.close();
+    if (lightboxTrigger) lightboxTrigger.focus();
+  }
+
+  function openLightbox(image) {
+    lightboxTrigger = image;
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightbox.showModal();
+  }
+
+  document.querySelectorAll("[data-lightbox]").forEach((image) => {
+    image.addEventListener("click", () => openLightbox(image));
+    image.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(image);
+      }
+    });
+  });
+
+  lightboxClose.addEventListener("click", sluitLightbox);
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) sluitLightbox();
+  });
+  lightbox.addEventListener("close", () => {
+    lightboxImage.removeAttribute("src");
+  });
+
   // Deze maand en volgende maand worden automatisch berekend vanaf
   // vandaag — dus de knoppen en maandnamen rollen vanzelf door.
   // Niets aan te passen.
