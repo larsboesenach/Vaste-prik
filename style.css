@@ -147,14 +147,14 @@ p {
   align-items: center;
   gap: 0.75rem;
 }
-.brand-icon {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
+.brand-logo,
+.footer-brand-logo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
   background: #fff;
-  font-size: 1.4rem;
 }
 .brand-text {
   line-height: 1.2;
@@ -965,14 +965,13 @@ p {
   align-items: center;
   gap: 0.75rem;
 }
-.footer-brand-icon {
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 999px;
+.footer-brand-logo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
   background: #fff;
-  font-size: 1.25rem;
 }
 .footer-brand-title {
   font-family: 'Fredoka', sans-serif;
