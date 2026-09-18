@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /Users/boes/Sites/Vaste-prik && python3 - <<'PY'\nimport os, sys\ntry:\n    import cairosvg\n    cairosvg\\.svg2png\\(url='assets/vaste-prik-logo\\.svg', write_to='assets/vaste-prik-logo\\.png', output_width=256, output_height=256\\)\n    print\\('PNG generated via cairosvg'\\)\nexcept Exception as e:\n    print\\('CAIROSVG_IMPORT_FAILED:', e\\)\n    if os\\.system\\('which magick >/dev/null 2>&1'\\) == 0:\n        os\\.system\\(\"magick assets/vaste-prik-logo\\.svg -resize 256x256 assets/vaste-prik-logo\\.png\"\\)\n        print\\('PNG generated via ImageMagick'\\)\n    elif os\\.system\\('which convert >/dev/null 2>&1'\\) == 0:\n        os\\.system\\(\"convert assets/vaste-prik-logo\\.svg -resize 256x256 assets/vaste-prik-logo\\.png\"\\)\n        print\\('PNG generated via convert'\\)\n    else:\n        print\\('NO_RASTERIZER_AVAILABLE'\\)\n        sys\\.exit\\(1\\)\nPY\nls -l assets/vaste-prik-logo\\.png$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
