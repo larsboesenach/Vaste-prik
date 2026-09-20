@@ -1,6 +1,6 @@
 {
   "openingstijden": {
-    "dagen": "dinsdag en vrijdag",
+    "dagen": "Dinsdag en vrijdag",
     "dagen_kort": "di & vr",
     "dagen_titel": "Dinsdag & vrijdag",
     "van": "11:00",
@@ -94,8 +94,7 @@
         "label": "Diabetes spreekuur",
         "tijd": "middag"
       }
-    },
-    "losse_activiteiten": []
+    }
   },
   "verhalen": {
     "quote": "Ik ga altijd naar Vaste Prik, voor een bakkie koffie en om mensen te ontmoeten.",
