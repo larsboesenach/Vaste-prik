@@ -604,6 +604,52 @@ p {
   to { transform: translateX(-50%); }
 }
 
+.faq-section {
+  padding-top: 1rem;
+}
+
+.faq-header {
+  margin-bottom: 1.5rem;
+}
+
+.faq-header h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-list details {
+  border: 1px solid rgba(63, 83, 39, 0.14);
+  border-radius: 1.1rem;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 1.1rem 1.25rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--vp-green);
+
+.faq-list summary:hover {
+  border: 1px solid var(--vp-rust);
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list details p {
+  margin-top: 0.8rem;
+  color: rgba(63, 83, 39, 0.82);
+}
+
 /* ── Agenda ───────────────────────────────────────────── */
 .agenda-head {
   display: flex;
@@ -1157,11 +1203,29 @@ p {
   overflow: hidden;
   border-radius: 1.25rem;
   box-shadow: 0 0 0 1px rgba(63, 83, 39, 0.1);
+  background: rgba(255,255,255,0.4);
+}
+.map-embed iframe,
+.map-fallback {
+  width: 100%;
+  min-height: 14rem;
+  border: 0;
 }
 .map-embed iframe {
-  width: 100%;
-  height: 14rem;
-  border: 0;
+  display: block;
+}
+.map-fallback {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(216,226,156,0.35));
+  color: var(--vp-green);
+  text-align: center;
+}
+.map-fallback p {
+  margin: 0;
+  font-weight: 700;
 }
 .route-link {
   display: inline-block;

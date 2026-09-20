@@ -178,6 +178,30 @@
     }
   }
 
+  function vulFaq() {
+    const lijst = document.getElementById("faq-list");
+    if (!lijst) return;
+    const items = Array.isArray(haal("faq")) ? haal("faq") : [];
+    lijst.replaceChildren();
+
+    if (!items.length) {
+      lijst.innerHTML = "";
+      return;
+    }
+
+    items.forEach((item, index) => {
+      const details = document.createElement("details");
+      if (index === 0) details.setAttribute("open", "open");
+      const summary = document.createElement("summary");
+      summary.textContent = item.vraag || "Vraag";
+      const p = document.createElement("p");
+      p.textContent = item.antwoord || "";
+      details.appendChild(summary);
+      details.appendChild(p);
+      lijst.appendChild(details);
+    });
+  }
+
   let testimonialIndex = 0;
   let testimonialTimer = null;
 
@@ -276,6 +300,7 @@
     vulLinks();
     vulRecept();
     vulMarquee();
+    vulFaq();
     vulVerhalen();
     vulActiviteiten();
   }
@@ -532,6 +557,14 @@
     });
   }
 
+  function zetKaartFallback() {
+    const iframe = document.getElementById("map-embed");
+    const fallback = document.querySelector(".map-fallback");
+    if (!iframe || !fallback) return;
+    iframe.hidden = true;
+    fallback.hidden = false;
+  }
+
   let actieveOffset = 0;
 
   function toonMaand(offset) {
@@ -545,6 +578,36 @@
   document.querySelectorAll(".month-btn").forEach((btn) => {
     btn.addEventListener("click", () => toonMaand(Number(btn.dataset.offset)));
   });
+
+  const mapEmbed = document.getElementById("map-embed");
+  if (mapEmbed) {
+    let heeftFallbackGetoond = false;
+    const fallbackTimer = window.setTimeout(() => {
+      if (!heeftFallbackGetoond) zetKaartFallback();
+    }, 1800);
+
+    mapEmbed.addEventListener("error", () => {
+      heeftFallbackGetoond = true;
+      window.clearTimeout(fallbackTimer);
+      zetKaartFallback();
+    });
+
+    mapEmbed.addEventListener("load", () => {
+      try {
+        const doc = mapEmbed.contentDocument || mapEmbed.contentWindow?.document;
+        if (doc && doc.body && doc.body.innerText && doc.body.innerText.trim() !== "") {
+          heeftFallbackGetoond = true;
+          window.clearTimeout(fallbackTimer);
+        } else {
+          heeftFallbackGetoond = false;
+        }
+      } catch (error) {
+        heeftFallbackGetoond = true;
+        window.clearTimeout(fallbackTimer);
+        zetKaartFallback();
+      }
+    });
+  }
 
   // Weekdag-headers (ma..zo) staan al vast in de HTML, maar mochten ze ooit
   // dynamisch moeten zijn, dan zit de volgorde hier klaar: DAGNAMEN.
