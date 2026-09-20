@@ -192,6 +192,43 @@ p {
   }
 }
 
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    position: static;
+    backdrop-filter: none;
+  }
+
+  .header-inner {
+    gap: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .brand-sub {
+    font-size: 0.72rem;
+  }
+
+  .header-inner > .btn {
+    margin-left: auto;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+}
+
 /* ── Hero ─────────────────────────────────────────────── */
 .hero {
   position: relative;
@@ -349,6 +386,20 @@ p {
   transform: rotate(-3deg);
   border-radius: 0.4rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 767px) {
+  .hero-media {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-badge {
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    width: min(11rem, 42vw);
+    transform: translateX(-50%) rotate(-3deg);
+    z-index: 2;
+  }
 }
 @media (min-width: 640px) {
   .hero-badge {
@@ -843,6 +894,9 @@ p {
   background: var(--vp-cream);
   padding: 1rem;
   transition: background-color 0.15s ease;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .contact-link:hover {
   background: #fff;
@@ -867,6 +921,8 @@ p {
 }
 .contact-link-value {
   font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .doe-mee {
   margin-top: 1.5rem;
@@ -874,6 +930,62 @@ p {
   background: var(--vp-green);
   color: var(--vp-cream);
   padding: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .contact-section {
+    overflow: hidden;
+  }
+
+  .contact-grid {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .contact-grid h2 {
+    font-size: 1.9rem;
+  }
+
+  .contact-links {
+    gap: 0.75rem;
+  }
+
+  .contact-link {
+    align-items: flex-start;
+    padding: 0.8rem;
+  }
+
+  .contact-link-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .contact-person {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-person img {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .contact-side {
+    padding: 1.25rem;
+  }
+
+  .contact-quote {
+    font-size: 1.2rem;
+  }
+
+  .opening-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .doe-mee {
+    padding: 1.1rem;
+  }
 }
 .doe-mee-title {
   font-family: 'Fredoka', sans-serif;
