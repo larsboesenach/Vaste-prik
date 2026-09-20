@@ -178,6 +178,88 @@
     }
   }
 
+  let testimonialIndex = 0;
+  let testimonialTimer = null;
+
+  function getVerhalenItems() {
+    const items = haal("verhalen");
+    if (Array.isArray(items)) {
+      return items.filter((item) => item && (item.quote || item.naam));
+    }
+    if (items && (items.quote || items.naam)) {
+      return [items];
+    }
+    return [];
+  }
+
+  function zetTestimonial(index) {
+    const slider = document.querySelector("[data-testimonials]");
+    if (!slider) return;
+    const slides = slider.querySelectorAll(".testimonial-slide");
+    const dots = slider.querySelectorAll(".testimonial-dot");
+    const totaal = slides.length || 1;
+    testimonialIndex = ((index % totaal) + totaal) % totaal;
+    slides.forEach((slide, i) => slide.classList.toggle("active", i === testimonialIndex));
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === testimonialIndex));
+  }
+
+  function startTestimonialCarousel() {
+    const items = getVerhalenItems();
+    if (!items.length || items.length < 2) {
+      clearTimeout(testimonialTimer);
+      testimonialTimer = null;
+      return;
+    }
+    clearTimeout(testimonialTimer);
+    testimonialTimer = setTimeout(() => {
+      zetTestimonial(testimonialIndex + 1);
+      startTestimonialCarousel();
+    }, 8000);
+  }
+
+  function vulVerhalen() {
+    const slider = document.querySelector("[data-testimonials]");
+    if (!slider) return;
+
+    const items = getVerhalenItems();
+    const track = slider.querySelector(".testimonial-track");
+    const dots = slider.querySelector(".testimonial-dots");
+
+    if (!track || !dots) return;
+
+    if (!items.length) {
+      slider.hidden = true;
+      clearTimeout(testimonialTimer);
+      testimonialTimer = null;
+      return;
+    }
+
+    slider.hidden = false;
+    track.replaceChildren();
+    dots.replaceChildren();
+
+    items.forEach((item, index) => {
+      const slide = elt("article", index === 0 ? "testimonial-slide active" : "testimonial-slide");
+      const quote = tekstElt("p", "testimonial-quote", item.quote || "");
+      if (item.quote) quote.textContent = "“" + vervangTokens(item.quote) + "”";
+      const name = tekstElt("p", "testimonial-name", item.naam || "");
+      slide.appendChild(quote);
+      slide.appendChild(name);
+      track.appendChild(slide);
+
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = index === 0 ? "testimonial-dot active" : "testimonial-dot";
+      dot.setAttribute("aria-label", "Bekijk testimonial " + (index + 1));
+      dot.addEventListener("click", () => zetTestimonial(index));
+      dots.appendChild(dot);
+    });
+
+    testimonialIndex = 0;
+    zetTestimonial(0);
+    startTestimonialCarousel();
+  }
+
   function vulActiviteiten() {
     Object.keys(ACTIVITEITEN).forEach((k) => {
       const j = haal("agenda.activiteiten." + k);
@@ -194,6 +276,7 @@
     vulLinks();
     vulRecept();
     vulMarquee();
+    vulVerhalen();
     vulActiviteiten();
   }
 
