@@ -730,59 +730,86 @@ p {
   }
 
   .mobile-day-card {
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 0 0 1px rgba(63, 83, 39, 0.08) inset;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(63, 83, 39, 0.08);
+    border-radius: 1.1rem;
+    box-shadow: none;
+    padding: 1rem 0.9rem 0.9rem;
+    text-align: left;
   }
 
   .mobile-day-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.6rem;
-    padding-bottom: 0.45rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(63, 83, 39, 0.08);
+    text-align: left;
   }
 
-  .mobile-day-name {
+  .mobile-day-date {
     font-family: 'Fredoka', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: lowercase;
-    color: rgba(63, 83, 39, 0.7);
-  }
-
-  .mobile-day-number {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 700;
-    line-height: 1;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
     color: var(--vp-rust);
+    text-transform: capitalize;
+    text-align: left;
   }
 
   .mobile-day-events {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.7rem;
+    text-align: left;
   }
 
   .mobile-day-event {
     display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    border-radius: 0.75rem;
-    background: rgba(252, 249, 232, 0.9);
-    padding: 0.5rem 0.65rem;
+    align-items: flex-start;
+    gap: 0.7rem;
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.7rem 0.8rem;
     border: 1px solid rgba(63, 83, 39, 0.06);
+    box-shadow: none;
+    text-align: left;
   }
 
-  .mobile-day-event .day-event-label {
-    display: block;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: initial;
-    font-size: 0.72rem;
+  .mobile-day-event .day-event-dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .mobile-event-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .mobile-event-title {
+    font-size: 0.97rem;
+    font-weight: 600;
     line-height: 1.35;
+    color: rgba(63, 83, 39, 0.95);
+    text-align: left;
+  }
+
+  .mobile-event-time {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: rgba(63, 83, 39, 0.72);
+    text-transform: lowercase;
+    text-align: left;
   }
 
   .mobile-empty-state {
