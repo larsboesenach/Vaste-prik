@@ -1,0 +1,126 @@
+{
+  "openingstijden": {
+    "dagen": "dinsdag en vrijdag",
+    "dagen_kort": "di & vr",
+    "dagen_titel": "Dinsdag & vrijdag",
+    "van": "11:00",
+    "tot": "15:00",
+    "toelichting": "Overige dagen op afspraak · vrije inloop, iedereen welkom"
+  },
+  "hero": {
+    "titel": "Haal je wekelijkse dosis energie bij Vaste Prik!",
+    "tekst": "Wil je een praatje maken met mensen uit de buurt, of met iemand van Buurtzorg Oost? Kom dan naar Buurtzorgcafé Vaste Prik, in de opgeknapte apotheek aan de Vrolikstraat. Het gezondheidscafé is elke {dagen} open van {van} tot {tot} uur — voor koffie, thee, of kijk op de agenda wat er nog meer te doen is.",
+    "foto": "assets/vaste-prik-1.jpg",
+    "foto_alt": "Activiteit bij Buurtzorgcafé Vaste Prik",
+    "bordje": "assets/bordje-vaste-prik.png",
+    "bordje_alt": "Geborduurd bordje met de tekst Apotheek Vaste Prik"
+  },
+  "wat": {
+    "titel": "Van leegstaande apotheek naar een café voor de hele buurt.",
+    "alineas": [
+      "De grote apotheek aan de Vrolikstraat stond al een tijd leeg door gebrek aan personeel. De wijkverpleging van Buurtzorg Oost wist het om te toveren tot Buurtzorgcafé Vaste Prik: een nieuwe manier om elkaar te helpen zo gezond mogelijk te blijven.",
+      "Een laagdrempelige plek waar je zonder verplichting kunt binnenlopen, mag blijven hangen en waar ontmoeting vanzelfsprekend is."
+    ],
+    "quote": "Je komt hier voor een prik van verbinding, een injectie van kennis en een shot herkenning.",
+    "foto1": "assets/vaste-prik-2.jpeg",
+    "foto1_alt": "Bijscholing bij Buurtzorgcafé Vaste Prik",
+    "foto2": "assets/vaste-prik-3.jpeg",
+    "foto2_alt": "Verjaardag bij Buurtzorgcafé Vaste Prik"
+  },
+  "recept": {
+    "intro": "Ons recept om elkaar zo gezond mogelijk te houden rust op 5 smaakmakers.",
+    "kaarten": [
+      {
+        "icoon": "🧠",
+        "titel": "Kennis delen",
+        "tekst": "Gezonde Ontmoetingen om kennis te delen, klachten te voorkomen of draaglijker te maken."
+      },
+      {
+        "icoon": "💪",
+        "titel": "Vitaliteit versterken",
+        "tekst": "De mentale en lichamelijke gezondheid verbeteren. Er is ruimte voor spontane initiatieven die bezoekers zelf aandragen."
+      },
+      {
+        "icoon": "🤝",
+        "titel": "Samenwerken",
+        "tekst": "Mensen in de buurt in contact brengen — met elkaar, met zorg en welzijn, met ondernemers en buurtinitiatieven. En zorgmedewerkers onderling beter laten samenwerken."
+      },
+      {
+        "icoon": "🩺",
+        "titel": "Preventie",
+        "tekst": "Beter voorkomen dan genezen. Laat regelmatig je vitale functies meten en weet of je op de goede weg bent."
+      },
+      {
+        "icoon": "☕",
+        "titel": "Koffie",
+        "tekst": "Echt lekkere koffie, thee en een luisterend oor. Heb een klik bij Vaste Prik en je kan er weer tegen!"
+      }
+    ]
+  },
+  "marquee": [
+    "Kennis delen",
+    "Vitaliteit versterken",
+    "Samenwerken",
+    "Preventie",
+    "Echt lekkere koffie"
+  ],
+  "agenda": {
+    "intro": "We zijn open op {dagen} van {van} tot {tot}. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
+    "notitie": "Daarnaast zijn er wisselende extra's zoals een grote pan couscous, gezonde soep, een filmmiddag of een extra bloeddrukmoment. Houd het prikbord in het café in de gaten!",
+    "activiteiten": {
+      "koffie": {
+        "kort": "Inloop & koffie",
+        "label": "Inloop & koffie",
+        "tijd": "{van}–{tot}"
+      },
+      "weegschaal": {
+        "kort": "Weegschaal",
+        "label": "Slimme weegschaal & bloeddruk",
+        "tijd": "12:00–13:30"
+      },
+      "beweeg": {
+        "kort": "Beweegspreekuur",
+        "label": "Beweegspreekuur (met studenten)",
+        "tijd": "15:00–17:00",
+        "vanaf": "2026-09-21"
+      },
+      "stoelyoga": {
+        "kort": "Stoelyoga",
+        "label": "Stoelyoga",
+        "tijd": "ochtend"
+      },
+      "diabetes": {
+        "kort": "Diabetes",
+        "label": "Diabetes spreekuur",
+        "tijd": "middag"
+      }
+    },
+    "losse_activiteiten": []
+  },
+  "verhalen": {
+    "quote": "Ik ga altijd naar Vaste Prik, voor een bakkie koffie en om mensen te ontmoeten.",
+    "naam": "Corry · bezoekster"
+  },
+  "contact": {
+    "tekst": "Wilt u deelnemen aan een bijeenkomst? Aanmelden is fijn via een mailtje, maar u mag ook zomaar binnenlopen op {dagen} tussen {van} en {tot}.",
+    "email": "m.onvlee@buurtzorgnederland.com",
+    "telefoon": "06 12 56 43 64",
+    "adres_kort": "Vrolikstraat 191A",
+    "adres": "Vrolikstraat 191A, Amsterdam-Oost",
+    "adres_zoek": "Vrolikstraat 191A, Amsterdam",
+    "doemee_titel": "Wil jij iets betekenen voor Vaste Prik? 🌻",
+    "doemee_tekst": "Heb je een leuk idee of wil je meehelpen? Stuur een berichtje, dan komen we met je in contact!",
+    "persoon": {
+      "foto": "assets/marjolijn-onvlee.jpg",
+      "foto_alt": "Marjolijn Onvlee bij Radio Steunkous",
+      "rol": "Initiatiefnemer",
+      "naam": "Marjolijn Onvlee",
+      "functie": "Wijkverpleegkundige Buurtzorg Oost",
+      "quote": "Vaste Prik wil een medicijn voor de buurt zijn. Een plek om een beter humeur te krijgen: je kan er wat opsteken, nieuwe mensen leren kennen en lekkere koffie drinken. Wat wil een mens nog meer?",
+      "extra": "Verder zijn er speciale bijeenkomsten en cursussen rondom gezondheid. En de Radio Steunkous Camper is er ook te bewonderen."
+    }
+  },
+  "footer": {
+    "beschrijving": "Een initiatief van Buurtzorg Oost. Een laagdrempelig gezondheidscafé voor preventie, ontmoeting en een goed gesprek in het hart van de buurt."
+  }
+}
