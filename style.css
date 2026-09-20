@@ -623,22 +623,57 @@ p {
 }
 
 .faq-list details {
-  border: 1px solid rgba(63, 83, 39, 0.14);
-  border-radius: 1.1rem;
-  background: rgba(255, 255, 255, 0.4);
-  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(63, 83, 39, 0.12);
+  border-radius: 1.2rem;
+  padding: 1.15rem 1.3rem;
+  box-shadow: 0 8px 18px rgba(63, 83, 39, 0.04);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-list details:hover {
+  border-color: rgba(157, 58, 34, 0.28);
+  box-shadow: 0 10px 22px rgba(63, 83, 39, 0.06);
 }
 
 .faq-list summary {
   cursor: pointer;
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   font-family: 'Fredoka', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: var(--vp-green);
+  transition: color 0.2s ease;
+}
+
+.faq-list summary::after {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  /* background: rgba(246, 222, 221, 0.8); */
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--vp-rust);
+  flex-shrink: 0;
+  transform: translateY(-0.02em);
+}
+
+.faq-list details[open] summary::after {
+  content: "−";
+  font-weight: 400;
+  transform: translateY(-0.04em);
+}
 
 .faq-list summary:hover {
-  border: 1px solid var(--vp-rust);
+  color: var(--vp-rust);
 }
 
 .faq-list summary::-webkit-details-marker {
@@ -646,8 +681,10 @@ p {
 }
 
 .faq-list details p {
-  margin-top: 0.8rem;
+  margin-top: 0.85rem;
+  padding-right: 2.5rem;
   color: rgba(63, 83, 39, 0.82);
+  line-height: 1.7;
 }
 
 /* ── Agenda ───────────────────────────────────────────── */
