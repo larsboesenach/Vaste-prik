@@ -9,7 +9,7 @@ media:
 
 content:
   - name: inhoud
-    label: Website-inhoud
+    label: Vaste Prik Website - Contend editing tool
     type: file
     path: content.json
     format: json
