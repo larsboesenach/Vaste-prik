@@ -533,9 +533,8 @@ p {
   place-items: center;
   flex-shrink: 0;
   width: 3.5rem;
-  height: 3.5rem;
   border-radius: 1rem;
-  background: var(--vp-lime);
+  background: #d8e29c73;
   font-size: 1.5rem;
 }
 .recept-num {
@@ -679,6 +678,11 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgba(63, 83, 39, 0.5);
+}
+@media (max-width: 1030px) {
+  .calendar-weekdays div.mobile-hidden {
+    display: none;
+  }
 }
 .calendar-grid {
   display: grid;

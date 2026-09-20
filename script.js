@@ -345,6 +345,7 @@
   function renderKalender(jaar, maand) {
     const grid = document.getElementById("calendar-grid");
     const legend = document.getElementById("calendar-legend");
+    const mobileAgenda = window.matchMedia("(max-width: 1030px)").matches;
     grid.innerHTML = "";
     legend.innerHTML = "";
 
@@ -353,18 +354,42 @@
     const start = (new Date(jaar, maand, 1).getDay() + 6) % 7; // ma = 0
     const vandaag = new Date();
 
+    const weekdagenMetActiviteit = new Set();
+    for (let dag = 1; dag <= dagenInMaand; dag++) {
+      const d = new Date(jaar, maand, dag);
+      const wd = (d.getDay() + 6) % 7;
+      const acts = activiteitenOpDag(jaar, maand, dag);
+      const extras = losse.filter((l) => l.dag === dag);
+      if (acts.length || extras.length) {
+        weekdagenMetActiviteit.add(wd);
+      }
+    }
+
+    const verborgenWeekdagen = mobileAgenda
+      ? new Set(Array.from({ length: 7 }, (_, i) => i).filter((wd) => !weekdagenMetActiviteit.has(wd)))
+      : new Set();
+
+    document.querySelectorAll(".calendar-weekdays div").forEach((el, index) => {
+      el.classList.toggle("mobile-hidden", mobileAgenda && verborgenWeekdagen.has(index));
+    });
+
     // Lege cellen vóór de eerste dag van de maand
     for (let i = 0; i < start; i++) {
+      if (mobileAgenda && verborgenWeekdagen.has(i)) continue;
       grid.appendChild(elt("div", "day-cell empty"));
     }
 
     for (let dag = 1; dag <= dagenInMaand; dag++) {
+      const d = new Date(jaar, maand, dag);
+      const wd = (d.getDay() + 6) % 7;
       const acts = activiteitenOpDag(jaar, maand, dag);
       const extras = losse.filter((l) => l.dag === dag);
       const isVandaag =
         vandaag.getFullYear() === jaar &&
         vandaag.getMonth() === maand &&
         vandaag.getDate() === dag;
+
+      if (mobileAgenda && verborgenWeekdagen.has(wd)) continue;
 
       const cellClasses = ["day-cell"];
       if (acts.length || extras.length) cellClasses.push("has-events");
