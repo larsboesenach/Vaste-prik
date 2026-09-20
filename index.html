@@ -3,7 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buurtzorgcafé Vaste Prik</title>
+  <meta name="description" content="Buurtzorgcafé Vaste Prik is een laagdrempelig gezondheidscafé in Amsterdam-Oost: koffie, kennis delen, beweging, preventie en ontmoetingen in de buurt." />
+  <meta name="theme-color" content="#f6dedd" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Buurtzorgcafé Vaste Prik" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Buurtzorgcafé Vaste Prik" />
+  <meta property="og:title" content="Buurtzorgcafé Vaste Prik | Gezondheidscafé in Amsterdam-Oost" />
+  <meta property="og:description" content="Koffie, ontmoeting en preventie in de buurt. Kom langs bij Buurtzorgcafé Vaste Prik voor een laagdrempelige, gezonde babbel in Amsterdam-Oost." />
+  <meta property="og:url" content="https://www.vasteprik.nl/" />
+  <meta property="og:image" content="https://www.vasteprik.nl/assets/og-image-optimized.png" />
+  <meta property="og:image:alt" content="Buurtzorgcafé Vaste Prik logo en gezondheidscafé in Amsterdam-Oost" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Buurtzorgcafé Vaste Prik" />
+  <meta name="twitter:description" content="Koffie, preventie en ontmoeting in de buurt. Ontdek Buurtzorgcafé Vaste Prik in Amsterdam-Oost." />
+  <meta name="twitter:image" content="https://www.vasteprik.nl/assets/og-image-optimized.png" />
+  <link rel="canonical" href="https://www.vasteprik.nl/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <title>Buurtzorgcafé Vaste Prik | Gezondheid, koffie en ontmoeting in Amsterdam-Oost</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -251,6 +272,16 @@
       </div>
     </section>
 
+    <section id="faq" class="section faq-section">
+      <div class="wrap">
+        <div class="faq-header">
+          <span class="pill">Veelgestelde vragen</span>
+          <h2>Veel mensen vragen dit eerst</h2>
+        </div>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+
     <!-- Verhalen -->
     <section id="verhalen" class="testimonial-section">
       <div class="wrap testimonial-wrap">
@@ -322,12 +353,23 @@
 
           <div class="map-embed">
             <iframe
+              id="map-embed"
               title="Kaart Vrolikstraat 191A, Amsterdam-Oost"
               src="https://www.google.com/maps?q=Vrolikstraat+191A,+Amsterdam&output=embed"
               data-link="mapembed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
+            <div class="map-fallback" hidden>
+              <p>Bekijk het adres op Google Maps.</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Vrolikstraat+191A,+Amsterdam"
+                target="_blank" rel="noreferrer"
+                class="btn btn-solid"
+              >
+                Open kaart
+              </a>
+            </div>
           </div>
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=Vrolikstraat+191A,+Amsterdam" data-link="route"
@@ -424,6 +466,37 @@
     <button class="lightbox-close" type="button" aria-label="Afbeelding sluiten">&times;</button>
     <img class="lightbox-image" alt="" />
   </dialog>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Buurtzorgcafé Vaste Prik",
+      "description": "Buurtzorgcafé Vaste Prik is een laagdrempelig gezondheidscafé in Amsterdam-Oost waar bezoekers elkaar ontmoeten, kennis delen en gezonder leven.",
+      "url": "https://www.vasteprik.nl/",
+      "telephone": "+31 6 12 56 43 64",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vrolikstraat 191A",
+        "addressLocality": "Amsterdam",
+        "addressRegion": "Noord-Holland",
+        "postalCode": "1091",
+        "addressCountry": "NL"
+      },
+      "openingHours": [
+        "Tu,Fr 11:00-15:00"
+      ],
+      "sameAs": [],
+      "mainEntity": {
+        "@type": "Question",
+        "name": "Wanneer is Vaste Prik open?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Je bent altijd welkom voor koffie, thee, een praatje of een van de vaste activiteiten."
+        }
+      }
+    }
+  </script>
 
   <script src="script.js"></script>
 </body>
