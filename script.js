@@ -193,9 +193,9 @@
       const details = document.createElement("details");
       if (index === 0) details.setAttribute("open", "open");
       const summary = document.createElement("summary");
-      summary.textContent = item.vraag || "Vraag";
+      summary.textContent = vervangTokens(item.vraag || "Vraag");
       const p = document.createElement("p");
-      p.textContent = item.antwoord || "";
+      p.textContent = vervangTokens(item.antwoord || "");
       details.appendChild(summary);
       details.appendChild(p);
       lijst.appendChild(details);
