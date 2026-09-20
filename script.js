@@ -384,8 +384,13 @@
 
           const cell = elt("div", cellClasses.join(" "));
           const header = elt("div", "mobile-day-header");
-          header.appendChild(elt("span", "mobile-day-name", dagNamen[date.getDay()]));
-          header.appendChild(elt("span", "mobile-day-number", String(date.getDate())));
+          const formattedDate = new Intl.DateTimeFormat("nl-NL", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }).format(date);
+          header.appendChild(elt("span", "mobile-day-date", formattedDate));
           cell.appendChild(header);
 
           const eventsWrap = elt("div", "day-events mobile-day-events");
@@ -395,8 +400,11 @@
             row.title = `${a.label} · ${a.tijd}`;
             const dot = elt("span", "day-event-dot");
             dot.style.backgroundColor = a.kleur;
+            const textWrap = elt("div", "mobile-event-text");
+            textWrap.appendChild(elt("span", "mobile-event-title", a.label));
+            textWrap.appendChild(elt("span", "mobile-event-time", a.tijd));
             row.appendChild(dot);
-            row.appendChild(elt("span", "day-event-label", a.kort));
+            row.appendChild(textWrap);
             eventsWrap.appendChild(row);
           });
           extras.forEach((e) => {
@@ -404,8 +412,11 @@
             row.title = e.titel;
             const dot = elt("span", "day-event-dot");
             dot.style.backgroundColor = "var(--vp-mustard)";
+            const textWrap = elt("div", "mobile-event-text");
+            textWrap.appendChild(elt("span", "mobile-event-title", e.titel));
+            textWrap.appendChild(elt("span", "mobile-event-time", "Extra activiteit"));
             row.appendChild(dot);
-            row.appendChild(elt("span", "day-event-label", e.titel));
+            row.appendChild(textWrap);
             eventsWrap.appendChild(row);
           });
           cell.appendChild(eventsWrap);
