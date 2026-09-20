@@ -679,11 +679,6 @@ p {
   letter-spacing: 0.06em;
   color: rgba(63, 83, 39, 0.5);
 }
-@media (max-width: 1030px) {
-  .calendar-weekdays div.mobile-hidden {
-    display: none;
-  }
-}
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -715,6 +710,86 @@ p {
   .day-cell {
     min-height: 6rem;
     padding: 0.5rem;
+  }
+}
+@media (max-width: 1030px) {
+  .calendar-weekdays {
+    display: none;
+  }
+
+  .calendar-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    grid-template-columns: none;
+  }
+
+  .day-cell {
+    min-height: auto;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .mobile-day-card {
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 0 0 1px rgba(63, 83, 39, 0.08) inset;
+  }
+
+  .mobile-day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(63, 83, 39, 0.08);
+  }
+
+  .mobile-day-name {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    color: rgba(63, 83, 39, 0.7);
+  }
+
+  .mobile-day-number {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--vp-rust);
+  }
+
+  .mobile-day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-day-event {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 0.75rem;
+    background: rgba(252, 249, 232, 0.9);
+    padding: 0.5rem 0.65rem;
+    border: 1px solid rgba(63, 83, 39, 0.06);
+  }
+
+  .mobile-day-event .day-event-label {
+    display: block;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .mobile-empty-state {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(63, 83, 39, 0.7);
   }
 }
 .day-number {

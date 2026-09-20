@@ -351,75 +351,113 @@
 
     const losse = losseActiviteitenVoorMaand(jaar, maand);
     const dagenInMaand = new Date(jaar, maand + 1, 0).getDate();
-    const start = (new Date(jaar, maand, 1).getDay() + 6) % 7; // ma = 0
     const vandaag = new Date();
+    const dagNamen = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
 
-    const weekdagenMetActiviteit = new Set();
-    for (let dag = 1; dag <= dagenInMaand; dag++) {
-      const d = new Date(jaar, maand, dag);
-      const wd = (d.getDay() + 6) % 7;
-      const acts = activiteitenOpDag(jaar, maand, dag);
-      const extras = losse.filter((l) => l.dag === dag);
-      if (acts.length || extras.length) {
-        weekdagenMetActiviteit.add(wd);
+    if (mobileAgenda) {
+      const dagenMetActiviteit = [];
+
+      for (let dag = 1; dag <= dagenInMaand; dag++) {
+        const acts = activiteitenOpDag(jaar, maand, dag);
+        const extras = losse.filter((l) => l.dag === dag);
+        if (!acts.length && !extras.length) continue;
+
+        const date = new Date(jaar, maand, dag);
+        dagenMetActiviteit.push({ date, acts, extras });
       }
-    }
 
-    const verborgenWeekdagen = mobileAgenda
-      ? new Set(Array.from({ length: 7 }, (_, i) => i).filter((wd) => !weekdagenMetActiviteit.has(wd)))
-      : new Set();
+      if (!dagenMetActiviteit.length) {
+        const empty = elt("div", "day-cell empty mobile-day-card");
+        const emptyText = elt("div", "mobile-empty-state", "Geen activiteiten in deze maand");
+        empty.appendChild(emptyText);
+        grid.appendChild(empty);
+      } else {
+        dagenMetActiviteit.forEach(({ date, acts, extras }) => {
+          const isVandaag =
+            vandaag.getFullYear() === jaar &&
+            vandaag.getMonth() === maand &&
+            vandaag.getDate() === date.getDate();
 
-    document.querySelectorAll(".calendar-weekdays div").forEach((el, index) => {
-      el.classList.toggle("mobile-hidden", mobileAgenda && verborgenWeekdagen.has(index));
-    });
+          const cellClasses = ["day-cell", "mobile-day-card"];
+          if (acts.length || extras.length) cellClasses.push("has-events");
+          if (isVandaag) cellClasses.push("is-today");
 
-    // Lege cellen vóór de eerste dag van de maand
-    for (let i = 0; i < start; i++) {
-      if (mobileAgenda && verborgenWeekdagen.has(i)) continue;
-      grid.appendChild(elt("div", "day-cell empty"));
-    }
+          const cell = elt("div", cellClasses.join(" "));
+          const header = elt("div", "mobile-day-header");
+          header.appendChild(elt("span", "mobile-day-name", dagNamen[date.getDay()]));
+          header.appendChild(elt("span", "mobile-day-number", String(date.getDate())));
+          cell.appendChild(header);
 
-    for (let dag = 1; dag <= dagenInMaand; dag++) {
-      const d = new Date(jaar, maand, dag);
-      const wd = (d.getDay() + 6) % 7;
-      const acts = activiteitenOpDag(jaar, maand, dag);
-      const extras = losse.filter((l) => l.dag === dag);
-      const isVandaag =
-        vandaag.getFullYear() === jaar &&
-        vandaag.getMonth() === maand &&
-        vandaag.getDate() === dag;
+          const eventsWrap = elt("div", "day-events mobile-day-events");
+          acts.forEach((k) => {
+            const a = ACTIVITEITEN[k];
+            const row = elt("div", "day-event mobile-day-event");
+            row.title = `${a.label} · ${a.tijd}`;
+            const dot = elt("span", "day-event-dot");
+            dot.style.backgroundColor = a.kleur;
+            row.appendChild(dot);
+            row.appendChild(elt("span", "day-event-label", a.kort));
+            eventsWrap.appendChild(row);
+          });
+          extras.forEach((e) => {
+            const row = elt("div", "day-event mobile-day-event");
+            row.title = e.titel;
+            const dot = elt("span", "day-event-dot");
+            dot.style.backgroundColor = "var(--vp-mustard)";
+            row.appendChild(dot);
+            row.appendChild(elt("span", "day-event-label", e.titel));
+            eventsWrap.appendChild(row);
+          });
+          cell.appendChild(eventsWrap);
+          grid.appendChild(cell);
+        });
+      }
+    } else {
+      const start = (new Date(jaar, maand, 1).getDay() + 6) % 7; // ma = 0
 
-      if (mobileAgenda && verborgenWeekdagen.has(wd)) continue;
+      // Lege cellen vóór de eerste dag van de maand
+      for (let i = 0; i < start; i++) {
+        grid.appendChild(elt("div", "day-cell empty"));
+      }
 
-      const cellClasses = ["day-cell"];
-      if (acts.length || extras.length) cellClasses.push("has-events");
-      if (isVandaag) cellClasses.push("is-today");
+      for (let dag = 1; dag <= dagenInMaand; dag++) {
+        const acts = activiteitenOpDag(jaar, maand, dag);
+        const extras = losse.filter((l) => l.dag === dag);
+        const isVandaag =
+          vandaag.getFullYear() === jaar &&
+          vandaag.getMonth() === maand &&
+          vandaag.getDate() === dag;
 
-      const cell = elt("div", cellClasses.join(" "));
-      cell.appendChild(elt("div", "day-number", String(dag)));
+        const cellClasses = ["day-cell"];
+        if (acts.length || extras.length) cellClasses.push("has-events");
+        if (isVandaag) cellClasses.push("is-today");
 
-      const eventsWrap = elt("div", "day-events");
-      acts.forEach((k) => {
-        const a = ACTIVITEITEN[k];
-        const row = elt("div", "day-event");
-        row.title = `${a.label} · ${a.tijd}`;
-        const dot = elt("span", "day-event-dot");
-        dot.style.backgroundColor = a.kleur;
-        row.appendChild(dot);
-        row.appendChild(elt("span", "day-event-label", a.kort));
-        eventsWrap.appendChild(row);
-      });
-      extras.forEach((e) => {
-        const row = elt("div", "day-event");
-        row.title = e.titel;
-        const dot = elt("span", "day-event-dot");
-        dot.style.backgroundColor = "var(--vp-mustard)";
-        row.appendChild(dot);
-        row.appendChild(elt("span", "day-event-label", e.titel));
-        eventsWrap.appendChild(row);
-      });
-      cell.appendChild(eventsWrap);
-      grid.appendChild(cell);
+        const cell = elt("div", cellClasses.join(" "));
+        cell.appendChild(elt("div", "day-number", String(dag)));
+
+        const eventsWrap = elt("div", "day-events");
+        acts.forEach((k) => {
+          const a = ACTIVITEITEN[k];
+          const row = elt("div", "day-event");
+          row.title = `${a.label} · ${a.tijd}`;
+          const dot = elt("span", "day-event-dot");
+          dot.style.backgroundColor = a.kleur;
+          row.appendChild(dot);
+          row.appendChild(elt("span", "day-event-label", a.kort));
+          eventsWrap.appendChild(row);
+        });
+        extras.forEach((e) => {
+          const row = elt("div", "day-event");
+          row.title = e.titel;
+          const dot = elt("span", "day-event-dot");
+          dot.style.backgroundColor = "var(--vp-mustard)";
+          row.appendChild(dot);
+          row.appendChild(elt("span", "day-event-label", e.titel));
+          eventsWrap.appendChild(row);
+        });
+        cell.appendChild(eventsWrap);
+        grid.appendChild(cell);
+      }
     }
 
     // Legenda
