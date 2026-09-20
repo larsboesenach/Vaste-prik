@@ -198,8 +198,9 @@ content:
 
       # ── Verhalen ───────────────────────────────────────
       - name: verhalen
-        label: Verhalen (reactie van een bezoeker)
+        label: Verhalen (reacties van bezoekers)
         type: object
+        list: true
         fields:
           - name: quote
             label: Citaat (zonder aanhalingstekens)

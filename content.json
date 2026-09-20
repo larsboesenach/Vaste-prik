@@ -102,10 +102,20 @@
       }
     }
   },
-  "verhalen": {
-    "quote": "Ik ga altijd naar Vaste Prik, voor een bakkie koffie en om mensen te ontmoeten.",
-    "naam": "Corry · bezoekster"
-  },
+  "verhalen": [
+    {
+      "quote": "Ik ga altijd naar Vaste Prik, voor een bakkie koffie en om mensen te ontmoeten.",
+      "naam": "Corry · bezoekster"
+    },
+    {
+      "quote": "Vaste Prik voelt als een warme plek om even adem te halen en weer energie op te doen.",
+      "naam": "Jeroen · buurtbewoner"
+    },
+    {
+      "quote": "De sfeer is relaxed, de koffie is goed en je voelt je meteen welkom.",
+      "naam": "Sanne · vrijwilliger"
+    }
+  ],
   "contact": {
     "tekst": "Wilt u deelnemen aan een bijeenkomst? Aanmelden is fijn via een mailtje, maar u mag ook zomaar binnenlopen op {dagen} tussen {van} en {tot}.",
     "email": "m.onvlee@buurtzorgnederland.com",
