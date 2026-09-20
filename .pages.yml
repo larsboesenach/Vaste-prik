@@ -1,0 +1,260 @@
+# Pages CMS-configuratie voor Buurtzorgcafé Vaste Prik
+# Docs: https://pagescms.org/docs/
+
+media:
+  input: assets          # foto's worden in de map assets/ opgeslagen
+  output: assets         # en zo in content.json gezet (relatief, dus werkt ook op github.io/Vaste-prik/)
+  rename: safe           # bestandsnamen automatisch "schoon" maken
+  categories: [image]
+
+content:
+  - name: inhoud
+    label: Website-inhoud
+    type: file
+    path: content.json
+    format: json
+    fields:
+
+      # ── Openingstijden ─────────────────────────────────
+      - name: openingstijden
+        label: Openingstijden
+        type: object
+        fields:
+          - name: dagen
+            label: Dagen (in een zin)
+            description: "Bijvoorbeeld: dinsdag en vrijdag. Wordt in lopende teksten gebruikt."
+            type: string
+          - name: dagen_kort
+            label: Dagen (kort)
+            description: "Bijvoorbeeld: di & vr"
+            type: string
+          - name: dagen_titel
+            label: Dagen (als kopje)
+            description: "Bijvoorbeeld: Dinsdag & vrijdag"
+            type: string
+          - name: van
+            label: Open vanaf
+            type: string
+          - name: tot
+            label: Open tot
+            type: string
+          - name: toelichting
+            label: Toelichting onder de openingstijden
+            type: string
+
+      # ── Bovenaan de pagina ─────────────────────────────
+      - name: hero
+        label: Bovenaan de pagina
+        type: object
+        fields:
+          - name: titel
+            label: Grote kop
+            type: string
+          - name: tekst
+            label: Inleidende tekst
+            description: "Tip: {dagen}, {van} en {tot} worden automatisch vervangen door de openingstijden."
+            type: text
+          - name: foto
+            label: Hoofdfoto
+            type: image
+          - name: foto_alt
+            label: Beschrijving hoofdfoto (voor slechtzienden)
+            type: string
+          - name: bordje
+            label: Foto van het bordje
+            type: image
+          - name: bordje_alt
+            label: Beschrijving bordje
+            type: string
+
+      # ── Wat is het ─────────────────────────────────────
+      - name: wat
+        label: Wat is Vaste Prik?
+        type: object
+        fields:
+          - name: titel
+            label: Kop
+            type: string
+          - name: alineas
+            label: Alinea's
+            type: text
+            list: true
+          - name: quote
+            label: Citaat (zonder aanhalingstekens)
+            type: text
+          - name: foto1
+            label: Foto links
+            type: image
+          - name: foto1_alt
+            label: Beschrijving foto links
+            type: string
+          - name: foto2
+            label: Foto rechts
+            type: image
+          - name: foto2_alt
+            label: Beschrijving foto rechts
+            type: string
+
+      # ── Ons recept ─────────────────────────────────────
+      - name: recept
+        label: Ons recept (schijf van vijf)
+        type: object
+        fields:
+          - name: intro
+            label: Inleiding
+            type: text
+          - name: kaarten
+            label: Kaarten
+            description: "De nummering (01, 02, ...) volgt automatisch de volgorde."
+            type: object
+            list: true
+            fields:
+              - name: icoon
+                label: Emoji
+                type: string
+              - name: titel
+                label: Titel
+                type: string
+              - name: tekst
+                label: Tekst
+                type: text
+
+      # ── Lopende tekst-balk ─────────────────────────────
+      - name: marquee
+        label: Voorbijschuivende woorden (balk)
+        type: string
+        list: true
+
+      # ── Agenda ─────────────────────────────────────────
+      - name: agenda
+        label: Agenda
+        type: object
+        fields:
+          - name: intro
+            label: Inleiding
+            type: text
+          - name: notitie
+            label: Tekst onder de kalender
+            type: text
+          - name: losse_activiteiten
+            label: Losse activiteiten (verschijnen als gele stip in de kalender)
+            type: object
+            list: true
+            fields:
+              - name: datum
+                label: Datum
+                type: date
+                default: ""
+                options:
+                  format: yyyy-MM-dd
+              - name: titel
+                label: Titel (bijv. Grote pan couscous)
+                type: string
+          - name: activiteiten
+            label: Vaste activiteiten (namen en tijden)
+            description: "Op welke dagen ze vallen staat in de code en kan alleen door de webbouwer worden aangepast."
+            type: object
+            fields:
+              - name: koffie
+                label: Inloop & koffie
+                type: object
+                fields:
+                  - { name: kort, label: Korte naam (in kalender), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: tijd, label: Tijd, type: string }
+              - name: weegschaal
+                label: Weegschaal & bloeddruk
+                type: object
+                fields:
+                  - { name: kort, label: Korte naam (in kalender), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: tijd, label: Tijd, type: string }
+              - name: beweeg
+                label: Beweegspreekuur
+                type: object
+                fields:
+                  - { name: kort, label: Korte naam (in kalender), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: tijd, label: Tijd, type: string }
+                  - name: vanaf
+                    label: Eerste keer op (datum)
+                    type: date
+                    options:
+                      format: yyyy-MM-dd
+              - name: stoelyoga
+                label: Stoelyoga
+                type: object
+                fields:
+                  - { name: kort, label: Korte naam (in kalender), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: tijd, label: Tijd, type: string }
+              - name: diabetes
+                label: Diabetes spreekuur
+                type: object
+                fields:
+                  - { name: kort, label: Korte naam (in kalender), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: tijd, label: Tijd, type: string }
+
+      # ── Verhalen ───────────────────────────────────────
+      - name: verhalen
+        label: Verhalen (reactie van een bezoeker)
+        type: object
+        fields:
+          - name: quote
+            label: Citaat (zonder aanhalingstekens)
+            type: text
+          - name: naam
+            label: Naam en rol (bijv. Corry · bezoekster)
+            type: string
+
+      # ── Contact ────────────────────────────────────────
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - name: tekst
+            label: Inleidende tekst
+            type: text
+          - name: email
+            label: E-mailadres
+            type: string
+          - name: telefoon
+            label: Telefoonnummer
+            type: string
+          - name: adres_kort
+            label: Adres (kort, bovenaan de pagina)
+            type: string
+          - name: adres
+            label: Adres (volledig, zoals getoond)
+            type: string
+          - name: adres_zoek
+            label: Adres voor de kaart (straat + plaats)
+            description: "Wordt gebruikt voor de Google Maps-kaart en de routelink."
+            type: string
+          - name: doemee_titel
+            label: "Doe mee: kop"
+            type: string
+          - name: doemee_tekst
+            label: "Doe mee: tekst"
+            type: text
+          - name: persoon
+            label: Initiatiefnemer
+            type: object
+            fields:
+              - { name: foto, label: Foto, type: image }
+              - { name: foto_alt, label: Beschrijving foto, type: string }
+              - { name: rol, label: Rol, type: string }
+              - { name: naam, label: Naam, type: string }
+              - { name: functie, label: Functie, type: string }
+              - { name: quote, label: Citaat (zonder aanhalingstekens), type: text }
+              - { name: extra, label: Extra tekst, type: text }
+
+      # ── Footer ─────────────────────────────────────────
+      - name: footer
+        label: Onderaan de pagina
+        type: object
+        fields:
+          - name: beschrijving
+            label: Beschrijving
+            type: text

@@ -39,8 +39,8 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <span class="pill">Welkom</span>
-          <h1>Haal je wekelijkse dosis energie bij Vaste Prik!</h1>
-          <p class="lead">
+          <h1 data-c="hero.titel">Haal je wekelijkse dosis energie bij Vaste Prik!</h1>
+          <p class="lead" data-c="hero.tekst">
             Wil je een praatje maken met mensen uit de buurt, of met iemand van Buurtzorg Oost?
             Kom dan naar Buurtzorgcafé Vaste Prik, in de opgeknapte apotheek aan de
             Vrolikstraat. Het gezondheidscafé is elke dinsdag en vrijdag open van 11 tot
@@ -56,11 +56,11 @@
             <div class="hero-info-cols">
               <div>
                 <p class="label">Wanneer open</p>
-                <p class="value">di &amp; vr · 11:00–15:00</p>
+                <p class="value" data-tpl="{dagen_kort} · {van}–{tot}">di &amp; vr · 11:00–15:00</p>
               </div>
               <div>
                 <p class="label">Waar</p>
-                <p class="value">Vrolikstraat 191A</p>
+                <p class="value" data-c="contact.adres_kort">Vrolikstraat 191A</p>
               </div>
             </div>
           </div>
@@ -71,6 +71,8 @@
             <img
               src="assets/vaste-prik-1.jpg"
               alt="Activiteit bij Buurtzorgcafé Vaste Prik"
+              data-c-src="hero.foto"
+              data-c-alt="hero.foto_alt"
               data-lightbox
               tabindex="0"
             />
@@ -78,6 +80,8 @@
           <img
             src="assets/bordje-vaste-prik.png"
             alt="Geborduurd bordje met de tekst Apotheek Vaste Prik"
+            data-c-src="hero.bordje"
+            data-c-alt="hero.bordje_alt"
             class="hero-badge"
             data-lightbox
             tabindex="0"
@@ -93,6 +97,8 @@
           <img
             src="assets/vaste-prik-2.jpeg"
             alt="Bijscholing bij Buurtzorgcafé Vaste Prik"
+            data-c-src="wat.foto1"
+            data-c-alt="wat.foto1_alt"
             class="wat-img wat-img-1"
             data-lightbox
             tabindex="0"
@@ -100,6 +106,8 @@
           <img
             src="assets/vaste-prik-3.jpeg"
             alt="Verjaardag bij Buurtzorgcafé Vaste Prik"
+            data-c-src="wat.foto2"
+            data-c-alt="wat.foto2_alt"
             class="wat-img wat-img-2"
             data-lightbox
             tabindex="0"
@@ -107,7 +115,8 @@
         </div>
         <div class="wat-copy">
           <span class="pill">Van apotheek naar café</span>
-          <h2>Van leegstaande apotheek naar een café voor de hele buurt.</h2>
+          <h2 data-c="wat.titel">Van leegstaande apotheek naar een café voor de hele buurt.</h2>
+          <div data-c-lijst="wat.alineas">
           <p>
             De grote apotheek aan de Vrolikstraat stond al een tijd leeg door gebrek aan
             personeel. De wijkverpleging van Buurtzorg Oost wist het om te toveren tot
@@ -118,7 +127,8 @@
             Een laagdrempelige plek waar je zonder verplichting kunt binnenlopen, mag blijven
             hangen en waar ontmoeting vanzelfsprekend is.
           </p>
-          <p class="quote">
+          </div>
+          <p class="quote" data-c="wat.quote" data-c-quotes>
             &ldquo;Je komt hier voor een prik van verbinding, een injectie van kennis en een
             shot herkenning.&rdquo;
           </p>
@@ -132,10 +142,10 @@
         <div class="recept-intro">
           <span class="pill">Ons recept</span>
           <h2>De schijf van vijf bij Vaste Prik</h2>
-          <p class="lead">Ons recept om elkaar zo gezond mogelijk te houden rust op 5 smaakmakers.</p>
+          <p class="lead" data-c="recept.intro">Ons recept om elkaar zo gezond mogelijk te houden rust op 5 smaakmakers.</p>
         </div>
 
-        <div class="recept-grid">
+        <div class="recept-grid" id="recept-grid">
           <div class="recept-card">
             <div class="recept-head">
               <span class="recept-icon">🧠</span>
@@ -207,7 +217,7 @@
           <div class="agenda-intro">
             <span class="pill">Agenda</span>
             <h2 id="agenda-title">Deze maand bij Vaste Prik</h2>
-            <p class="lead">
+            <p class="lead" data-c="agenda.intro">
               We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke
               maand vaste momenten en wisselende activiteiten op de kalender.
             </p>
@@ -233,7 +243,7 @@
           <div class="calendar-legend" id="calendar-legend"></div>
         </div>
 
-        <p class="agenda-note">
+        <p class="agenda-note" data-c="agenda.notitie">
           Daarnaast zijn er wisselende extra's zoals een grote pan couscous, gezonde soep, een
           filmmiddag of een extra bloeddrukmoment. Houd het prikbord in het café in de
           gaten!
@@ -259,11 +269,11 @@
           <path d="M50 54 C 50 74, 42 82, 30 92" fill="none" stroke="var(--vp-green)" stroke-width="5" stroke-linecap="round" />
           <path d="M44 74 q -14 -2 -18 8 q 14 4 18 -8Z" fill="var(--vp-green)" />
         </svg>
-        <p class="testimonial-quote">
+        <p class="testimonial-quote" data-c="verhalen.quote" data-c-quotes>
           &ldquo;Ik ga altijd naar Vaste Prik, voor een bakkie koffie en om mensen te
           ontmoeten.&rdquo;
         </p>
-        <p class="testimonial-name">Corry · bezoekster</p>
+        <p class="testimonial-name" data-c="verhalen.naam">Corry · bezoekster</p>
       </div>
     </section>
 
@@ -273,54 +283,55 @@
         <div>
           <span class="pill">Kom kennismaken</span>
           <h2>Kom langs of laat het even weten.</h2>
-          <p class="lead">
+          <p class="lead" data-c="contact.tekst">
             Wilt u deelnemen aan een bijeenkomst? Aanmelden is fijn via een mailtje, maar u mag
             ook zomaar binnenlopen op dinsdag en vrijdag tussen 11:00 en 15:00.
           </p>
 
           <div class="contact-links">
-            <a href="mailto:m.onvlee@buurtzorgnederland.com" class="contact-link">
+            <a href="mailto:m.onvlee@buurtzorgnederland.com" data-link="mail" class="contact-link">
               <span class="contact-link-icon">&#9993;</span>
               <span>
                 <span class="contact-link-label">E-mail</span>
-                <span class="contact-link-value">m.onvlee@buurtzorgnederland.com</span>
+                <span class="contact-link-value" data-c="contact.email">m.onvlee@buurtzorgnederland.com</span>
               </span>
             </a>
-            <a href="tel:0612564364" class="contact-link">
+            <a href="tel:0612564364" data-link="tel" class="contact-link">
               <span class="contact-link-icon">&#9742;</span>
               <span>
                 <span class="contact-link-label">Bellen</span>
-                <span class="contact-link-value">06 12 56 43 64</span>
+                <span class="contact-link-value" data-c="contact.telefoon">06 12 56 43 64</span>
               </span>
             </a>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Vrolikstraat+191A,+Amsterdam"
+              href="https://www.google.com/maps/search/?api=1&query=Vrolikstraat+191A,+Amsterdam" data-link="maps"
               target="_blank" rel="noreferrer" class="contact-link"
             >
               <span class="contact-link-icon">&#9873;</span>
               <span>
                 <span class="contact-link-label">Adres</span>
-                <span class="contact-link-value">Vrolikstraat 191A, Amsterdam-Oost</span>
+                <span class="contact-link-value" data-c="contact.adres">Vrolikstraat 191A, Amsterdam-Oost</span>
               </span>
             </a>
           </div>
 
           <div class="doe-mee">
-            <p class="doe-mee-title">Wil jij iets betekenen voor Vaste Prik? 🌻</p>
-            <p>Heb je een leuk idee of wil je meehelpen? Stuur een berichtje, dan komen we met je in contact!</p>
-            <a href="mailto:m.onvlee@buurtzorgnederland.com" class="btn btn-light">Stuur een berichtje</a>
+            <p class="doe-mee-title" data-c="contact.doemee_titel">Wil jij iets betekenen voor Vaste Prik? 🌻</p>
+            <p data-c="contact.doemee_tekst">Heb je een leuk idee of wil je meehelpen? Stuur een berichtje, dan komen we met je in contact!</p>
+            <a href="mailto:m.onvlee@buurtzorgnederland.com" data-link="mail" class="btn btn-light">Stuur een berichtje</a>
           </div>
 
           <div class="map-embed">
             <iframe
               title="Kaart Vrolikstraat 191A, Amsterdam-Oost"
               src="https://www.google.com/maps?q=Vrolikstraat+191A,+Amsterdam&output=embed"
+              data-link="mapembed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
           <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Vrolikstraat+191A,+Amsterdam"
+            href="https://www.google.com/maps/dir/?api=1&destination=Vrolikstraat+191A,+Amsterdam" data-link="route"
             target="_blank" rel="noreferrer" class="route-link"
           >
             Plan je route &rarr;
@@ -333,21 +344,23 @@
               <img
                 src="assets/marjolijn-onvlee.jpg"
                 alt="Marjolijn Onvlee bij Radio Steunkous"
+                data-c-src="contact.persoon.foto"
+                data-c-alt="contact.persoon.foto_alt"
                 data-lightbox
                 tabindex="0"
               />
               <div>
-                <p class="contact-person-role">Initiatiefnemer</p>
-                <h3>Marjolijn Onvlee</h3>
-                <p class="contact-person-sub">Wijkverpleegkundige Buurtzorg Oost</p>
+                <p class="contact-person-role" data-c="contact.persoon.rol">Initiatiefnemer</p>
+                <h3 data-c="contact.persoon.naam">Marjolijn Onvlee</h3>
+                <p class="contact-person-sub" data-c="contact.persoon.functie">Wijkverpleegkundige Buurtzorg Oost</p>
               </div>
             </div>
-            <p class="contact-quote">
+            <p class="contact-quote" data-c="contact.persoon.quote" data-c-quotes>
               &ldquo;Vaste Prik wil een medicijn voor de buurt zijn. Een plek om een beter humeur
               te krijgen: je kan er wat opsteken, nieuwe mensen leren kennen en lekkere koffie
               drinken. Wat wil een mens nog meer?&rdquo;
             </p>
-            <p class="contact-extra">
+            <p class="contact-extra" data-c="contact.persoon.extra">
               Verder zijn er speciale bijeenkomsten en cursussen rondom gezondheid. En de Radio
               Steunkous Camper is er ook te bewonderen.
             </p>
@@ -355,10 +368,10 @@
           <div class="opening-box">
             <p class="opening-label">Openingstijden</p>
             <div class="opening-row">
-              <span>Dinsdag &amp; Vrijdag</span>
-              <span>11:00 – 15:00</span>
+              <span data-c="openingstijden.dagen_titel">Dinsdag &amp; vrijdag</span>
+              <span data-tpl="{van} – {tot}">11:00 – 15:00</span>
             </div>
-            <p class="opening-note">Overige dagen op afspraak · vrije inloop, iedereen welkom</p>
+            <p class="opening-note" data-c="openingstijden.toelichting">Overige dagen op afspraak · vrije inloop, iedereen welkom</p>
           </div>
         </div>
       </div>
@@ -374,18 +387,18 @@
           <img src="assets/vaste-prik-logo.png" alt="Vaste Prik logo" class="footer-brand-logo" />
           <span class="footer-brand-title">Buurtzorgcafé Vaste Prik</span>
         </div>
-        <p class="footer-desc">
+        <p class="footer-desc" data-c="footer.beschrijving">
           Een initiatief van Buurtzorg Oost. Een laagdrempelig gezondheidscafé voor
           preventie, ontmoeting en een goed gesprek in het hart van de buurt.
         </p>
         <p class="footer-contact">
-          <a href="https://www.google.com/maps/search/?api=1&query=Vrolikstraat+191A,+Amsterdam" target="_blank" rel="noreferrer">
+          <a href="https://www.google.com/maps/search/?api=1&query=Vrolikstraat+191A,+Amsterdam" data-link="maps" target="_blank" rel="noreferrer" data-c="contact.adres">
             Vrolikstraat 191A, Amsterdam-Oost
           </a>
           <br />
-          <a href="mailto:m.onvlee@buurtzorgnederland.com">m.onvlee@buurtzorgnederland.com</a>
+          <a href="mailto:m.onvlee@buurtzorgnederland.com" data-link="mail" data-c="contact.email">m.onvlee@buurtzorgnederland.com</a>
           &middot;
-          <a href="tel:0612564364">06 12 56 43 64</a>
+          <a href="tel:0612564364" data-link="tel" data-c="contact.telefoon">06 12 56 43 64</a>
         </p>
       </div>
       <div class="footer-cols">
@@ -398,8 +411,8 @@
         </nav>
         <div class="footer-open">
           <p class="footer-open-label">Open</p>
-          <p class="footer-open-value">Dinsdag &amp; vrijdag</p>
-          <p class="footer-open-value">11:00 – 15:00</p>
+          <p class="footer-open-value" data-c="openingstijden.dagen_titel">Dinsdag &amp; vrijdag</p>
+          <p class="footer-open-value" data-tpl="{van} – {tot}">11:00 – 15:00</p>
         </div>
       </div>
     </div>
