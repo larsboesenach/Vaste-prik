@@ -342,9 +342,12 @@
     return e;
   }
 
+  let mobileShowPastDays = false;
+
   function renderKalender(jaar, maand) {
     const grid = document.getElementById("calendar-grid");
     const legend = document.getElementById("calendar-legend");
+    const calendarWrap = document.querySelector(".calendar-wrap");
     const mobileAgenda = window.matchMedia("(max-width: 1030px)").matches;
     grid.innerHTML = "";
     legend.innerHTML = "";
@@ -355,7 +358,23 @@
     const dagNamen = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
 
     if (mobileAgenda) {
+      let toggle = document.getElementById("mobile-past-toggle");
+      if (!toggle) {
+        toggle = document.createElement("button");
+        toggle.id = "mobile-past-toggle";
+        toggle.type = "button";
+        calendarWrap.insertBefore(toggle, grid);
+      }
+      toggle.className = "btn btn-ghost mobile-past-toggle";
+      toggle.textContent = mobileShowPastDays ? "verberg afgelopen dagen" : "toon afgelopen dagen";
+      toggle.onclick = () => {
+        mobileShowPastDays = !mobileShowPastDays;
+        renderKalender(jaar, maand);
+      };
+
       const dagenMetActiviteit = [];
+
+      const vandaagStart = new Date(vandaag.getFullYear(), vandaag.getMonth(), vandaag.getDate());
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
         const acts = activiteitenOpDag(jaar, maand, dag);
@@ -363,16 +382,18 @@
         if (!acts.length && !extras.length) continue;
 
         const date = new Date(jaar, maand, dag);
-        dagenMetActiviteit.push({ date, acts, extras });
+        dagenMetActiviteit.push({ date, acts, extras, isPast: date < vandaagStart && !(vandaag.getFullYear() === jaar && vandaag.getMonth() === maand && vandaag.getDate() === date.getDate()) });
       }
 
-      if (!dagenMetActiviteit.length) {
+      const zichtbareDagen = dagenMetActiviteit.filter(({ isPast }) => mobileShowPastDays || !isPast);
+
+      if (!zichtbareDagen.length) {
         const empty = elt("div", "day-cell empty mobile-day-card");
-        const emptyText = elt("div", "mobile-empty-state", "Geen activiteiten in deze maand");
+        const emptyText = elt("div", "mobile-empty-state", mobileShowPastDays ? "Geen activiteiten in deze maand" : "Geen komende activiteiten in deze maand");
         empty.appendChild(emptyText);
         grid.appendChild(empty);
       } else {
-        dagenMetActiviteit.forEach(({ date, acts, extras }) => {
+        zichtbareDagen.forEach(({ date, acts, extras, isPast }) => {
           const isVandaag =
             vandaag.getFullYear() === jaar &&
             vandaag.getMonth() === maand &&
@@ -381,6 +402,7 @@
           const cellClasses = ["day-cell", "mobile-day-card"];
           if (acts.length || extras.length) cellClasses.push("has-events");
           if (isVandaag) cellClasses.push("is-today");
+          if (isPast) cellClasses.push("is-past");
 
           const cell = elt("div", cellClasses.join(" "));
           const header = elt("div", "mobile-day-header");
@@ -424,6 +446,11 @@
         });
       }
     } else {
+      const mobileToggle = document.getElementById("mobile-past-toggle");
+      if (mobileToggle && mobileToggle.parentNode) {
+        mobileToggle.parentNode.removeChild(mobileToggle);
+      }
+
       const start = (new Date(jaar, maand, 1).getDay() + 6) % 7; // ma = 0
 
       // Lege cellen vóór de eerste dag van de maand
@@ -431,17 +458,22 @@
         grid.appendChild(elt("div", "day-cell empty"));
       }
 
+      const vandaagStart = new Date(vandaag.getFullYear(), vandaag.getMonth(), vandaag.getDate());
+
       for (let dag = 1; dag <= dagenInMaand; dag++) {
         const acts = activiteitenOpDag(jaar, maand, dag);
         const extras = losse.filter((l) => l.dag === dag);
+        const date = new Date(jaar, maand, dag);
         const isVandaag =
           vandaag.getFullYear() === jaar &&
           vandaag.getMonth() === maand &&
           vandaag.getDate() === dag;
+        const isPast = date < vandaagStart && !isVandaag;
 
         const cellClasses = ["day-cell"];
         if (acts.length || extras.length) cellClasses.push("has-events");
         if (isVandaag) cellClasses.push("is-today");
+        if (isPast) cellClasses.push("is-past");
 
         const cell = elt("div", cellClasses.join(" "));
         cell.appendChild(elt("div", "day-number", String(dag)));
@@ -504,6 +536,7 @@
 
   function toonMaand(offset) {
     actieveOffset = offset;
+    mobileShowPastDays = false;
     const m = maandVanaf(offset);
     renderMaandKnoppen(offset);
     renderKalender(m.jaar, m.maand);
