@@ -155,6 +155,7 @@ p {
   object-fit: cover;
   display: block;
   background: #fff;
+  border: 2px solid #9d3a22;
 }
 .brand-text {
   line-height: 1.2;
@@ -186,13 +187,13 @@ p {
 .main-nav a:hover {
   color: var(--vp-rust);
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .main-nav {
     display: flex;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1030px) {
   body {
     overflow-x: hidden;
   }
@@ -240,7 +241,7 @@ p {
   align-items: center;
   padding: 4rem 1.25rem 5rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .hero-grid {
     grid-template-columns: 1.05fr 0.95fr;
     padding-top: 6rem;
@@ -253,7 +254,7 @@ p {
   font-size: 2.75rem;
   line-height: 1.05;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .hero-copy h1 {
     font-size: 3.5rem;
   }
@@ -373,7 +374,7 @@ p {
   outline: 3px solid var(--vp-orange);
   outline-offset: 3px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .hero-photo-frame img {
     height: 520px;
   }
@@ -387,7 +388,7 @@ p {
   border-radius: 0.4rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 }
-@media (max-width: 767px) {
+@media (max-width: 1030px) {
   .hero-media {
     padding-bottom: 2.5rem;
   }
@@ -414,7 +415,7 @@ p {
   gap: 3rem;
   align-items: center;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .wat-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -425,7 +426,7 @@ p {
   gap: 1rem;
   order: 2;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .wat-images {
     order: 1;
   }
@@ -443,7 +444,7 @@ p {
   margin-top: 2.5rem;
   background: var(--vp-blue);
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .wat-img {
     height: 20rem;
   }
@@ -452,7 +453,7 @@ p {
   order: 1;
   position: relative;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .wat-copy {
     order: 2;
   }
@@ -462,7 +463,7 @@ p {
   line-height: 1.15;
   margin-top: 0.25rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .wat-copy h2 {
     font-size: 2.75rem;
   }
@@ -490,7 +491,7 @@ p {
   font-size: 2.25rem;
   line-height: 1.15;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .recept-intro h2 {
     font-size: 2.75rem;
   }
@@ -598,7 +599,7 @@ p {
   font-size: 2.25rem;
   line-height: 1.15;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .agenda-intro h2 {
     font-size: 2.75rem;
   }
@@ -823,7 +824,7 @@ p {
   font-weight: 500;
   line-height: 1.35;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .testimonial-quote {
     font-size: 2.1rem;
   }
@@ -866,7 +867,7 @@ p {
   gap: 2.5rem;
   padding: 4rem 1.25rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -875,7 +876,7 @@ p {
   font-size: 2.25rem;
   line-height: 1.15;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .contact-grid h2 {
     font-size: 2.75rem;
   }
@@ -932,7 +933,7 @@ p {
   padding: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1030px) {
   .contact-section {
     overflow: hidden;
   }
@@ -1107,7 +1108,7 @@ p {
   gap: 2.5rem;
   padding: 3.5rem 1.25rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1031px) {
   .footer-grid {
     grid-template-columns: 1.3fr 1fr;
   }
