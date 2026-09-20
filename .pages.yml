@@ -125,6 +125,20 @@ content:
         type: string
         list: true
 
+      # ── Veelgestelde vragen ────────────────────────────
+      - name: faq
+        label: Veelgestelde vragen
+        type: object
+        list: true
+        fields:
+          - name: vraag
+            label: Vraag
+            type: string
+          - name: antwoord
+            label: Antwoord
+            description: "Je kunt {dagen}, {van} en {tot} gebruiken; deze worden automatisch ingevuld."
+            type: text
+
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
         label: Agenda
