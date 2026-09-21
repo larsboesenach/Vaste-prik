@@ -1,18 +1,12 @@
 {
-  "openingstijden": {
-    "dagen": "dinsdag en vrijdag",
-    "dagen_kort": "Di & Vr",
-    "dagen_titel": "Dinsdag & vrijdag",
-    "van": "11:00",
-    "tot": "15:00",
-    "toelichting": "Overige dagen op afspraak · vrije inloop, iedereen welkom"
-  },
   "hero": {
+    "logo": "assets/vaste-prik-logo.png",
+    "logo_alt": "Vaste Prik logo",
     "titel": "Haal je wekelijkse dosis energie bij Vaste Prik!",
-    "tekst": "Wil je een praatje maken met mensen uit de buurt, of met iemand van Buurtzorg Oost? Kom dan naar Buurtzorgcafé Vaste Prik, in de opgeknapte apotheek aan de Vrolikstraat. Het gezondheidscafé is elke {dagen} open van {van} tot {tot} uur — voor koffie, thee, of kijk op de agenda wat er nog meer te doen is.",
+    "tekst": "Wil je een praatje maken met mensen uit de buurt, of met iemand van Buurtzorg Oost? Kom dan naar Buurtzorgcafé Vaste Prik, in de opgeknapte apotheek aan de Vrolikstraat. Het gezondheidscafé is elke dinsdag en vrijdag open van 11:00 tot 15:00 uur — voor koffie, thee, of kijk op de agenda wat er nog meer te doen is.",
     "foto": "assets/vaste-prik-1.jpg",
     "foto_alt": "Activiteit bij Buurtzorgcafé Vaste Prik",
-    "bordje": "assets/bordje-vaste-prik.png",
+    "bordje": "assets/bordje-vaste-prik.jpg",
     "bordje_alt": "Geborduurd bordje met de tekst Apotheek Vaste Prik"
   },
   "wat": {
@@ -83,7 +77,7 @@
     }
   ],
   "agenda": {
-    "intro": "We zijn open op {dagen} van {van} tot {tot}. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
+    "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's zoals een grote pan couscous, gezonde soep, een filmmiddag of een extra bloeddrukmoment. Houd het prikbord in het café in de gaten!",
     "losse_activiteiten": [],
     "activiteiten": {
@@ -130,7 +124,7 @@
     }
   ],
   "contact": {
-    "tekst": "Wilt u deelnemen aan een bijeenkomst? Aanmelden is fijn via een mailtje, maar u mag ook zomaar binnenlopen op {dagen} tussen {van} en {tot}.",
+    "tekst": "Wilt u deelnemen aan een bijeenkomst? Aanmelden is fijn via een mailtje, maar u mag ook zomaar binnenlopen op dinsdag en vrijdag tussen 11:00 en 15:00.",
     "email": "m.onvlee@buurtzorgnederland.com",
     "telefoon": "06 12 56 43 64",
     "adres_kort": "Vrolikstraat 191A",
