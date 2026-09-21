@@ -15,44 +15,23 @@ content:
     format: json
     fields:
 
-      # ── Openingstijden ─────────────────────────────────
-      - name: openingstijden
-        label: Openingstijden
-        type: object
-        fields:
-          - name: dagen
-            label: Dagen (in een zin)
-            description: "Bijvoorbeeld: dinsdag en vrijdag. Wordt in lopende teksten gebruikt."
-            type: string
-          - name: dagen_kort
-            label: Dagen (kort)
-            description: "Bijvoorbeeld: di & vr"
-            type: string
-          - name: dagen_titel
-            label: Dagen (als kopje)
-            description: "Bijvoorbeeld: Dinsdag & vrijdag"
-            type: string
-          - name: van
-            label: Open vanaf
-            type: string
-          - name: tot
-            label: Open tot
-            type: string
-          - name: toelichting
-            label: Toelichting onder de openingstijden
-            type: string
-
       # ── Bovenaan de pagina ─────────────────────────────
       - name: hero
         label: Bovenaan de pagina
         type: object
         fields:
+          - name: logo
+            label: Website logo
+            description: "Het logo dat in de header wordt gebruikt."
+            type: image
+          - name: logo_alt
+            label: Beschrijving logo
+            type: string
           - name: titel
             label: Grote kop
             type: string
           - name: tekst
             label: Inleidende tekst
-            description: "Tip: {dagen}, {van} en {tot} worden automatisch vervangen door de openingstijden."
             type: text
           - name: foto
             label: Hoofdfoto
