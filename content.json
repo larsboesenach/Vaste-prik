@@ -15,7 +15,7 @@
       "De grote apotheek aan de Vrolikstraat stond al een tijd leeg door gebrek aan personeel. De wijkverpleging van Buurtzorg Oost wist het om te toveren tot Buurtzorgcafé Vaste Prik: een nieuwe manier om elkaar te helpen zo gezond mogelijk te blijven.",
       "Een laagdrempelige plek waar je zonder verplichting kunt binnenlopen, waar ontmoeting vanzelfsprekend is en waar je gezondheidskennis kunt halen en uitwisselen."
     ],
-    "quote": "Hier krijg je geen recept, maar wel een gezonde dosis kennis, inspiratie en herkenning",
+    "quote": "Hier krijg je geen recept voor pillen, maar wel een gezonde dosis kennis, inspiratie en herkenning",
     "foto1": "assets/vaste-prik-2.jpeg",
     "foto1_alt": "Bijscholing bij Buurtzorgcafé Vaste Prik",
     "foto2": "assets/vaste-prik-3.jpeg",
@@ -79,6 +79,10 @@
       {
         "datum": "2026-09-26",
         "titel": "Website live!! 🚀"
+      },
+      {
+        "datum": "2026-09-29",
+        "titel": "Gezonde Ontmoeting -Goed oud worden"
       }
     ],
     "activiteiten": {
