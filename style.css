@@ -591,6 +591,7 @@ p {
   transform: rotate(-3deg);
   transform-origin: center;
   margin: 1.5rem 0 2rem;
+  
 }
 .marquee-track {
   display: flex;
