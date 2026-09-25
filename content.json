@@ -79,6 +79,12 @@
   "agenda": {
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's zoals een grote pan couscous, gezonde soep, een filmmiddag of een extra bloeddrukmoment. Houd het prikbord in het café in de gaten!",
+    "losse_activiteiten": [
+      {
+        "datum": "2026-09-26",
+        "titel": "Website live!! 🚀"
+      }
+    ],
     "activiteiten": {
       "koffie": {
         "kort": "Inloop & koffie",
