@@ -440,6 +440,16 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 }
+.wat-grid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 1031px) {
+  .wat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 .wat-images {
   display: grid;
   grid-template-columns: 1fr 1fr;
