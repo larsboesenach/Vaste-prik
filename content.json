@@ -32,7 +32,7 @@
       {
         "icoon": "💪",
         "titel": "Vitaliteit versterken",
-        "tekst": "De mentale en lichamelijke gezondheid verbeteren. Er is ruimte voor spontane initiatieven die bezoekers zelf aandragen."
+        "tekst": "De mentale en lichamelijke gezondheid verbeteren door elkaar te helpen in beweging te blijven en te blijven lachen. Er is ruimte voor spontane initiatieven die bezoekers zelf aandragen. "
       },
       {
         "icoon": "🤝",
@@ -41,8 +41,8 @@
       },
       {
         "icoon": "🩺",
-        "titel": "Preventie",
-        "tekst": "Beter voorkomen dan genezen. Laat regelmatig je vitale functies meten en weet of je op de goede weg bent."
+        "titel": "Voorkomen",
+        "tekst": "Beter voorkomen dan genezen. Laat regelmatig je vitale functies meten en weet of je op de goede weg bent. "
       },
       {
         "icoon": "☕",
@@ -55,7 +55,7 @@
     "Kennis delen",
     "Vitaliteit versterken",
     "Samenwerken",
-    "Preventie",
+    "Voorkomen",
     "Echt lekkere koffie"
   ],
   "faq": [
