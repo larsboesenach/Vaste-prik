@@ -314,17 +314,52 @@
     return { jaar: d.getFullYear(), maand: d.getMonth() };
   }
 
+  function tijdLabel(van, tot) {
+    const start = typeof van === "string" ? van.trim() : "";
+    const eind = typeof tot === "string" ? tot.trim() : "";
+    if (start && eind) return start + "–" + eind;
+    if (start) return start;
+    if (eind) return eind;
+    return "";
+  }
+
   // Losse, wisselende extra's staan in content.json onder
-  // agenda.losse_activiteiten, elk met een datum (JJJJ-MM-DD) en een titel.
+  // agenda.losse_activiteiten, elk met een datum en optioneel een tijdstip.
   function losseActiviteitenVoorMaand(jaar, maand) {
     const lijst = haal("agenda.losse_activiteiten");
     if (!Array.isArray(lijst)) return [];
     const uit = [];
     lijst.forEach((l) => {
       const d = l && parseDatum(l.datum);
-      if (d && l.titel && d.getFullYear() === jaar && d.getMonth() === maand) {
-        uit.push({ dag: d.getDate(), titel: l.titel });
-      }
+      if (!d || !l || !l.titel) return;
+      if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;
+      const tijd = tijdLabel(l.van || l.tijd || "", l.tot || "");
+      uit.push({ dag: d.getDate(), titel: l.titel, tijd: tijd || "Extra activiteit" });
+    });
+    return uit;
+  }
+
+  function gezondeOntmoetingVoorMaand(jaar, maand) {
+    const cfg = haal("agenda.gezonde_ontmoeting");
+    if (!cfg || !Array.isArray(cfg.sessies)) return [];
+
+    const uit = [];
+    cfg.sessies.forEach((sessie) => {
+      const d = sessie && parseDatum(sessie.datum);
+      if (!d) return;
+      if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;
+
+      const label = cfg.label || "Gezonde Ontmoeting - Goed oud worden";
+      const tijd = tijdLabel(
+        sessie.van || cfg.van || "14:00",
+        sessie.tot || cfg.tot || "16:00"
+      );
+      uit.push({
+        dag: d.getDate(),
+        titel: label,
+        tijd,
+        kleur: "var(--vp-orange)"
+      });
     });
     return uit;
   }
@@ -378,6 +413,8 @@
     legend.innerHTML = "";
 
     const losse = losseActiviteitenVoorMaand(jaar, maand);
+    const gezonde = gezondeOntmoetingVoorMaand(jaar, maand);
+    const extraActiviteiten = [...losse, ...gezonde];
     const dagenInMaand = new Date(jaar, maand + 1, 0).getDate();
     const vandaag = new Date();
     const dagNamen = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
@@ -403,7 +440,7 @@
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
         const acts = activiteitenOpDag(jaar, maand, dag);
-        const extras = losse.filter((l) => l.dag === dag);
+        const extras = extraActiviteiten.filter((l) => l.dag === dag);
         if (!acts.length && !extras.length) continue;
 
         const date = new Date(jaar, maand, dag);
@@ -456,12 +493,12 @@
           });
           extras.forEach((e) => {
             const row = elt("div", "day-event mobile-day-event");
-            row.title = e.titel;
+            row.title = e.titel + (e.tijd ? ` · ${e.tijd}` : "");
             const dot = elt("span", "day-event-dot");
-            dot.style.backgroundColor = "var(--vp-mustard)";
+            dot.style.backgroundColor = e.kleur || "var(--vp-mustard)";
             const textWrap = elt("div", "mobile-event-text");
             textWrap.appendChild(elt("span", "mobile-event-title", e.titel));
-            textWrap.appendChild(elt("span", "mobile-event-time", "Extra activiteit"));
+            textWrap.appendChild(elt("span", "mobile-event-time", e.tijd || "Extra activiteit"));
             row.appendChild(dot);
             row.appendChild(textWrap);
             eventsWrap.appendChild(row);
@@ -487,7 +524,7 @@
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
         const acts = activiteitenOpDag(jaar, maand, dag);
-        const extras = losse.filter((l) => l.dag === dag);
+        const extras = extraActiviteiten.filter((l) => l.dag === dag);
         const date = new Date(jaar, maand, dag);
         const isVandaag =
           vandaag.getFullYear() === jaar &&
@@ -516,9 +553,9 @@
         });
         extras.forEach((e) => {
           const row = elt("div", "day-event");
-          row.title = e.titel;
+          row.title = e.titel + (e.tijd ? ` · ${e.tijd}` : "");
           const dot = elt("span", "day-event-dot");
-          dot.style.backgroundColor = "var(--vp-mustard)";
+          dot.style.backgroundColor = e.kleur || "var(--vp-mustard)";
           row.appendChild(dot);
           row.appendChild(elt("span", "day-event-label", e.titel));
           eventsWrap.appendChild(row);

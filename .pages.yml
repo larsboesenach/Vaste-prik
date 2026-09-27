@@ -143,6 +143,53 @@ content:
               - name: titel
                 label: Titel (bijv. Grote pan couscous)
                 type: string
+              - name: tijd
+                label: Tijdstip (optioneel, bijv. 14:00–16:00 of 18:30)
+                type: string
+                default: ""
+              - name: van
+                label: Van (optioneel, bijv. 14:00)
+                type: string
+                default: ""
+              - name: tot
+                label: Tot (optioneel, bijv. 16:00)
+                type: string
+                default: ""
+          - name: gezonde_ontmoeting
+            label: Gezonde Ontmoeting (2x per maand, aanpasbaar)
+            type: object
+            fields:
+              - name: label
+                label: Titel
+                type: string
+                default: "Gezonde Ontmoeting - Goed oud worden"
+              - name: van
+                label: Starttijd (standaard 14:00)
+                type: string
+                default: "14:00"
+              - name: tot
+                label: Eindtijd (standaard 16:00)
+                type: string
+                default: "16:00"
+              - name: sessies
+                label: Sessies (datum + eventueel aangepaste tijd)
+                type: object
+                list: true
+                fields:
+                  - name: datum
+                    label: Datum
+                    type: date
+                    default: ""
+                    options:
+                      format: yyyy-MM-dd
+                  - name: van
+                    label: Starttijd (optioneel, overruled standaard)
+                    type: string
+                    default: ""
+                  - name: tot
+                    label: Eindtijd (optioneel, overruled standaard)
+                    type: string
+                    default: ""
           - name: activiteiten
             label: Vaste activiteiten (namen en tijden)
             description: "Op welke dagen ze vallen staat in de code en kan alleen door de webbouwer worden aangepast."
