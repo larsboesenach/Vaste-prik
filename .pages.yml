@@ -150,7 +150,7 @@ content:
               - name: van
                 label: Van (optioneel, bijv. 14:00)
                 type: string
-                default: ""
+                default: "" 
               - name: tot
                 label: Tot (optioneel, bijv. 16:00)
                 type: string
