@@ -106,7 +106,7 @@ content:
 
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
-        label: 🗓️ Agenda
+        label: "🗓️ Agenda · plan vooruit; website toont 2 maanden"
         description: "Plan losse activiteiten en sessies gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; die hoef je niet elke maand opnieuw toe te voegen. Losse activiteiten, sessies en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum bewaard en worden daarna automatisch uit het CMS verwijderd."
         type: object
         fields:
