@@ -107,6 +107,7 @@ content:
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
         label: 🗓️ Agenda
+        description: "Plan losse activiteiten en sessies gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; die hoef je niet elke maand opnieuw toe te voegen. Losse activiteiten, sessies en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum bewaard en worden daarna automatisch uit het CMS verwijderd."
         type: object
         fields:
           - name: intro
@@ -148,6 +149,7 @@ content:
                 default: false
           - name: gezonde_ontmoeting
             label: Gezonde Ontmoeting (2x per maand, aanpasbaar)
+            description: "De bijeenkomsten zijn niet automatisch ingepland. Voeg elke datum apart toe bij Sessies."
             type: object
             fields:
               - name: label
@@ -231,21 +233,24 @@ content:
             type: object
             fields:
               - name: koffie
-                label: Inloop & koffie
+                label: ☕ Inloop & koffie
+                description: "Wordt elke dinsdag en vrijdag herhaald."
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
                   - { name: label, label: Volledige naam (legenda), type: string }
                   - { name: tijd, label: Tijd, type: string }
               - name: weegschaal
-                label: Weegschaal & bloeddruk
+                label: ⚖️ Weegschaal & bloeddruk
+                description: "Wordt elke vrijdag herhaald."
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
                   - { name: label, label: Volledige naam (legenda), type: string }
                   - { name: tijd, label: Tijd, type: string }
               - name: beweeg
-                label: Beweegspreekuur
+                label: 🏃 Beweegspreekuur
+                description: "Wordt elke maandag herhaald vanaf de ingestelde datum."
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
@@ -257,14 +262,16 @@ content:
                     options:
                       format: yyyy-MM-dd
               - name: stoelyoga
-                label: Stoelyoga
+                label: 🧘 Stoelyoga
+                description: "Wordt elke eerste dinsdag van de maand herhaald."
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
                   - { name: label, label: Volledige naam (legenda), type: string }
                   - { name: tijd, label: Tijd, type: string }
               - name: diabetes
-                label: Diabetes spreekuur
+                label: 🩺 Diabetes spreekuur
+                description: "Wordt elke laatste vrijdag van de maand herhaald."
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
