@@ -117,7 +117,7 @@ content:
             label: Tekst onder de kalender
             type: text
           - name: losse_activiteiten
-            label: Losse activiteiten (verschijnen als gele stip in de kalender)
+            label:  🌕 Losse activiteiten (verschijnen als gele stip in de kalender)
             type: object
             list: true
             fields:
@@ -148,7 +148,7 @@ content:
                 type: boolean
                 default: false
           - name: gezonde_ontmoeting
-            label: Gezonde Ontmoeting (2x per maand, aanpasbaar)
+            label:  🌿 Gezonde Ontmoeting (2x per maand, aanpasbaar)
             description: "De bijeenkomsten zijn niet automatisch ingepland. Voeg elke datum apart toe bij Sessies."
             type: object
             fields:
