@@ -334,7 +334,12 @@
       if (!d || !l || !l.titel) return;
       if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;
       const tijd = tijdLabel(l.van || l.tijd || "", l.tot || "");
-      uit.push({ dag: d.getDate(), titel: l.titel, tijd: tijd || "Extra activiteit" });
+      uit.push({
+        dag: d.getDate(),
+        titel: l.titel,
+        tijd: tijd || "Extra activiteit",
+        afgelast: l.afgelast === true
+      });
     });
     return uit;
   }
@@ -358,7 +363,8 @@
         dag: d.getDate(),
         titel: label,
         tijd,
-        kleur: "var(--vp-orange)"
+        kleur: "var(--vp-orange)",
+        afgelast: sessie.afgelast === true
       });
     });
     return uit;
@@ -373,6 +379,85 @@
     stoelyoga: { kort: "Stoelyoga", label: "Stoelyoga", tijd: "ochtend", kleur: "var(--vp-rust)" },
     diabetes: { kort: "Diabetes", label: "Diabetes spreekuur", tijd: "middag", kleur: "#8a6d3b" },
   };
+
+  function activiteitSleutel(naam) {
+    const zoek = String(naam || "").trim().toLocaleLowerCase("nl-NL");
+    const aliassen = {
+      koffie: ["Inloop & koffie"],
+      weegschaal: ["Weegschaal & bloeddruk", "Slimme weegschaal & bloeddruk"],
+      beweeg: ["Beweegspreekuur (met studenten)"],
+      stoelyoga: [],
+      diabetes: ["Diabetes spreekuur"]
+    };
+    return Object.entries(ACTIVITEITEN).find(([sleutel, activiteit]) =>
+      [sleutel, activiteit.kort, activiteit.label, ...aliassen[sleutel]].some((waarde) => waarde.toLocaleLowerCase("nl-NL") === zoek)
+    )?.[0];
+  }
+
+  function datumSleutel(jaar, maand, dag) {
+    return `${jaar}-${String(maand + 1).padStart(2, "0")}-${String(dag).padStart(2, "0")}`;
+  }
+
+  function datumKort(datum) {
+    const parsed = new Date(`${datum}T12:00:00`);
+    if (Number.isNaN(parsed.getTime())) return datum;
+    return new Intl.DateTimeFormat("nl-NL", { day: "numeric", month: "short" }).format(parsed);
+  }
+
+  function vasteActiviteitenMetAfwijkingen(jaar, maand, dag) {
+    const datum = datumSleutel(jaar, maand, dag);
+    const afwijkingen = haal("agenda.afwijkingen");
+    const lijst = Array.isArray(afwijkingen) ? afwijkingen : [];
+    const items = activiteitenOpDag(jaar, maand, dag).map((sleutel) => {
+      const activiteit = ACTIVITEITEN[sleutel];
+      const wijziging = lijst.find((item) => item?.datum === datum && activiteitSleutel(item.activiteit) === sleutel);
+      if (!wijziging) return { ...activiteit, sleutel, status: "gepland" };
+      if (wijziging.afgelast === true) {
+        return { ...activiteit, sleutel, status: "afgelast" };
+      }
+      if (wijziging.nieuwe_datum) {
+        return {
+          ...activiteit,
+          sleutel,
+          status: "verplaatst-van",
+          statusTekst: `Verplaatst naar ${datumKort(wijziging.nieuwe_datum)}`
+        };
+      }
+      return {
+        ...activiteit,
+        sleutel,
+        tijd: wijziging.tijd || activiteit.tijd,
+        status: wijziging.tijd ? "tijd-aangepast" : "gepland"
+      };
+    });
+
+    lijst.forEach((wijziging) => {
+      if (wijziging?.nieuwe_datum !== datum || wijziging.datum === datum || wijziging.afgelast === true) return;
+      const sleutel = activiteitSleutel(wijziging.activiteit);
+      const activiteit = sleutel && ACTIVITEITEN[sleutel];
+      if (!activiteit) return;
+      const bestaandeIndex = items.findIndex((item) =>
+        item.sleutel === sleutel && item.status !== "afgelast" && item.status !== "verplaatst-van"
+      );
+      if (bestaandeIndex !== -1) {
+        const bestaand = items[bestaandeIndex];
+        items[bestaandeIndex] = {
+          ...bestaand,
+          tijd: wijziging.tijd || bestaand.tijd,
+          status: "verplaatst-naar"
+        };
+        return;
+      }
+      items.push({
+        ...activiteit,
+        sleutel,
+        tijd: wijziging.tijd || activiteit.tijd,
+        status: "verplaatst-naar"
+      });
+    });
+
+    return items;
+  }
 
   // Welke activiteiten vallen op een bepaalde datum?
   function activiteitenOpDag(jaar, maand, dag) {
@@ -400,6 +485,48 @@
     if (className) e.className = className;
     if (html !== undefined) e.innerHTML = html;
     return e;
+  }
+
+  function agendaStatus(item) {
+    if (item.afgelast === true || item.status === "afgelast") return "afgelast";
+    return item.status || "gepland";
+  }
+
+  function agendaStatusTekst(item) {
+    const status = agendaStatus(item);
+    if (status === "afgelast") return "Afgelast";
+    if (status === "verplaatst-van") return item.statusTekst;
+    if (status === "verplaatst-naar") return `Verplaatst · ${item.tijd}`;
+    if (status === "tijd-aangepast") return `Aangepaste tijd · ${item.tijd}`;
+    return item.tijd || "";
+  }
+
+  function agendaTooltip(item) {
+    const titel = item.label || item.titel;
+    const status = agendaStatus(item);
+    if (status === "afgelast") return `${titel} · Afgelast`;
+    if (status === "verplaatst-van") return `${titel} · ${item.statusTekst}`;
+    if (status === "verplaatst-naar") return `${titel} · Verplaatst · ${item.tijd}`;
+    if (status === "tijd-aangepast") return `${titel} · Aangepaste tijd · ${item.tijd}`;
+    return [titel, item.tijd].filter(Boolean).join(" · ");
+  }
+
+  function agendaTitel(item, compact = false) {
+    const titel = compact ? item.kort : item.label || item.titel;
+    const status = agendaStatus(item);
+    if (status === "afgelast") return `${titel} · afgelast`;
+    if (status === "verplaatst-van" || status === "verplaatst-naar") return `${titel} · verplaatst`;
+    if (status === "tijd-aangepast") return `${titel} · tijd gewijzigd`;
+    return titel;
+  }
+
+  function agendaRijKlassen(item, basis) {
+    const classes = [basis];
+    const status = agendaStatus(item);
+    if (status === "afgelast" || status === "verplaatst-van") classes.push("is-inactive");
+    if (status === "verplaatst-naar") classes.push("is-rescheduled");
+    if (status === "tijd-aangepast") classes.push("is-changed");
+    return classes.join(" ");
   }
 
   let mobileShowPastDays = false;
@@ -439,7 +566,7 @@
       const vandaagStart = new Date(vandaag.getFullYear(), vandaag.getMonth(), vandaag.getDate());
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
-        const acts = activiteitenOpDag(jaar, maand, dag);
+        const acts = vasteActiviteitenMetAfwijkingen(jaar, maand, dag);
         const extras = extraActiviteiten.filter((l) => l.dag === dag);
         if (!acts.length && !extras.length) continue;
 
@@ -478,27 +605,26 @@
           cell.appendChild(header);
 
           const eventsWrap = elt("div", "day-events mobile-day-events");
-          acts.forEach((k) => {
-            const a = ACTIVITEITEN[k];
-            const row = elt("div", "day-event mobile-day-event");
-            row.title = `${a.label} · ${a.tijd}`;
+          acts.forEach((a) => {
+            const row = elt("div", agendaRijKlassen(a, "day-event mobile-day-event"));
+            row.title = agendaTooltip(a);
             const dot = elt("span", "day-event-dot");
             dot.style.backgroundColor = a.kleur;
             const textWrap = elt("div", "mobile-event-text");
-            textWrap.appendChild(elt("span", "mobile-event-title", a.label));
-            textWrap.appendChild(elt("span", "mobile-event-time", a.tijd));
+            textWrap.appendChild(elt("span", "mobile-event-title", agendaTitel(a)));
+            textWrap.appendChild(elt("span", "mobile-event-time", agendaStatusTekst(a)));
             row.appendChild(dot);
             row.appendChild(textWrap);
             eventsWrap.appendChild(row);
           });
           extras.forEach((e) => {
-            const row = elt("div", "day-event mobile-day-event");
-            row.title = e.titel + (e.tijd ? ` · ${e.tijd}` : "");
+            const row = elt("div", agendaRijKlassen(e, "day-event mobile-day-event"));
+            row.title = agendaTooltip(e);
             const dot = elt("span", "day-event-dot");
             dot.style.backgroundColor = e.kleur || "var(--vp-mustard)";
             const textWrap = elt("div", "mobile-event-text");
-            textWrap.appendChild(elt("span", "mobile-event-title", e.titel));
-            textWrap.appendChild(elt("span", "mobile-event-time", e.tijd || "Extra activiteit"));
+            textWrap.appendChild(elt("span", "mobile-event-title", agendaTitel(e)));
+            textWrap.appendChild(elt("span", "mobile-event-time", agendaStatusTekst(e) || "Extra activiteit"));
             row.appendChild(dot);
             row.appendChild(textWrap);
             eventsWrap.appendChild(row);
@@ -523,7 +649,7 @@
       const vandaagStart = new Date(vandaag.getFullYear(), vandaag.getMonth(), vandaag.getDate());
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
-        const acts = activiteitenOpDag(jaar, maand, dag);
+        const acts = vasteActiviteitenMetAfwijkingen(jaar, maand, dag);
         const extras = extraActiviteiten.filter((l) => l.dag === dag);
         const date = new Date(jaar, maand, dag);
         const isVandaag =
@@ -541,23 +667,22 @@
         cell.appendChild(elt("div", "day-number", String(dag)));
 
         const eventsWrap = elt("div", "day-events");
-        acts.forEach((k) => {
-          const a = ACTIVITEITEN[k];
-          const row = elt("div", "day-event");
-          row.title = `${a.label} · ${a.tijd}`;
+        acts.forEach((a) => {
+          const row = elt("div", agendaRijKlassen(a, "day-event"));
+          row.title = agendaTooltip(a);
           const dot = elt("span", "day-event-dot");
           dot.style.backgroundColor = a.kleur;
           row.appendChild(dot);
-          row.appendChild(elt("span", "day-event-label", a.kort));
+          row.appendChild(elt("span", "day-event-label", agendaTitel(a, true)));
           eventsWrap.appendChild(row);
         });
         extras.forEach((e) => {
-          const row = elt("div", "day-event");
-          row.title = e.titel + (e.tijd ? ` · ${e.tijd}` : "");
+          const row = elt("div", agendaRijKlassen(e, "day-event"));
+          row.title = agendaTooltip(e);
           const dot = elt("span", "day-event-dot");
           dot.style.backgroundColor = e.kleur || "var(--vp-mustard)";
           row.appendChild(dot);
-          row.appendChild(elt("span", "day-event-label", e.titel));
+          row.appendChild(elt("span", "day-event-label", agendaTitel(e)));
           eventsWrap.appendChild(row);
         });
         cell.appendChild(eventsWrap);

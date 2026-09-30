@@ -1010,6 +1010,18 @@ p {
   color: rgba(63, 83, 39, 0.8);
   max-width: 100%;
 }
+.day-event.is-inactive .day-event-label,
+.day-event.is-inactive .mobile-event-title {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+.day-event.is-inactive .day-event-dot {
+  background-color: var(--vp-rust) !important;
+}
+.day-event.is-rescheduled .day-event-dot,
+.day-event.is-changed .day-event-dot {
+  background-color: var(--vp-orange) !important;
+}
 @media (min-width: 640px) {
   .day-event-label {
     display: block;
