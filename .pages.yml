@@ -186,38 +186,45 @@ content:
                     description: "Vink aan als deze sessie niet doorgaat; de kalender toont dit bij de datum."
                     type: boolean
                     default: false
-      - name: afwijkingen
-        label: 🔁 Eenmalige wijzigingen vaste activiteiten
-        description: "Voeg één regel per vaste activiteit en oorspronkelijke datum toe. Gebruik óf Afgelast óf Nieuwe datum. Voor losse activiteiten kun je de datum of tijd direct aanpassen."
-        type: object
-        list: true
-        fields:
-          - name: datum
-            label: Oorspronkelijke datum
-            type: date
-            default: ""
-            options:
-              format: yyyy-MM-dd
-          - name: activiteit
-            label: Vaste activiteit
-            description: "Vul exact één naam in: Inloop & koffie, Weegschaal & bloeddruk, Beweegspreekuur (met studenten), Stoelyoga of Diabetes spreekuur."
-            type: string
-          - name: afgelast
-            label: Afgelast
-            description: "Vink aan als de activiteit op de oorspronkelijke datum niet doorgaat. Laat uit voor een tijdswijziging of verplaatsing."
-            type: boolean
-            default: false
-          - name: nieuwe_datum
-            label: Nieuwe datum (alleen bij verplaatsen)
-            type: date
-            default: ""
-            options:
-              format: yyyy-MM-dd
-          - name: tijd
-            label: Nieuwe tijd (optioneel)
-            description: "Vul alleen in als de tijd op deze datum afwijkt, bijvoorbeeld 14:00–16:00."
-            type: string
-            default: ""
+          - name: afwijkingen
+            label: 🔁 Eenmalige wijzigingen vaste activiteiten
+            description: "Voeg één regel per vaste activiteit en oorspronkelijke datum toe. Gebruik óf Afgelast óf Nieuwe datum. Voor losse activiteiten kun je de datum of tijd direct aanpassen."
+            type: object
+            list: true
+            fields:
+              - name: datum
+                label: Oorspronkelijke datum
+                type: date
+                default: ""
+                options:
+                  format: yyyy-MM-dd
+              - name: activiteit
+                label: Vaste activiteit
+                description: "Kies de vaste activiteit waarop deze wijziging van toepassing is."
+                type: select
+                options:
+                  values:
+                    - "Inloop & koffie"
+                    - "Slimme weegschaal & bloeddruk"
+                    - "Beweegspreekuur (met studenten)"
+                    - "Stoelyoga"
+                    - "Diabetes spreekuur"
+              - name: afgelast
+                label: Afgelast
+                description: "Vink aan als de activiteit op de oorspronkelijke datum niet doorgaat. Laat uit voor een tijdswijziging of verplaatsing."
+                type: boolean
+                default: false
+              - name: nieuwe_datum
+                label: Nieuwe datum (alleen bij verplaatsen)
+                type: date
+                default: ""
+                options:
+                  format: yyyy-MM-dd
+              - name: tijd
+                label: Nieuwe tijd (optioneel)
+                description: "Vul alleen in als de tijd op deze datum afwijkt, bijvoorbeeld 14:00–16:00."
+                type: string
+                default: ""
           - name: activiteiten
             label: Vaste activiteiten (namen en tijden)
             description: "Op welke dagen ze vallen staat in de code en kan alleen door de webbouwer worden aangepast."
