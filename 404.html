@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#f6dedd" />
+  <title>Pagina niet gevonden | Buurtzorgcafé Vaste Prik</title>
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/vaste-prik-logo-256.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .not-found {
+      display: grid;
+      min-height: 100svh;
+      place-items: center;
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+
+    .not-found-content {
+      width: min(100%, 36rem);
+    }
+
+    .not-found-logo {
+      width: 5rem;
+      height: 5rem;
+      margin: 0 auto 1.5rem;
+      border: 2px solid var(--vp-rust);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .not-found h1 {
+      margin-bottom: 0.75rem;
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+
+    .not-found p:not(.pill) {
+      margin-bottom: 1.75rem;
+    }
+
+    @media (max-width: 480px) {
+      .not-found h1 {
+        font-size: 2.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="not-found">
+    <div class="not-found-content">
+      <img class="not-found-logo" src="assets/vaste-prik-logo.png" alt="Vaste Prik logo" />
+      <p class="pill">404 · Niet gevonden</p>
+      <h1>Deze pagina bestaat niet (meer).</h1>
+      <p>Geen zorgen, bij Vaste Prik vind je de weg terug.</p>
+      <a class="btn btn-solid" href="/">Terug naar de homepage</a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /handleiding.html
+Sitemap: https://www.vaste-prik.nl/sitemap.xml
