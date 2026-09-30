@@ -3,8 +3,8 @@
     "logo": "assets/vaste-prik-logo.png",
     "logo_alt": "Vaste Prik logo",
     "titel": "Haal je wekelijkse dosis energie bij Vaste Prik!",
-    "tekst": "Wil je een praatje maken met mensen uit de buurt, of met iemand van Buurtzorg Oost? Kom dan naar Buurtzorgcafé Vaste Prik, in de opgeknapte apotheek aan de Vrolikstraat. Het gezondheidscafé is elke dinsdag en vrijdag open van 11:00 tot 15:00 uur — voor koffie, thee, of kijk op de agenda wat er nog meer te doen is. ",
-    "foto": "assets/vaste-prik-1.jpg",
+    "tekst": "Wil je mensen uit de buurt ontmoeten, of iemand van Buurtzorg Oost? Kom dan naar Buurtzorgcafé Vaste Prik, in de opgeknapte apotheek aan de Vrolikstraat. Het gezondheidscafé is elke dinsdag en vrijdag open van 11:00 tot 15:00 uur — voor koffie, thee, of kijk op de agenda wat er nog meer te doen is. ",
+    "foto": "assets/vaste-prik-dansactiviteit.jpg",
     "foto_alt": "Activiteit bij Buurtzorgcafé Vaste Prik",
     "bordje": "assets/bordje-vaste-prik.jpg",
     "bordje_alt": "Geborduurd bordje met de tekst Apotheek Vaste Prik"
@@ -13,9 +13,9 @@
     "titel": "Van leegstaande apotheek naar een café voor de hele buurt.",
     "alineas": [
       "De grote apotheek aan de Vrolikstraat stond al een tijd leeg door gebrek aan personeel. De wijkverpleging van Buurtzorg Oost wist het om te toveren tot Buurtzorgcafé Vaste Prik: een nieuwe manier om elkaar te helpen zo gezond mogelijk te blijven.",
-      "Een laagdrempelige plek waar je zonder verplichting kunt binnenlopen, mag blijven hangen en waar ontmoeting vanzelfsprekend is."
+      "Een laagdrempelige plek waar je zonder verplichting kunt binnenlopen, waar ontmoeting vanzelfsprekend is en waar je kennis kunt halen en uitwisselen."
     ],
-    "quote": "Je komt hier voor een prik van verbinding, een injectie van kennis en een shot herkenning.",
+    "quote": "Hier krijg je geen recept, maar wel een gezonde dosis kennis, gezelligheid en herkenning",
     "foto1": "assets/vaste-prik-2.jpeg",
     "foto1_alt": "Bijscholing bij Buurtzorgcafé Vaste Prik",
     "foto2": "assets/vaste-prik-3.jpeg",
@@ -27,22 +27,22 @@
       {
         "icoon": "🧠",
         "titel": "Kennis delen",
-        "tekst": "Gezonde Ontmoetingen om kennis te delen, klachten te voorkomen of draaglijker te maken."
+        "tekst": "We organiseren Gezonde Ontmoetingen waarbij een specialist iets uitlegt over een medisch onderwerp en je praktische tips krijgt"
       },
       {
         "icoon": "💪",
         "titel": "Vitaliteit versterken",
-        "tekst": "De mentale en lichamelijke gezondheid verbeteren. Er is ruimte voor spontane initiatieven die bezoekers zelf aandragen."
+        "tekst": "We staan open voor alles wat kan maken dat je je mentaal en lichamelijk gezonder voelt. Er is ruimte voor spontane initiatieven van bezoekers zelf. "
       },
       {
         "icoon": "🤝",
         "titel": "Samenwerken",
-        "tekst": "Mensen in de buurt in contact brengen — met elkaar, met zorg en welzijn, met ondernemers en buurtinitiatieven. En zorgmedewerkers onderling beter laten samenwerken."
+        "tekst": "Mensen in de buurt in contact brengen — met elkaar, met zorg en welzijn, met ondernemers en buurtinitiatieven. En zorgmedewerkers onderling beter laten samenwerken. Zo vind je sneller goede oplossingen. "
       },
       {
         "icoon": "🩺",
         "titel": "Preventie",
-        "tekst": "Beter voorkomen dan genezen. Laat regelmatig je vitale functies meten en weet of je op de goede weg bent."
+        "tekst": "Bij ons kan je regelmatig je vitale functies meten. Zo weet of je op de goede weg bent en kan je tijdig bijsturen. Voorkomen is beter dan genezen. "
       },
       {
         "icoon": "☕",
@@ -61,7 +61,7 @@
   "faq": [
     {
       "vraag": "Wat is Buurtzorgcafé Vaste Prik?",
-      "antwoord": "Vaste Prik is een laagdrempelig gezondheidscafé in Amsterdam-Oost waar buurtbewoners samen koffie drinken, kennis delen en elkaar ontmoeten zonder verplichting."
+      "antwoord": "Vaste Prik is een laagdrempelig gezondheidscafé in Amsterdam-Oost waar buurtbewoners elkaar kunnen ontmoeten zonder verplichting, waar je gezondheidskennis kan opdoen en met koffie en thee een goed humeur kunt krijgen."
     },
     {
       "vraag": "Wanneer is Vaste Prik open?",
@@ -73,19 +73,12 @@
     },
     {
       "vraag": "Wat kan ik verwachten bij een bezoek?",
-      "antwoord": "Je kunt koffie of thee drinken, mensen ontmoeten, vragen stellen over gezondheid en deelnemen aan activiteiten zoals beweegspreekuur, weegschaal of workshops."
+      "antwoord": "Je kunt koffie of thee drinken, mensen ontmoeten, vragen stellen over gezondheid en deelnemen aan activiteiten. "
     }
   ],
   "agenda": {
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
-    "notitie": "Daarnaast zijn er wisselende extra's zoals een grote pan couscous, gezonde soep, een filmmiddag of een extra bloeddrukmoment. Houd het prikbord in het café in de gaten!",
-    "losse_activiteiten": [
-      {
-        "datum": "2026-09-30",
-        "titel": "Grote pan couscous",
-        "tijd": "12:30–13:30"
-      }
-    ],
+    "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
     "gezonde_ontmoeting": {
       "label": "Gezonde Ontmoeting - Goed oud worden",
       "van": "14:00",
@@ -118,17 +111,16 @@
         "kort": "Beweegspreekuur",
         "label": "Beweegspreekuur (met studenten)",
         "tijd": "15:00–17:00",
-        "vanaf": "2026-09-21"
+        "vanaf": "2026-10-12"
       },
       "stoelyoga": {
         "kort": "Stoelyoga",
         "label": "Stoelyoga",
-        "tijd": "ochtend"
+        "tijd": "13.30-14.30"
       },
       "diabetes": {
         "kort": "Diabetes",
-        "label": "Diabetes spreekuur",
-        "tijd": "middag"
+        "label": "Diabetes spreekuur"
       }
     }
   },
@@ -143,7 +135,7 @@
     },
     {
       "quote": "De sfeer is relaxed, de koffie is goed en je voelt je meteen welkom.",
-      "naam": "Sanne · vrijwilliger"
+      "naam": "Hassan - buurtbewoner"
     }
   ],
   "contact": {
@@ -162,7 +154,7 @@
       "naam": "Marjolijn Onvlee",
       "functie": "Wijkverpleegkundige Buurtzorg Oost",
       "quote": "Vaste Prik wil een medicijn voor de buurt zijn. Een plek om een beter humeur te krijgen: je kan er wat opsteken, nieuwe mensen leren kennen en lekkere koffie drinken. Wat wil een mens nog meer?",
-      "extra": "Verder zijn er speciale bijeenkomsten en cursussen rondom gezondheid. En de Radio Steunkous Camper is er ook te bewonderen."
+      "extra": "Verder zijn er speciale bijeenkomsten en cursussen rondom gezondheid. Loop langs de Radio Steunkous Camper en dan sta je al bijna binnen!"
     }
   },
   "footer": {
