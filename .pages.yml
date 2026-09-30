@@ -17,7 +17,7 @@ content:
 
       # ── Bovenaan de pagina ─────────────────────────────
       - name: hero
-        label: Bovenaan de pagina
+        label: 👋 Bovenaan de pagina
         type: object
         fields:
           - name: logo
@@ -48,7 +48,7 @@ content:
 
       # ── Wat is het ─────────────────────────────────────
       - name: wat
-        label: Wat is Vaste Prik?
+        label: 🏡 Wat is Vaste Prik?
         type: object
         fields:
           - name: titel
@@ -76,7 +76,7 @@ content:
 
       # ── Ons recept ─────────────────────────────────────
       - name: recept
-        label: Ons recept (schijf van vijf)
+        label: 🌱 Ons recept (schijf van vijf)
         type: object
         fields:
           - name: intro
@@ -100,27 +100,13 @@ content:
 
       # ── Lopende tekst-balk ─────────────────────────────
       - name: marquee
-        label: Voorbijschuivende woorden (balk)
+        label: 💬 Voorbijschuivende woorden (balk)
         type: string
         list: true
 
-      # ── Veelgestelde vragen ────────────────────────────
-      - name: faq
-        label: Veelgestelde vragen
-        type: object
-        list: true
-        fields:
-          - name: vraag
-            label: Vraag
-            type: string
-          - name: antwoord
-            label: Antwoord
-            description: "Je kunt {dagen}, {van} en {tot} gebruiken; deze worden automatisch ingevuld."
-            type: text
-
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
-        label: Agenda
+        label: 🗓️ Agenda
         type: object
         fields:
           - name: intro
@@ -236,9 +222,23 @@ content:
                   - { name: label, label: Volledige naam (legenda), type: string }
                   - { name: tijd, label: Tijd, type: string }
 
+      # ── Veelgestelde vragen ────────────────────────────
+      - name: faq
+        label: ❓ Veelgestelde vragen
+        type: object
+        list: true
+        fields:
+          - name: vraag
+            label: Vraag
+            type: string
+          - name: antwoord
+            label: Antwoord
+            description: "Je kunt {dagen}, {van} en {tot} gebruiken; deze worden automatisch ingevuld."
+            type: text
+
       # ── Verhalen ───────────────────────────────────────
       - name: verhalen
-        label: Verhalen (reacties van bezoekers)
+        label: 💬 Verhalen (reacties van bezoekers)
         type: object
         list: true
         fields:
@@ -251,7 +251,7 @@ content:
 
       # ── Contact ────────────────────────────────────────
       - name: contact
-        label: Contact
+        label: 📍 Contact
         type: object
         fields:
           - name: tekst
@@ -293,7 +293,7 @@ content:
 
       # ── Footer ─────────────────────────────────────────
       - name: footer
-        label: Onderaan de pagina
+        label: 🔗 Onderaan de pagina
         type: object
         fields:
           - name: beschrijving

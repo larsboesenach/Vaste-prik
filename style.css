@@ -1230,6 +1230,43 @@ p {
   color: var(--vp-cream);
   padding: 1.5rem;
 }
+.whatsapp-aanmeldblok {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  background: var(--vp-lime);
+  color: var(--vp-green);
+}
+.whatsapp-qr {
+  display: block;
+  width: 9rem;
+  padding: 0.35rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #fff;
+}
+.whatsapp-qr img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.7rem;
+}
+.whatsapp-aanmeldtekst h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.25rem;
+}
+.whatsapp-aanmeldtekst p {
+  margin-bottom: 0.6rem;
+}
+.whatsapp-aanmeldtekst > a {
+  color: var(--vp-green);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
 
 @media (max-width: 1030px) {
   .contact-section {
@@ -1285,6 +1322,18 @@ p {
 
   .doe-mee {
     padding: 1.1rem;
+  }
+
+  .whatsapp-aanmeldblok {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1rem;
+    padding: 1.1rem;
+    text-align: center;
+  }
+
+  .whatsapp-qr {
+    width: 8rem;
   }
 }
 .doe-mee-title {
