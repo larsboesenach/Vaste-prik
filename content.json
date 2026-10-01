@@ -70,7 +70,7 @@
           "datum": "2026-09-22",
           "van": "14:00",
           "tot": "16:00",
-          "afgelast": true
+          "afgelast": false
         },
         {
           "datum": "2026-09-29",
