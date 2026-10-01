@@ -206,7 +206,9 @@ content:
               - name: maanden
                 label: Maandblokken
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    summary: "Maand {maand}"
                 fields:
                   - name: maand
                     label: Maand (kies de eerste dag)
