@@ -63,7 +63,9 @@
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
     "afwijkingen": [
       {
-        "afgelast": false
+        "datum": "2026-10-06",
+        "activiteit": "Inloop & koffie",
+        "afgelast": true
       }
     ],
     "gezonde_ontmoeting": {
