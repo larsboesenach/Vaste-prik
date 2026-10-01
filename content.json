@@ -65,18 +65,21 @@
       "label": "Gezonde Ontmoeting - Goed oud worden",
       "van": "14:00",
       "tot": "16:00",
-      "sessies": [
+      "maanden": [
         {
-          "datum": "2026-10-09",
-          "van": "14:00",
-          "tot": "16:00",
-          "afgelast": false
-        },
-        {
-          "datum": "2026-10-23",
-          "van": "14:00",
-          "tot": "16:00",
-          "afgelast": false
+          "maand": "2026-10-01",
+          "bijeenkomst_1": {
+            "datum": "2026-10-09",
+            "van": "14:00",
+            "tot": "16:00",
+            "afgelast": false
+          },
+          "bijeenkomst_2": {
+            "datum": "2026-10-23",
+            "van": "14:00",
+            "tot": "16:00",
+            "afgelast": false
+          }
         }
       ]
     },
