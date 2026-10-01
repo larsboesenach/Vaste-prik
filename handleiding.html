@@ -80,12 +80,43 @@
       <div class="wrap">
         <span class="pill">Aan de slag</span>
         <h2>Inloggen</h2>
-        <ol class="guide-steps">
-          <li>Ga naar <a href="https://app.pagescms.org">app.pagescms.org</a>.</li>
-          <li>Log in op de manier die de webbouwer je heeft doorgegeven: via de inloglink in je e-mail, of met een GitHub-account.</li>
-          <li>Kies de website <strong>Vaste-prik</strong>. Laat de tak (branch) op <strong>main</strong> staan.</li>
-          <li>Klik links op <strong>Vaste Prik Website</strong>. Nu zie je het formulier met alle teksten en foto's van de website.</li>
-        </ol>
+        <div class="guide-login-grid">
+          <article class="recept-card guide-login-card">
+            <figure class="guide-login-image">
+              <img src="assets/CMS%20Sign%20In.jpg" alt="Pages CMS-aanmeldscherm met opties om in te loggen via GitHub of e-mail" loading="lazy" data-lightbox tabindex="0" />
+            </figure>
+            
+            <h3>1. Open Pages CMS</h3>
+            <p>Ga naar <a href="https://app.pagescms.org">app.pagescms.org</a>. Kies <strong>Sign in with GitHub</strong>, of vul je e-mailadres in en kies <strong>Continue with email</strong>.</p>
+          </article>
+
+          <article class="recept-card guide-login-card">
+            <figure class="guide-login-image">
+              <img src="assets/CMS%20Sign%20into%20Github.jpg" alt="GitHub-inlogscherm om verder te gaan naar Pages CMS" loading="lazy" data-lightbox tabindex="0" />
+            </figure>
+            
+            <h3>2. Log in bij GitHub</h3>
+            <p>Als je voor GitHub koos, log dan in met je GitHub-gebruikersnaam of e-mailadres en wachtwoord. Daarna ga je terug naar Pages CMS.</p>
+          </article>
+
+          <article class="recept-card guide-login-card">
+            <figure class="guide-login-image">
+              <img src="assets/CMS%20Select%20Project.jpg" alt="Pages CMS-projectoverzicht met het project Vaste-prik" loading="lazy" data-lightbox tabindex="0" />
+            </figure>
+            
+            <h3>3. Open Vaste-prik</h3>
+            <p>Kies het account <strong>larsboesenach</strong> en open het project <strong>Vaste-prik</strong>. Controleer daarna linksboven of de branch op <strong>main</strong> staat.</p>
+          </article>
+
+          <article class="recept-card guide-login-card">
+            <figure class="guide-login-image">
+              <img src="assets/CMS%20Geopend.jpg" alt="Het geopende Vaste Prik CMS-formulier met bewerkbare website-inhoud" loading="lazy" data-lightbox tabindex="0" />
+            </figure>
+            
+            <h3>4. Open het formulier</h3>
+            <p>Klik links onder <strong>Content</strong> op <strong>Vaste Prik Website - Contend editing tool</strong>. Het formulier met de teksten en foto's van de website verschijnt.</p>
+          </article>
+        </div>
         <div class="guide-note">
           <p><strong>Tip:</strong> zet de pagina in je favorieten, dan heb je hem altijd bij de hand.</p>
         </div>
@@ -416,8 +447,47 @@
     </div>
   </footer>
 
+  <dialog class="lightbox" id="guide-lightbox" aria-label="Vergrote afbeelding">
+    <button class="lightbox-close" type="button" aria-label="Afbeelding sluiten">&times;</button>
+    <img class="lightbox-image" alt="" />
+  </dialog>
+
   <script>
     document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear();
+
+    const lightbox = document.getElementById('guide-lightbox');
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const lightboxTrigger = { current: null };
+
+    function sluitLightbox() {
+      lightbox.close();
+      lightboxTrigger.current?.focus();
+    }
+
+    document.querySelectorAll('[data-lightbox]').forEach((image) => {
+      function openLightbox() {
+        lightboxTrigger.current = image;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.showModal();
+      }
+
+      image.addEventListener('click', openLightbox);
+      image.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox();
+        }
+      });
+    });
+
+    lightbox.querySelector('.lightbox-close').addEventListener('click', sluitLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) sluitLightbox();
+    });
+    lightbox.addEventListener('close', () => {
+      lightboxImage.removeAttribute('src');
+    });
   </script>
 </body>
 </html>
