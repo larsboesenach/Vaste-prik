@@ -61,15 +61,6 @@
   "agenda": {
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
-    "afwijkingen": [
-      {
-        "datum": "2026-10-06",
-        "activiteit": "Inloop & koffie",
-        "afgelast": false,
-        "nieuwe_datum": "2026-10-07",
-        "tijd": "9:00"
-      }
-    ],
     "gezonde_ontmoeting": {
       "label": "Gezonde Ontmoeting - Goed oud worden",
       "van": "14:00",
