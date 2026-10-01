@@ -58,27 +58,14 @@
     "Preventie",
     "Echt lekkere koffie"
   ],
-  "faq": [
-    {
-      "vraag": "Wat is Buurtzorgcafé Vaste Prik?",
-      "antwoord": "Vaste Prik is een laagdrempelig gezondheidscafé in Amsterdam-Oost waar buurtbewoners elkaar kunnen ontmoeten zonder verplichting, waar je gezondheidskennis kan opdoen en met koffie en thee een goed humeur kunt krijgen."
-    },
-    {
-      "vraag": "Wanneer is Vaste Prik open?",
-      "antwoord": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Je bent altijd welkom voor koffie, thee, een praatje of een van de vaste activiteiten."
-    },
-    {
-      "vraag": "Moet ik me vooraf aanmelden?",
-      "antwoord": "Niet nodig. Je kunt gewoon binnenlopen. Bij speciale projecten of bijeenkomsten is aanmelden wel fijn, maar inloop is altijd welkom."
-    },
-    {
-      "vraag": "Wat kan ik verwachten bij een bezoek?",
-      "antwoord": "Je kunt koffie of thee drinken, mensen ontmoeten, vragen stellen over gezondheid en deelnemen aan activiteiten. "
-    }
-  ],
   "agenda": {
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
+    "afwijkingen": [
+      {
+        "afgelast": false
+      }
+    ],
     "gezonde_ontmoeting": {
       "label": "Gezonde Ontmoeting - Goed oud worden",
       "van": "14:00",
@@ -87,12 +74,14 @@
         {
           "datum": "2026-09-22",
           "van": "14:00",
-          "tot": "16:00"
+          "tot": "16:00",
+          "afgelast": true
         },
         {
           "datum": "2026-09-29",
           "van": "14:00",
-          "tot": "16:00"
+          "tot": "16:00",
+          "afgelast": false
         }
       ]
     },
@@ -124,6 +113,24 @@
       }
     }
   },
+  "faq": [
+    {
+      "vraag": "Wat is Buurtzorgcafé Vaste Prik?",
+      "antwoord": "Vaste Prik is een laagdrempelig gezondheidscafé in Amsterdam-Oost waar buurtbewoners elkaar kunnen ontmoeten zonder verplichting, waar je gezondheidskennis kan opdoen en met koffie en thee een goed humeur kunt krijgen."
+    },
+    {
+      "vraag": "Wanneer is Vaste Prik open?",
+      "antwoord": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Je bent altijd welkom voor koffie, thee, een praatje of een van de vaste activiteiten."
+    },
+    {
+      "vraag": "Moet ik me vooraf aanmelden?",
+      "antwoord": "Niet nodig. Je kunt gewoon binnenlopen. Bij speciale projecten of bijeenkomsten is aanmelden wel fijn, maar inloop is altijd welkom."
+    },
+    {
+      "vraag": "Wat kan ik verwachten bij een bezoek?",
+      "antwoord": "Je kunt koffie of thee drinken, mensen ontmoeten, vragen stellen over gezondheid en deelnemen aan activiteiten. "
+    }
+  ],
   "verhalen": [
     {
       "quote": "Ik ga altijd naar Vaste Prik, voor een bakkie koffie en om mensen te ontmoeten.",
