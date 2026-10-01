@@ -346,10 +346,15 @@
 
   function gezondeOntmoetingVoorMaand(jaar, maand) {
     const cfg = haal("agenda.gezonde_ontmoeting");
-    if (!cfg || !Array.isArray(cfg.sessies)) return [];
+    if (!cfg) return [];
+
+    const maandblokken = Array.isArray(cfg.maanden) ? cfg.maanden : [];
+    const sessies = maandblokken.length
+      ? maandblokken.flatMap((blok) => [blok?.bijeenkomst_1, blok?.bijeenkomst_2].filter(Boolean))
+      : Array.isArray(cfg.sessies) ? cfg.sessies : [];
 
     const uit = [];
-    cfg.sessies.forEach((sessie) => {
+    sessies.forEach((sessie) => {
       const d = sessie && parseDatum(sessie.datum);
       if (!d) return;
       if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;

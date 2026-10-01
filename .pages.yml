@@ -107,7 +107,7 @@ content:
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
         label: "🗓️ Agenda · plan vooruit; website toont 2 maanden"
-        description: "Plan losse activiteiten en sessies gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; die hoef je niet elke maand opnieuw toe te voegen. Losse activiteiten, sessies en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum bewaard en worden daarna automatisch uit het CMS verwijderd."
+        description: "Plan losse activiteiten en sessies gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; die hoef je niet elke maand opnieuw toe te voegen. Losse activiteiten en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum staan. Gezonde Ontmoeting-maandblokken worden zeven dagen na afloop van de maand verwijderd."
         type: object
         fields:
           - name: intro
@@ -188,7 +188,7 @@ content:
                 default: ""
           - name: gezonde_ontmoeting
             label:  🌿 Gezonde Ontmoeting (2x per maand, aanpasbaar)
-            description: "De bijeenkomsten zijn niet automatisch ingepland. Voeg elke datum apart toe bij Sessies."
+            description: "Voeg per maand één blok toe. Kies bij Maand de eerste dag van die maand; elk blok bevat twee bijeenkomsten. Een maandblok wordt zeven dagen na afloop van de maand automatisch verwijderd."
             type: object
             fields:
               - name: label
@@ -203,30 +203,63 @@ content:
                 label: Eindtijd (standaard 16:00)
                 type: string
                 default: "16:00"
-              - name: sessies
-                label: Sessies (datum + eventueel aangepaste tijd)
+              - name: maanden
+                label: Maandblokken
                 type: object
                 list: true
                 fields:
-                  - name: datum
-                    label: Datum
+                  - name: maand
+                    label: Maand (kies de eerste dag)
                     type: date
                     default: ""
                     options:
                       format: yyyy-MM-dd
-                  - name: van
-                    label: Starttijd (optioneel, overruled standaard)
-                    type: string
-                    default: ""
-                  - name: tot
-                    label: Eindtijd (optioneel, overruled standaard)
-                    type: string
-                    default: ""
-                  - name: afgelast
-                    label: Afgelast
-                    description: "Vink aan als deze sessie niet doorgaat; de kalender toont dit bij de datum."
-                    type: boolean
-                    default: false
+                  - name: bijeenkomst_1
+                    label: Bijeenkomst 1
+                    type: object
+                    fields:
+                      - name: datum
+                        label: Datum
+                        type: date
+                        default: ""
+                        options:
+                          format: yyyy-MM-dd
+                      - name: van
+                        label: Starttijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: tot
+                        label: Eindtijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: afgelast
+                        label: Afgelast
+                        description: "Vink aan als deze bijeenkomst niet doorgaat."
+                        type: boolean
+                        default: false
+                  - name: bijeenkomst_2
+                    label: Bijeenkomst 2
+                    type: object
+                    fields:
+                      - name: datum
+                        label: Datum
+                        type: date
+                        default: ""
+                        options:
+                          format: yyyy-MM-dd
+                      - name: van
+                        label: Starttijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: tot
+                        label: Eindtijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: afgelast
+                        label: Afgelast
+                        description: "Vink aan als deze bijeenkomst niet doorgaat."
+                        type: boolean
+                        default: false
           - name: activiteiten
             label: Vaste activiteiten (namen en tijden)
             description: "Op welke dagen ze vallen staat in de code en kan alleen door de webbouwer worden aangepast."

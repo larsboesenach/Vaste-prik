@@ -33,9 +33,20 @@ function pruneList(owner, key, label, dateForItem = (item) => item?.datum) {
   return removed;
 }
 
+function maandEinde(item) {
+  const match = /^(\d{4})-(\d{2})-\d{2}$/.exec(item?.maand || "");
+  if (!match) return null;
+
+  const jaar = Number(match[1]);
+  const maand = Number(match[2]);
+  if (maand < 1 || maand > 12) return null;
+  return new Date(Date.UTC(jaar, maand, 0)).toISOString().slice(0, 10);
+}
+
 const removed =
   pruneList(agenda, "losse_activiteiten", "Losse activiteiten") +
-  pruneList(agenda.gezonde_ontmoeting, "sessies", "Gezonde Ontmoeting") +
+  pruneList(agenda.gezonde_ontmoeting, "maanden", "Gezonde Ontmoeting maandblokken", maandEinde) +
+  pruneList(agenda.gezonde_ontmoeting, "sessies", "Oude Gezonde Ontmoeting-sessies") +
   pruneList(agenda, "afwijkingen", "Eenmalige wijzigingen", (item) => item?.nieuwe_datum || item?.datum);
 
 if (removed === 0) {
