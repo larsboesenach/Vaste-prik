@@ -344,7 +344,7 @@
     return uit;
   }
 
-  function maandblokkenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackVan, fallbackTot, kleur, legacyKey) {
+  function maandblokkenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackKort, fallbackVan, fallbackTot, kleur, legacyKey) {
     if (!cfg) return [];
 
     const sessies = Array.isArray(cfg.maanden)
@@ -358,6 +358,7 @@
       if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;
 
       const label = cfg.label || fallbackLabel;
+      const kort = cfg.kort || fallbackKort || label;
       const tijd = tijdLabel(
         sessie.van || cfg.van || fallbackVan,
         sessie.tot || cfg.tot || fallbackTot
@@ -365,6 +366,8 @@
       uit.push({
         dag: d.getDate(),
         titel: label,
+        label,
+        kort,
         tijd,
         kleur,
         afgelast: sessie.afgelast === true
@@ -376,14 +379,14 @@
   function gezondeOntmoetingVoorMaand(jaar, maand) {
     return maandblokkenVoorMaand(
       haal("agenda.gezonde_ontmoeting"), jaar, maand,
-      "Gezonde Ontmoeting - Goed oud worden", "14:00", "16:00", "var(--vp-orange)", "sessies"
+      "Gezonde Ontmoeting - Goed oud worden", "Gezonde Ontmoeting", "14:00", "16:00", "var(--vp-orange)", "sessies"
     );
   }
 
   function diabetesSpreekuurVoorMaand(jaar, maand) {
     return maandblokkenVoorMaand(
       haal("agenda.diabetes_spreekuur"), jaar, maand,
-      "Diabetes spreekuur", "13:30", "15:00", "#8a6d3b"
+      "Diabetes spreekuur", "Diabetes spreekuur", "13:30", "15:00", "#8a6d3b"
     );
   }
 
@@ -526,7 +529,7 @@
   }
 
   function agendaTitel(item, compact = false) {
-    const titel = compact ? item.kort : item.label || item.titel;
+    const titel = compact ? item.kort || item.label || item.titel : item.label || item.titel;
     const status = agendaStatus(item);
     if (status === "afgelast") return `${titel} · afgelast`;
     if (status === "verplaatst-van" || status === "verplaatst-naar") return `${titel} · verplaatst`;
@@ -697,7 +700,7 @@
           const dot = elt("span", "day-event-dot");
           dot.style.backgroundColor = e.kleur || "var(--vp-mustard)";
           row.appendChild(dot);
-          row.appendChild(elt("span", "day-event-label", agendaTitel(e)));
+          row.appendChild(elt("span", "day-event-label", agendaTitel(e, true)));
           eventsWrap.appendChild(row);
         });
         cell.appendChild(eventsWrap);
@@ -706,8 +709,7 @@
     }
 
     // Legenda
-    Object.keys(ACTIVITEITEN).forEach((k) => {
-      const a = ACTIVITEITEN[k];
+    function voegLegendaItemToe(a) {
       const item = elt("span", "legend-item");
       const dot = elt("span", "legend-dot");
       dot.style.backgroundColor = a.kleur;
@@ -715,7 +717,33 @@
       item.appendChild(elt("span", "legend-label", a.label));
       item.appendChild(elt("span", "legend-time", a.tijd));
       legend.appendChild(item);
+    }
+
+    Object.keys(ACTIVITEITEN).forEach((k) => voegLegendaItemToe(ACTIVITEITEN[k]));
+
+    [
+      {
+        cfg: haal("agenda.gezonde_ontmoeting"),
+        label: "Gezonde Ontmoeting - Goed oud worden",
+        van: "14:00",
+        tot: "16:00",
+        kleur: "var(--vp-orange)"
+      },
+      {
+        cfg: haal("agenda.diabetes_spreekuur"),
+        label: "Diabetes spreekuur",
+        van: "13:30",
+        tot: "15:00",
+        kleur: "#8a6d3b"
+      }
+    ].forEach(({ cfg, label, van, tot, kleur }) => {
+      voegLegendaItemToe({
+        label: cfg?.label || label,
+        tijd: tijdLabel(cfg?.van || van, cfg?.tot || tot),
+        kleur
+      });
     });
+
     const wisselItem = elt("span", "legend-item");
     const wisselDot = elt("span", "legend-dot");
     wisselDot.style.backgroundColor = "var(--vp-mustard)";

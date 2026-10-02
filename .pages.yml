@@ -191,9 +191,13 @@ content:
             type: object
             fields:
               - name: label
-                label: Titel
+                label: Legenda-naam
                 type: string
                 default: "Gezonde Ontmoeting - Goed oud worden"
+              - name: kort
+                label: Korte naam (in de kalender)
+                type: string
+                default: "Gezonde Ontmoeting"
               - name: van
                 label: Starttijd (standaard 14:00)
                 type: string
@@ -267,7 +271,11 @@ content:
             type: object
             fields:
               - name: label
-                label: Titel
+                label: Legenda-naam
+                type: string
+                default: "Diabetes spreekuur"
+              - name: kort
+                label: Korte naam (in de kalender)
                 type: string
                 default: "Diabetes spreekuur"
               - name: van

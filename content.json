@@ -63,6 +63,7 @@
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
     "gezonde_ontmoeting": {
       "label": "Gezonde Ontmoeting - Goed oud worden",
+      "kort": "Gezonde Ontmoeting",
       "van": "14:00",
       "tot": "16:00",
       "maanden": [
@@ -85,10 +86,12 @@
     },
     "diabetes_spreekuur": {
       "label": "Diabetes spreekuur",
+      "kort": "Diabetes spreekuur",
       "van": "13:30",
       "tot": "15:00",
       "maanden": [
         {
+          "maand": "2026-10-01",
           "bijeenkomst_1": {
             "datum": "2026-10-09",
             "afgelast": false
