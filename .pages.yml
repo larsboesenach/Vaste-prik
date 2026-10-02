@@ -191,11 +191,11 @@ content:
             type: object
             fields:
               - name: kort
-                label: Korte naam (in kalender)
+                label: Korte naam (kalender)
                 type: string
                 default: "Gezonde Ontmoeting"
               - name: label
-                label: Lange naam (in legenda)
+                label: Volledige naam (legenda)
                 type: string
                 default: "Gezonde Ontmoeting - Goed oud worden"
               - name: van
@@ -271,11 +271,11 @@ content:
             type: object
             fields:
               - name: kort
-                label: Korte naam (in kalender)
+                label: Korte naam (kalender)
                 type: string
                 default: "Diabetes spreekuur"
               - name: label
-                label: Lange naam (in legenda)
+                label: Volledige naam (legenda)
                 type: string
                 default: "Diabetes spreekuur"
               - name: van
