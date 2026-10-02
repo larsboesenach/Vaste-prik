@@ -87,7 +87,18 @@
       "label": "Diabetes spreekuur",
       "van": "13:30",
       "tot": "15:00",
-      "maanden": []
+      "maanden": [
+        {
+          "bijeenkomst_1": {
+            "datum": "2026-10-09",
+            "afgelast": false
+          },
+          "bijeenkomst_2": {
+            "datum": "2026-10-16",
+            "afgelast": false
+          }
+        }
+      ]
     },
     "activiteiten": {
       "koffie": {
