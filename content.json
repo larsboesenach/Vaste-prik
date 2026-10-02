@@ -83,6 +83,12 @@
         }
       ]
     },
+    "diabetes_spreekuur": {
+      "label": "Diabetes spreekuur",
+      "van": "13:30",
+      "tot": "15:00",
+      "maanden": []
+    },
     "activiteiten": {
       "koffie": {
         "kort": "Inloop & koffie",
@@ -104,11 +110,6 @@
         "kort": "Stoelyoga",
         "label": "Stoelyoga",
         "tijd": "13.30 tot 14.30"
-      },
-      "diabetes": {
-        "kort": "Diabetes spreekuur",
-        "label": "Diabetes spreekuur",
-        "tijd": "13:30 tot 15:00"
       }
     }
   },

@@ -46,6 +46,7 @@ function maandEinde(item) {
 const removed =
   pruneList(agenda, "losse_activiteiten", "Losse activiteiten") +
   pruneList(agenda.gezonde_ontmoeting, "maanden", "Gezonde Ontmoeting maandblokken", maandEinde) +
+  pruneList(agenda.diabetes_spreekuur, "maanden", "Diabetes spreekuur maandblokken", maandEinde) +
   pruneList(agenda.gezonde_ontmoeting, "sessies", "Oude Gezonde Ontmoeting-sessies") +
   pruneList(agenda, "afwijkingen", "Eenmalige wijzigingen", (item) => item?.nieuwe_datum || item?.datum);
 

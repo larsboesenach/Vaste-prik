@@ -344,14 +344,12 @@
     return uit;
   }
 
-  function gezondeOntmoetingVoorMaand(jaar, maand) {
-    const cfg = haal("agenda.gezonde_ontmoeting");
+  function maandblokkenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackVan, fallbackTot, kleur, legacyKey) {
     if (!cfg) return [];
 
-    const maandblokken = Array.isArray(cfg.maanden) ? cfg.maanden : [];
-    const sessies = maandblokken.length
-      ? maandblokken.flatMap((blok) => [blok?.bijeenkomst_1, blok?.bijeenkomst_2].filter(Boolean))
-      : Array.isArray(cfg.sessies) ? cfg.sessies : [];
+    const sessies = Array.isArray(cfg.maanden)
+      ? cfg.maanden.flatMap((blok) => [blok?.bijeenkomst_1, blok?.bijeenkomst_2].filter(Boolean))
+      : legacyKey && Array.isArray(cfg[legacyKey]) ? cfg[legacyKey] : [];
 
     const uit = [];
     sessies.forEach((sessie) => {
@@ -359,20 +357,34 @@
       if (!d) return;
       if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;
 
-      const label = cfg.label || "Gezonde Ontmoeting - Goed oud worden";
+      const label = cfg.label || fallbackLabel;
       const tijd = tijdLabel(
-        sessie.van || cfg.van || "14:00",
-        sessie.tot || cfg.tot || "16:00"
+        sessie.van || cfg.van || fallbackVan,
+        sessie.tot || cfg.tot || fallbackTot
       );
       uit.push({
         dag: d.getDate(),
         titel: label,
         tijd,
-        kleur: "var(--vp-orange)",
+        kleur,
         afgelast: sessie.afgelast === true
       });
     });
     return uit;
+  }
+
+  function gezondeOntmoetingVoorMaand(jaar, maand) {
+    return maandblokkenVoorMaand(
+      haal("agenda.gezonde_ontmoeting"), jaar, maand,
+      "Gezonde Ontmoeting - Goed oud worden", "14:00", "16:00", "var(--vp-orange)", "sessies"
+    );
+  }
+
+  function diabetesSpreekuurVoorMaand(jaar, maand) {
+    return maandblokkenVoorMaand(
+      haal("agenda.diabetes_spreekuur"), jaar, maand,
+      "Diabetes spreekuur", "13:30", "15:00", "#8a6d3b"
+    );
   }
 
   // key → weergave. kleur verwijst naar een palet-variabele.
@@ -382,7 +394,6 @@
     weegschaal: { kort: "Weegschaal", label: "Slimme weegschaal & bloeddruk", tijd: "12:00–13:30", kleur: "var(--vp-blue)" },
     beweeg: { kort: "Beweegspreekuur", label: "Beweegspreekuur (met studenten)", tijd: "15:00–17:00", kleur: "var(--vp-orange)", vanaf: "2026-09-21" },
     stoelyoga: { kort: "Stoelyoga", label: "Stoelyoga", tijd: "ochtend", kleur: "var(--vp-rust)" },
-    diabetes: { kort: "Diabetes", label: "Diabetes spreekuur", tijd: "middag", kleur: "#8a6d3b" },
   };
 
   function activiteitSleutel(naam) {
@@ -392,7 +403,6 @@
       weegschaal: ["Weegschaal & bloeddruk", "Slimme weegschaal & bloeddruk"],
       beweeg: ["Beweegspreekuur (met studenten)"],
       stoelyoga: [],
-      diabetes: ["Diabetes spreekuur"]
     };
     return Object.entries(ACTIVITEITEN).find(([sleutel, activiteit]) =>
       [sleutel, activiteit.kort, activiteit.label, ...aliassen[sleutel]].some((waarde) => waarde.toLocaleLowerCase("nl-NL") === zoek)
@@ -478,7 +488,6 @@
     if (isDinsdag || isVrijdag) keys.push("koffie");
     if (isDinsdag && dag <= 7) keys.push("stoelyoga"); // eerste dinsdag
     if (isVrijdag) keys.push("weegschaal");
-    if (isVrijdag && dag > dagenInMaand - 7) keys.push("diabetes"); // laatste vrijdag
     const beweegVanaf = parseDatum(ACTIVITEITEN.beweeg.vanaf);
     if (isMaandag && (!beweegVanaf || d >= beweegVanaf)) keys.push("beweeg"); // vanaf datum uit content.json
 
@@ -546,7 +555,8 @@
 
     const losse = losseActiviteitenVoorMaand(jaar, maand);
     const gezonde = gezondeOntmoetingVoorMaand(jaar, maand);
-    const extraActiviteiten = [...losse, ...gezonde];
+    const diabetes = diabetesSpreekuurVoorMaand(jaar, maand);
+    const extraActiviteiten = [...losse, ...gezonde, ...diabetes];
     const dagenInMaand = new Date(jaar, maand + 1, 0).getDate();
     const vandaag = new Date();
     const dagNamen = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];

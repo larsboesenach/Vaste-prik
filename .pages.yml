@@ -107,7 +107,7 @@ content:
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
         label: "🗓️ Agenda · plan vooruit; website toont 2 maanden"
-        description: "Plan losse activiteiten en sessies gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; die hoef je niet elke maand opnieuw toe te voegen. Losse activiteiten en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum staan. Gezonde Ontmoeting-maandblokken worden zeven dagen na afloop van de maand verwijderd."
+        description: "Plan losse activiteiten en maandblokken gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; die hoef je niet elke maand opnieuw toe te voegen. Losse activiteiten en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum staan. Maandblokken voor Gezonde Ontmoeting en Diabetes spreekuur worden zeven dagen na afloop van de maand verwijderd."
         type: object
         fields:
           - name: intro
@@ -169,7 +169,6 @@ content:
                     - "Slimme weegschaal & bloeddruk"
                     - "Beweegspreekuur (met studenten)"
                     - "Stoelyoga"
-                    - "Diabetes spreekuur"
               - name: afgelast
                 label: Afgelast
                 description: "Vink aan als de activiteit op de oorspronkelijke datum niet doorgaat. Laat uit voor een tijdswijziging of verplaatsing."
@@ -262,6 +261,82 @@ content:
                         description: "Vink aan als deze bijeenkomst niet doorgaat."
                         type: boolean
                         default: false
+          - name: diabetes_spreekuur
+            label: 🩺 Diabetes spreekuur (1–2x per maand)
+            description: "Voeg per maand één blok toe met één of twee vrijdagen. Laat de datum van Bijeenkomst 2 leeg als er die maand maar één spreekuur is. Een maandblok wordt zeven dagen na afloop van de maand automatisch verwijderd."
+            type: object
+            fields:
+              - name: label
+                label: Titel
+                type: string
+                default: "Diabetes spreekuur"
+              - name: van
+                label: Starttijd (standaard 13:30)
+                type: string
+                default: "13:30"
+              - name: tot
+                label: Eindtijd (standaard 15:00)
+                type: string
+                default: "15:00"
+              - name: maanden
+                label: Maandblokken
+                type: object
+                list:
+                  collapsible:
+                    summary: "Maand {maand}"
+                fields:
+                  - name: maand
+                    label: Maand (kies de eerste dag)
+                    type: date
+                    default: ""
+                    options:
+                      format: yyyy-MM-dd
+                  - name: bijeenkomst_1
+                    label: Bijeenkomst 1
+                    type: object
+                    fields:
+                      - name: datum
+                        label: Datum (vrijdag)
+                        type: date
+                        default: ""
+                        options:
+                          format: yyyy-MM-dd
+                      - name: van
+                        label: Starttijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: tot
+                        label: Eindtijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: afgelast
+                        label: Afgelast
+                        description: "Vink aan als dit spreekuur niet doorgaat."
+                        type: boolean
+                        default: false
+                  - name: bijeenkomst_2
+                    label: Bijeenkomst 2 (optioneel)
+                    type: object
+                    fields:
+                      - name: datum
+                        label: Datum (vrijdag, optioneel)
+                        type: date
+                        default: ""
+                        options:
+                          format: yyyy-MM-dd
+                      - name: van
+                        label: Starttijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: tot
+                        label: Eindtijd (optioneel)
+                        type: string
+                        default: ""
+                      - name: afgelast
+                        label: Afgelast
+                        description: "Vink aan als dit spreekuur niet doorgaat."
+                        type: boolean
+                        default: false
           - name: activiteiten
             label: Vaste activiteiten (namen en tijden)
             description: "Op welke dagen ze vallen staat in de code en kan alleen door de webbouwer worden aangepast."
@@ -304,15 +379,6 @@ content:
                   - { name: kort, label: Korte naam (in kalender), type: string }
                   - { name: label, label: Volledige naam (legenda), type: string }
                   - { name: tijd, label: Tijd, type: string }
-              - name: diabetes
-                label: 🩺 Diabetes spreekuur
-                description: "Wordt elke laatste vrijdag van de maand herhaald."
-                type: object
-                fields:
-                  - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string }
-                  - { name: tijd, label: Tijd, type: string }
-
       # ── Veelgestelde vragen ────────────────────────────
       - name: faq
         label: ❓ Veelgestelde vragen
