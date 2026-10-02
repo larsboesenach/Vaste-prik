@@ -190,14 +190,14 @@ content:
             description: "Voeg per maand één blok toe. Kies bij Maand de eerste dag van die maand; elk blok bevat twee bijeenkomsten. Een maandblok wordt zeven dagen na afloop van de maand automatisch verwijderd."
             type: object
             fields:
-              - name: label
-                label: Legenda-naam
-                type: string
-                default: "Gezonde Ontmoeting - Goed oud worden"
               - name: kort
-                label: Korte naam (in de kalender)
+                label: Korte naam (in kalender)
                 type: string
                 default: "Gezonde Ontmoeting"
+              - name: label
+                label: Lange naam (in legenda)
+                type: string
+                default: "Gezonde Ontmoeting - Goed oud worden"
               - name: van
                 label: Starttijd (standaard 14:00)
                 type: string
@@ -270,12 +270,12 @@ content:
             description: "Voeg per maand één blok toe met één of twee vrijdagen. Laat de datum van Bijeenkomst 2 leeg als er die maand maar één spreekuur is. Een maandblok wordt zeven dagen na afloop van de maand automatisch verwijderd."
             type: object
             fields:
-              - name: label
-                label: Legenda-naam
+              - name: kort
+                label: Korte naam (in kalender)
                 type: string
                 default: "Diabetes spreekuur"
-              - name: kort
-                label: Korte naam (in de kalender)
+              - name: label
+                label: Lange naam (in legenda)
                 type: string
                 default: "Diabetes spreekuur"
               - name: van
