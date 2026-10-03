@@ -197,7 +197,7 @@ content:
               - name: label
                 label: Volledige naam (legenda)
                 type: string
-                default: "Gezonde Ontmoeting - Goed oud worden"
+                default: "🌿 Gezonde Ontmoeting - Goed oud worden"
               - name: van
                 label: Starttijd (standaard 14:00)
                 type: string
@@ -277,7 +277,7 @@ content:
               - name: label
                 label: Volledige naam (legenda)
                 type: string
-                default: "Diabetes spreekuur"
+                default: "🥣 Diabetes spreekuur"
               - name: van
                 label: Starttijd (standaard 13:30)
                 type: string
@@ -356,7 +356,7 @@ content:
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string, default: "☕ Inloop & koffie" }
                   - { name: tijd, label: Tijd, type: string }
               - name: weegschaal
                 label: ⚖️ Weegschaal & bloeddruk
@@ -364,7 +364,7 @@ content:
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string, default: "⚖️ Slimme weegschaal & bloeddruk" }
                   - { name: tijd, label: Tijd, type: string }
               - name: beweeg
                 label: 🏃 Beweegspreekuur
@@ -372,7 +372,7 @@ content:
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string, default: "💪 Beweegspreekuur (met studenten)" }
                   - { name: tijd, label: Tijd, type: string }
                   - name: vanaf
                     label: Eerste keer op (datum)
@@ -385,7 +385,7 @@ content:
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string }
+                  - { name: label, label: Volledige naam (legenda), type: string, default: "🪑 Stoelyoga" }
                   - { name: tijd, label: Tijd, type: string }
       # ── Veelgestelde vragen ────────────────────────────
       - name: faq

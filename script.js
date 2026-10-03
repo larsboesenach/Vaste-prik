@@ -379,24 +379,24 @@
   function gezondeOntmoetingVoorMaand(jaar, maand) {
     return maandblokkenVoorMaand(
       haal("agenda.gezonde_ontmoeting"), jaar, maand,
-      "Gezonde Ontmoeting - Goed oud worden", "Gezonde Ontmoeting", "14:00", "16:00", "var(--vp-orange)", "sessies"
+      "🌿 Gezonde Ontmoeting - Goed oud worden", "Gezonde Ontmoeting", "14:00", "16:00", "rgb(113 182 45)", "sessies"
     );
   }
 
   function diabetesSpreekuurVoorMaand(jaar, maand) {
     return maandblokkenVoorMaand(
       haal("agenda.diabetes_spreekuur"), jaar, maand,
-      "Diabetes spreekuur", "Diabetes spreekuur", "13:30", "15:00", "#8a6d3b"
+      "🥣 Diabetes spreekuur", "Diabetes spreekuur", "13:30", "15:00", "rgb(98 145 203)"
     );
   }
 
   // key → weergave. kleur verwijst naar een palet-variabele.
   // kort/label/tijd worden overschreven door content.json (agenda.activiteiten).
   const ACTIVITEITEN = {
-    koffie: { kort: "Inloop & koffie", label: "Inloop & koffie", tijd: "11:00–15:00", kleur: "var(--vp-green)" },
-    weegschaal: { kort: "Weegschaal", label: "Slimme weegschaal & bloeddruk", tijd: "12:00–13:30", kleur: "var(--vp-blue)" },
-    beweeg: { kort: "Beweegspreekuur", label: "Beweegspreekuur (met studenten)", tijd: "15:00–17:00", kleur: "var(--vp-orange)", vanaf: "2026-09-21" },
-    stoelyoga: { kort: "Stoelyoga", label: "Stoelyoga", tijd: "ochtend", kleur: "var(--vp-rust)" },
+    koffie: { kort: "Inloop & koffie", label: "☕ Inloop & koffie", tijd: "11:00–15:00", kleur: "var(--vp-green)" },
+    weegschaal: { kort: "Weegschaal", label: "⚖️ Slimme weegschaal & bloeddruk", tijd: "12:00–13:30", kleur: "var(--vp-blue)" },
+    beweeg: { kort: "Beweegspreekuur", label: "💪 Beweegspreekuur (met studenten)", tijd: "15:00–17:00", kleur: "var(--vp-orange)", vanaf: "2026-09-21" },
+    stoelyoga: { kort: "Stoelyoga", label: "🪑 Stoelyoga", tijd: "ochtend", kleur: "var(--vp-rust)" },
   };
 
   function activiteitSleutel(naam) {
@@ -724,17 +724,17 @@
     [
       {
         cfg: haal("agenda.gezonde_ontmoeting"),
-        label: "Gezonde Ontmoeting - Goed oud worden",
+        label: "🌿 Gezonde Ontmoeting - Goed oud worden",
         van: "14:00",
         tot: "16:00",
-        kleur: "var(--vp-orange)"
+        kleur: "rgb(113 182 45)"
       },
       {
         cfg: haal("agenda.diabetes_spreekuur"),
-        label: "Diabetes spreekuur",
+        label: "🥣 Diabetes spreekuur",
         van: "13:30",
         tot: "15:00",
-        kleur: "#8a6d3b"
+        kleur: "rgb(98 145 203)"
       }
     ].forEach(({ cfg, label, van, tot, kleur }) => {
       voegLegendaItemToe({
@@ -748,7 +748,7 @@
     const wisselDot = elt("span", "legend-dot");
     wisselDot.style.backgroundColor = "var(--vp-mustard)";
     wisselItem.appendChild(wisselDot);
-    wisselItem.appendChild(elt("span", "legend-label", "Wisselende activiteit"));
+    wisselItem.appendChild(elt("span", "legend-label", "🌻 Wisselende activiteit"));
     legend.appendChild(wisselItem);
   }
 

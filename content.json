@@ -62,7 +62,7 @@
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
     "gezonde_ontmoeting": {
-      "label": "Gezonde Ontmoeting - Goed oud worden",
+      "label": "🌿 Gezonde Ontmoeting - Goed oud worden",
       "kort": "Gezonde Ontmoeting",
       "van": "14:00",
       "tot": "16:00",
@@ -85,7 +85,7 @@
       ]
     },
     "diabetes_spreekuur": {
-      "label": "Diabetes spreekuur",
+      "label": "🥣 Diabetes spreekuur",
       "kort": "Diabetes spreekuur",
       "van": "13:30",
       "tot": "15:00",
@@ -106,23 +106,23 @@
     "activiteiten": {
       "koffie": {
         "kort": "Inloop & koffie",
-        "label": "Inloop & koffie",
+        "label": "☕ Inloop & koffie",
         "tijd": "11:00–15:00"
       },
       "weegschaal": {
         "kort": "Slimme weegschaal",
-        "label": "Slimme weegschaal & bloeddruk",
+        "label": "⚖️ Slimme weegschaal & bloeddruk",
         "tijd": "12:00 tot 13:30"
       },
       "beweeg": {
         "kort": "Beweegspreekuur",
-        "label": "Beweegspreekuur (met studenten)",
+        "label": "💪 Beweegspreekuur (met studenten)",
         "tijd": "15:00 tot 17:00",
         "vanaf": "2026-10-12"
       },
       "stoelyoga": {
         "kort": "Stoelyoga",
-        "label": "Stoelyoga",
+        "label": "🪑 Stoelyoga",
         "tijd": "13.30 tot 14.30"
       }
     }
