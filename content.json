@@ -1,11 +1,11 @@
 {
   "hero": {
-    "logo": "assets/vaste-prik-logo.png",
+    "logo": "assets/vaste-prik-logo.jpg",
     "logo_alt": "Vaste Prik logo",
     "titel": "Buurtzorgcafé Vaste Prik: gezondheid en ontmoeting in Amsterdam-Oost",
     "tekst": "Kom langs voor koffie, een praatje of een activiteit rond gezondheid. Je vindt Buurtzorgcafé Vaste Prik aan de Vrolikstraat 191A in Amsterdam-Oost. De inloop is dinsdag en vrijdag van 11:00 tot 15:00 uur; activiteiten kunnen op andere dagen en tijden plaatsvinden. Bekijk de agenda voor het actuele programma.",
-    "foto": "assets/vaste-prik-dansactiviteit.jpg",
-    "foto_alt": "Activiteit bij Buurtzorgcafé Vaste Prik",
+    "foto": "assets/Dansactiviteit%20bij%20Vaste%20Prik.gif",
+    "foto_alt": "Dansactiviteit bij Buurtzorgcafé Vaste Prik",
     "bordje": "assets/bordje-vaste-prik.jpg",
     "bordje_alt": "Geborduurd bordje met de tekst Apotheek Vaste Prik"
   },
