@@ -1241,6 +1241,9 @@ p {
   color: var(--vp-cream);
   padding: 1.5rem;
 }
+.radio-steunkous {
+  background: var(--vp-rust);
+}
 .whatsapp-aanmeldblok {
   display: grid;
   grid-template-columns: 9rem minmax(0, 1fr);
@@ -1322,13 +1325,6 @@ p {
 
   .contact-quote {
     font-size: 1.2rem;
-  }
-
-  .opening-row {
-    flex-direction: column;
-    align-items: left;
-    gap: 0.4rem;
-    text-align: left;
   }
 
   .doe-mee {
@@ -1443,35 +1439,6 @@ p {
 .contact-extra {
   margin-top: 1rem;
   color: rgba(157, 58, 34, 0.8);
-}
-.opening-box {
-  margin-top: 2rem;
-  border-radius: 1.25rem;
-  background: rgba(157, 58, 34, 0.1);
-  box-shadow: 0 0 0 1px rgba(157, 58, 34, 0.15) inset;
-  padding: 1.25rem;
-}
-.opening-label {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: rgba(157, 58, 34, 0.7);
-}
-.opening-row {
-  margin-top: 0.5rem;
-  display: flex;
-  align-items: left;
-  justify-content: space-between;
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-.opening-note {
-  margin-top: 0.25rem;
-  font-size: 0.9rem;
-  color: rgba(157, 58, 34, 0.7);
 }
 
 /* ── Footer ───────────────────────────────────────────── */
