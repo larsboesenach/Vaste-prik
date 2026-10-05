@@ -32,7 +32,7 @@
 
   function openLightbox(image) {
     lightboxTrigger = image;
-    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.src = image.dataset.lightboxSrc || image.currentSrc || image.src;
     lightboxImage.alt = image.alt;
     lightbox.showModal();
   }
@@ -112,6 +112,14 @@
     document.querySelectorAll("[data-c-alt]").forEach((el) => {
       const w = haal(el.dataset.cAlt);
       if (typeof w === "string") el.setAttribute("alt", w);
+    });
+    document.querySelectorAll("[data-c-lightbox-src]").forEach((el) => {
+      const w = haal(el.dataset.cLightboxSrc);
+      if (typeof w === "string" && w) {
+        el.dataset.lightboxSrc = w;
+      } else {
+        delete el.dataset.lightboxSrc;
+      }
     });
 
     // Lijsten van alinea's

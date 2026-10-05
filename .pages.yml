@@ -39,6 +39,10 @@ content:
           - name: foto_alt
             label: Beschrijving hoofdfoto (voor slechtzienden)
             type: string
+          - name: lightbox_foto
+            label: Lightbox-afbeelding of GIF (optioneel)
+            description: "De afbeelding die bezoekers na een klik groot zien. Laat leeg om de hoofdfoto te gebruiken."
+            type: image
           - name: bordje
             label: Foto van het bordje
             type: image
@@ -444,6 +448,15 @@ content:
           - name: doemee_tekst
             label: "Doe mee: tekst"
             type: text
+          - name: radio_titel
+            label: "Radio Steunkous: kop"
+            type: string
+          - name: radio_tekst
+            label: "Radio Steunkous: tekst"
+            type: text
+          - name: radio_knop
+            label: "Radio Steunkous: knoptekst"
+            type: string
           - name: persoon
             label: Initiatiefnemer
             type: object

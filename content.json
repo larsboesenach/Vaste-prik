@@ -4,8 +4,9 @@
     "logo_alt": "Vaste Prik logo",
     "titel": "Buurtzorgcafé Vaste Prik: gezondheid en ontmoeting in Amsterdam-Oost",
     "tekst": "Kom langs voor koffie, een praatje of een activiteit rond gezondheid. Je vindt Buurtzorgcafé Vaste Prik aan de Vrolikstraat 191A in Amsterdam-Oost. De inloop is dinsdag en vrijdag van 11:00 tot 15:00 uur; activiteiten kunnen op andere dagen en tijden plaatsvinden. Bekijk de agenda voor het actuele programma.",
-    "foto": "assets/Dansactiviteit bij Vaste Prik.gif",
+    "foto": "assets/vaste-prik-dansactiviteit.jpg",
     "foto_alt": "Dansactiviteit bij Buurtzorgcafé Vaste Prik",
+    "lightbox_foto": "assets/Dansactiviteit%20bij%20Vaste%20Prik.gif",
     "bordje": "assets/bordje-vaste-prik.jpg",
     "bordje_alt": "Geborduurd bordje met de tekst Apotheek Vaste Prik"
   },
@@ -168,6 +169,9 @@
     "adres_zoek": "Vrolikstraat 191A, Amsterdam",
     "doemee_titel": "Wil jij iets betekenen voor Vaste Prik? 🌻",
     "doemee_tekst": "Heb je een leuk idee of wil je meehelpen? Stuur een berichtje, dan komen we met je in contact!",
+    "radio_titel": "Luister naar Radio Steunkous 🎙️",
+    "radio_tekst": "Iedere dinsdag maakt Marjolijn een nieuwe aflevering van Radio Steunkous. In de podcast komen gezondheid, zorg en ouder worden aan bod, met persoonlijke verhalen en ideeën over hoe je zo gezond en prettig mogelijk ouder wordt.",
+    "radio_knop": "Luister naar de podcast",
     "persoon": {
       "foto": "assets/marjolijn-onvlee.jpg",
       "foto_alt": "Marjolijn Onvlee bij Radio Steunkous",
