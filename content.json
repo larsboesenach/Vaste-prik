@@ -4,7 +4,7 @@
     "logo_alt": "Vaste Prik logo",
     "titel": "Buurtzorgcafé Vaste Prik: gezondheid en ontmoeting in Amsterdam-Oost",
     "tekst": "Kom langs voor koffie, een praatje of een activiteit rond gezondheid. Je vindt Buurtzorgcafé Vaste Prik aan de Vrolikstraat 191A in Amsterdam-Oost. De inloop is dinsdag en vrijdag van 11:00 tot 15:00 uur; activiteiten kunnen op andere dagen en tijden plaatsvinden. Bekijk de agenda voor het actuele programma.",
-    "foto": "assets/Dansactiviteit%20bij%20Vaste%20Prik.gif",
+    "foto": "assets/Dansactiviteit bij Vaste Prik.gif",
     "foto_alt": "Dansactiviteit bij Buurtzorgcafé Vaste Prik",
     "bordje": "assets/bordje-vaste-prik.jpg",
     "bordje_alt": "Geborduurd bordje met de tekst Apotheek Vaste Prik"
@@ -62,15 +62,15 @@
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
     "gezonde_ontmoeting": {
-      "label": "🌿 Gezonde Ontmoeting - Goed oud worden",
       "kort": "Gezonde Ontmoeting",
+      "label": "🌿 Gezonde Ontmoeting - Goed oud worden",
       "van": "14:00",
       "tot": "16:00",
       "maanden": [
         {
           "maand": "2026-10-01",
           "bijeenkomst_1": {
-            "datum": "2026-10-09",
+            "datum": "2026-10-13",
             "van": "14:00",
             "tot": "16:00",
             "afgelast": false
@@ -85,8 +85,8 @@
       ]
     },
     "diabetes_spreekuur": {
-      "label": "🥣 Diabetes spreekuur",
       "kort": "Diabetes spreekuur",
+      "label": "🥣 Diabetes spreekuur",
       "van": "13:30",
       "tot": "15:00",
       "maanden": [
@@ -168,8 +168,6 @@
     "adres_zoek": "Vrolikstraat 191A, Amsterdam",
     "doemee_titel": "Wil jij iets betekenen voor Vaste Prik? 🌻",
     "doemee_tekst": "Heb je een leuk idee of wil je meehelpen? Stuur een berichtje, dan komen we met je in contact!",
-    "radio_titel": "Luister naar Radio Steunkous 🎙️",
-    "radio_tekst": "Iedere dinsdag maakt Marjolijn een nieuwe aflevering van Radio Steunkous. In de podcast komen gezondheid, zorg en ouder worden aan bod, met persoonlijke verhalen en ideeën over hoe je zo gezond en prettig mogelijk ouder wordt.",
     "persoon": {
       "foto": "assets/marjolijn-onvlee.jpg",
       "foto_alt": "Marjolijn Onvlee bij Radio Steunkous",
