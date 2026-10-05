@@ -61,6 +61,14 @@
   "agenda": {
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
+    "losse_activiteiten": [
+      {
+        "datum": "2026-10-27",
+        "titel": "Gezonde Ontmoeting",
+        "tijd": "14.00-16.00",
+        "afgelast": false
+      }
+    ],
     "gezonde_ontmoeting": {
       "kort": "Hou je hart vast!",
       "label": "🌿 Gezonde Ontmoeting ",
