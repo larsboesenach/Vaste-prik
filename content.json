@@ -86,6 +86,12 @@
         "titel": "Scholing EAI",
         "tijd": "12.00-16.00",
         "afgelast": false
+      },
+      {
+        "datum": "2026-10-23",
+        "titel": "Zinnen verzetten met Willem",
+        "tijd": "12.00-13.00",
+        "afgelast": false
       }
     ],
     "afwijkingen": [
@@ -98,7 +104,19 @@
       "kort": "Wat helpt bij artrose? ",
       "label": "🌿 Gezonde Ontmoeting ",
       "van": "14:00",
-      "tot": "16:00"
+      "tot": "16:00",
+      "maanden": [
+        {
+          "maand": "2026-10-23",
+          "bijeenkomst_1": {
+            "datum": "2026-10-23",
+            "afgelast": false
+          },
+          "bijeenkomst_2": {
+            "afgelast": false
+          }
+        }
+      ]
     },
     "diabetes_spreekuur": {
       "kort": "Zinnen verzetten met Willem",
