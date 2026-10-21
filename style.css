@@ -3,10 +3,10 @@
 
 /* ── Palette & basics ─────────────────────────────────── */
 :root {
-  --vp-cream: #fcf9e8;
+  --vp-cream: #fff8e6;
   --vp-green: #3f5327;
-  --vp-rust: #8C2508;
-  --vp-pink: #FFDFDE;
+  --vp-rust: #6e0e0e;
+  --vp-pink: #f1cdc7;
   --vp-lime: #d8e29c;
   --vp-orange: #e5863a;
   --vp-mustard: #ebc969;
@@ -1191,7 +1191,7 @@ p {
 
 /* ── Contact ──────────────────────────────────────────── */
 .contact-section {
-  background: rgba(246, 222, 221, 0.8);
+  background: var(--vp-pink,0.6);
 }
 .contact-grid {
   display: grid;
