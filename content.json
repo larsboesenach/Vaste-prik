@@ -62,37 +62,17 @@
   "agenda": {
     "intro": "We zijn open op dinsdag en vrijdag van 11:00 tot 15:00. Daarnaast staan er elke maand vaste momenten en wisselende activiteiten op de kalender.",
     "notitie": "Daarnaast zijn er wisselende extra's. Kijk op deze agenda en houdt het prikbord in het café in de gaten! ",
+    "afwijkingen": [
+      {
+        "datum": "2026-10-27",
+        "afgelast": false
+      }
+    ],
     "gezonde_ontmoeting": {
-      "kort": "Hou je hart vast! ",
+      "kort": "Wat helpt bij artrose? ",
       "label": "🌿 Gezonde Ontmoeting ",
       "van": "14:00",
-      "tot": "16:00",
-      "maanden": [
-        {
-          "maand": "2026-10-13",
-          "bijeenkomst_1": {
-            "datum": "2026-10-13",
-            "van": "14:00",
-            "tot": "16:00",
-            "afgelast": false
-          },
-          "bijeenkomst_2": {
-            "datum": "2026-10-27",
-            "van": "14:00",
-            "tot": "16:00",
-            "afgelast": false
-          }
-        },
-        {
-          "maand": "2026-10-27",
-          "bijeenkomst_1": {
-            "afgelast": false
-          },
-          "bijeenkomst_2": {
-            "afgelast": false
-          }
-        }
-      ]
+      "tot": "16:00"
     },
     "diabetes_spreekuur": {
       "kort": "Diabetes spreekuur",
