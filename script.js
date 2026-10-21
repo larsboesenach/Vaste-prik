@@ -294,12 +294,17 @@
 
   function vulActiviteiten() {
     Object.keys(ACTIVITEITEN).forEach((k) => {
-      const j = haal("agenda.activiteiten." + k);
-      if (!j) return;
-      ["kort", "label", "tijd"].forEach((veld) => {
-        if (typeof j[veld] === "string" && j[veld]) ACTIVITEITEN[k][veld] = vervangTokens(j[veld]);
-      });
-      if (typeof j.vanaf === "string") ACTIVITEITEN[k].vanaf = j.vanaf;
+      vulActiviteit(ACTIVITEITEN[k], haal("agenda.activiteiten." + k));
+    });
+    vulActiviteit(BEWEEGSPREEKUUR, haal("agenda.activiteiten.beweeg"));
+  }
+
+  function vulActiviteit(activiteit, instellingen) {
+    if (!instellingen) return;
+    ["kort", "label", "tijd"].forEach((veld) => {
+      if (typeof instellingen[veld] === "string" && instellingen[veld]) {
+        activiteit[veld] = vervangTokens(instellingen[veld]);
+      }
     });
   }
 
@@ -352,12 +357,30 @@
     return uit;
   }
 
-  function maandblokkenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackKort, fallbackVan, fallbackTot, kleur, legacyKey) {
+  function beweegspreekuurVoorMaand(jaar, maand) {
+    const afspraken = haal("agenda.beweegspreekuur.afspraken");
+    if (!Array.isArray(afspraken)) return [];
+
+    return afspraken.flatMap((afspraak) => {
+      const datum = afspraak && parseDatum(afspraak.datum);
+      if (!datum || datum.getFullYear() !== jaar || datum.getMonth() !== maand) return [];
+      return [{
+        ...BEWEEGSPREEKUUR,
+        dag: datum.getDate(),
+        tijd: afspraak.tijd || BEWEEGSPREEKUUR.tijd,
+        afgelast: afspraak.afgelast === true
+      }];
+    });
+  }
+
+  function maandblokkenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackKort, fallbackVan, fallbackTot, kleur, legacyKey, onderwerpPerBijeenkomst = false) {
     if (!cfg) return [];
 
-    const sessies = Array.isArray(cfg.maanden)
-      ? cfg.maanden.flatMap((blok) => [blok?.bijeenkomst_1, blok?.bijeenkomst_2].filter(Boolean))
-      : legacyKey && Array.isArray(cfg[legacyKey]) ? cfg[legacyKey] : [];
+    const sessies = Array.isArray(cfg.afspraken)
+      ? cfg.afspraken
+      : Array.isArray(cfg.maanden)
+        ? cfg.maanden.flatMap((blok) => [blok?.bijeenkomst_1, blok?.bijeenkomst_2].filter(Boolean))
+        : legacyKey && Array.isArray(cfg[legacyKey]) ? cfg[legacyKey] : [];
 
     const uit = [];
     sessies.forEach((sessie) => {
@@ -366,15 +389,21 @@
       if (d.getFullYear() !== jaar || d.getMonth() !== maand) return;
 
       const label = cfg.label || fallbackLabel;
-      const kort = cfg.kort || fallbackKort || label;
+      const onderwerp = typeof sessie.onderwerp === "string" ? sessie.onderwerp.trim() : "";
+      const titel = onderwerpPerBijeenkomst
+        ? onderwerp || label
+        : label;
+      const kort = onderwerpPerBijeenkomst
+        ? titel
+        : cfg.kort || fallbackKort || label;
       const tijd = tijdLabel(
         sessie.van || cfg.van || fallbackVan,
         sessie.tot || cfg.tot || fallbackTot
       );
       uit.push({
         dag: d.getDate(),
-        titel: label,
-        label,
+        titel,
+        label: titel,
         kort,
         tijd,
         kleur,
@@ -387,7 +416,7 @@
   function gezondeOntmoetingVoorMaand(jaar, maand) {
     return maandblokkenVoorMaand(
       haal("agenda.gezonde_ontmoeting"), jaar, maand,
-      "🌿 Gezonde Ontmoeting - Goed oud worden", "Gezonde Ontmoeting", "14:00", "16:00", "rgb(113 182 45)", "sessies"
+      "🌿 Gezonde Ontmoeting", "Gezonde Ontmoeting", "14:00", "16:00", "rgb(113 182 45)", "sessies", true
     );
   }
 
@@ -403,8 +432,14 @@
   const ACTIVITEITEN = {
     koffie: { kort: "Inloop & koffie", label: "☕ Inloop & koffie", tijd: "11:00–15:00", kleur: "var(--vp-green)" },
     weegschaal: { kort: "Weegschaal", label: "⚖️ Slimme weegschaal & bloeddruk", tijd: "12:00–13:30", kleur: "var(--vp-blue)" },
-    beweeg: { kort: "Beweegspreekuur", label: "💪 Beweegspreekuur (met studenten)", tijd: "15:00–17:00", kleur: "var(--vp-orange)", vanaf: "2026-09-21" },
     stoelyoga: { kort: "Stoelyoga", label: "🪑 Stoelyoga", tijd: "ochtend", kleur: "var(--vp-rust)" },
+  };
+
+  const BEWEEGSPREEKUUR = {
+    kort: "Beweegspreekuur",
+    label: "💪 Beweegspreekuur (met studenten)",
+    tijd: "15:00–17:00",
+    kleur: "var(--vp-orange)"
   };
 
   function activiteitSleutel(naam) {
@@ -412,7 +447,6 @@
     const aliassen = {
       koffie: ["Inloop & koffie"],
       weegschaal: ["Weegschaal & bloeddruk", "Slimme weegschaal & bloeddruk"],
-      beweeg: ["Beweegspreekuur (met studenten)"],
       stoelyoga: [],
     };
     return Object.entries(ACTIVITEITEN).find(([sleutel, activiteit]) =>
@@ -485,22 +519,24 @@
     return items;
   }
 
+  function activiteitenVoorDag(jaar, maand, dag, spreekuren) {
+    return [
+      ...vasteActiviteitenMetAfwijkingen(jaar, maand, dag),
+      ...spreekuren.filter((afspraak) => afspraak.dag === dag)
+    ];
+  }
+
   // Welke activiteiten vallen op een bepaalde datum?
   function activiteitenOpDag(jaar, maand, dag) {
     const d = new Date(jaar, maand, dag);
     const wd = d.getDay(); // 0 = zo … 6 = za
-    const dagenInMaand = new Date(jaar, maand + 1, 0).getDate();
     const keys = [];
 
     const isDinsdag = wd === 2;
     const isVrijdag = wd === 5;
-    const isMaandag = wd === 1;
-
     if (isDinsdag || isVrijdag) keys.push("koffie");
     if (isDinsdag && dag <= 7) keys.push("stoelyoga"); // eerste dinsdag
     if (isVrijdag) keys.push("weegschaal");
-    const beweegVanaf = parseDatum(ACTIVITEITEN.beweeg.vanaf);
-    if (isMaandag && (!beweegVanaf || d >= beweegVanaf)) keys.push("beweeg"); // vanaf datum uit content.json
 
     return keys;
   }
@@ -567,6 +603,7 @@
     const losse = losseActiviteitenVoorMaand(jaar, maand);
     const gezonde = gezondeOntmoetingVoorMaand(jaar, maand);
     const diabetes = diabetesSpreekuurVoorMaand(jaar, maand);
+    const spreekuren = beweegspreekuurVoorMaand(jaar, maand);
     const extraActiviteiten = [...losse, ...gezonde, ...diabetes];
     const dagenInMaand = new Date(jaar, maand + 1, 0).getDate();
     const vandaag = new Date();
@@ -592,7 +629,7 @@
       const vandaagStart = new Date(vandaag.getFullYear(), vandaag.getMonth(), vandaag.getDate());
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
-        const acts = vasteActiviteitenMetAfwijkingen(jaar, maand, dag);
+        const acts = activiteitenVoorDag(jaar, maand, dag, spreekuren);
         const extras = extraActiviteiten.filter((l) => l.dag === dag);
         if (!acts.length && !extras.length) continue;
 
@@ -675,7 +712,7 @@
       const vandaagStart = new Date(vandaag.getFullYear(), vandaag.getMonth(), vandaag.getDate());
 
       for (let dag = 1; dag <= dagenInMaand; dag++) {
-        const acts = vasteActiviteitenMetAfwijkingen(jaar, maand, dag);
+        const acts = activiteitenVoorDag(jaar, maand, dag, spreekuren);
         const extras = extraActiviteiten.filter((l) => l.dag === dag);
         const date = new Date(jaar, maand, dag);
         const isVandaag =
@@ -728,6 +765,7 @@
     }
 
     Object.keys(ACTIVITEITEN).forEach((k) => voegLegendaItemToe(ACTIVITEITEN[k]));
+    voegLegendaItemToe(BEWEEGSPREEKUUR);
 
     [
       {

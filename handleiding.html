@@ -179,7 +179,7 @@
       <div class="wrap">
         <span class="pill">Kalender</span>
         <h2>De agenda</h2>
-        <p>De kalender toont automatisch <strong>deze maand</strong> en <strong>volgende maand</strong>. Vaste activiteiten worden volgens een vast patroon herhaald; voeg alleen losse activiteiten, Gezonde Ontmoeting-maandblokken en eventuele eenmalige wijzigingen toe.</p>
+        <p>De kalender toont automatisch <strong>deze maand</strong> en <strong>volgende maand</strong>. Vaste activiteiten worden volgens een vast patroon herhaald. Het Beweegspreekuur en Gezonde Ontmoeting verschijnen alleen op de datums die je daarvoor opgeeft. Voeg daarnaast losse activiteiten, Diabetes spreekuur-maandblokken en eventuele eenmalige wijzigingen toe.</p>
 
         <div class="guide-pair">
           <figure class="guide-figure">
@@ -231,13 +231,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Vaste activiteiten</td><td>Inloop &amp; koffie (dinsdag en vrijdag), weegschaal &amp; bloeddruk (vrijdag), beweegspreekuur (maandag vanaf de ingestelde datum) en stoelyoga (eerste dinsdag).</td></tr>
+              <tr><td>Vaste activiteiten</td><td>Inloop &amp; koffie (dinsdag en vrijdag), weegschaal &amp; bloeddruk (vrijdag) en stoelyoga (eerste dinsdag).</td></tr>
+              <tr><td>Beweegspreekuur</td><td>Verschijnt alleen op de afzonderlijke datums die je in het CMS opgeeft.</td></tr>
               <tr><td>Losse activiteiten</td><td>Eenmalige extra's, zoals een workshop of filmmiddag. Deze voeg je zelf toe.</td></tr>
-              <tr><td>Gezonde Ontmoeting</td><td>Voeg per maand één maandblok toe met twee bijeenkomsten. Beide datums verschijnen in de kalender.</td></tr>
+              <tr><td>Gezonde Ontmoeting</td><td>Voeg voor iedere bijeenkomst een apart item met datum toe. Je kunt zo veel bijeenkomsten per maand plannen als nodig.</td></tr>
               <tr><td>Diabetes spreekuur</td><td>Plan per maand één of twee vrijdagafspraken in het maandblok. De tweede afspraak is optioneel.</td></tr>
             </tbody>
           </table>
         </div>
+
+        <h3>Datums voor het Beweegspreekuur instellen</h3>
+        <p>Het Beweegspreekuur staat niet meer automatisch op iedere maandag. Voeg alleen de maandagen toe waarop het spreekuur echt plaatsvindt; tussenliggende weken hoef je niet als afgelast te markeren.</p>
+        <ol class="guide-steps">
+          <li>Open in <span class="veld">Agenda</span> het onderdeel <span class="veld">Beweegspreekuur (afzonderlijke datums)</span>.</li>
+          <li>Voeg bij <span class="veld">Spreekuurdatums</span> voor iedere afspraak een item toe en kies de <span class="veld">Datum</span>.</li>
+          <li>Laat <span class="veld">Tijd</span> leeg om de standaardtijd uit <span class="veld">Vaste activiteiten</span> te gebruiken. Vul alleen een afwijkende tijd in als dat nodig is.</li>
+          <li>Vink <span class="veld">Afgelast</span> alleen aan als een ingeplande afspraak niet doorgaat.</li>
+          <li>Klik op <span class="knop">Save</span>.</li>
+        </ol>
 
         <h3>Een extra activiteit op een dag toevoegen</h3>
         <ol class="guide-steps">
@@ -273,13 +284,13 @@
           <li>Vul alleen bij een afwijkend tijdstip de <span class="veld">Nieuwe tijd</span> in.</li>
           <li>Klik op <span class="knop">Save</span>.</li>
         </ol>
-        <p>Voor een losse activiteit pas je de datum en tijd in het item zelf aan. Voor Gezonde Ontmoeting en Diabetes spreekuur vul je de afspraken in de maandblokken in. Per bijeenkomst kun je een afwijkende begin- of eindtijd instellen of deze afgelasten. De <span class="veld">Korte naam</span> staat in het compacte kalenderhokje; de <span class="veld">Legenda-naam</span> staat in de legenda onder de kalender.</p>
+        <p>Voor een losse activiteit pas je de datum en tijd in het item zelf aan. Voor Gezonde Ontmoeting voeg je iedere bijeenkomst als apart item toe. Diabetes spreekuur wordt per maand in maandblokken ingevoerd. Per bijeenkomst kun je een afwijkende begin- of eindtijd instellen of deze afgelasten. Bij Gezonde Ontmoeting kun je ook per bijeenkomst een onderwerp invullen; de Legenda-naam blijft algemeen en staat onder de kalender.</p>
 
-        <h3>Een Gezonde Ontmoeting-maandblok invullen</h3>
+        <h3>Een Gezonde Ontmoeting plannen</h3>
         <ol class="guide-steps">
-          <li>Open in <span class="veld">Agenda</span> het onderdeel <span class="veld">Gezonde Ontmoeting</span> en voeg bij <span class="veld">Maandblokken</span> een item toe.</li>
-          <li>Kies bij <span class="veld">Maand</span> de eerste dag van de maand, bijvoorbeeld <kbd>2026-11-01</kbd>.</li>
-          <li>Vul bij <span class="veld">Bijeenkomst 1</span> en <span class="veld">Bijeenkomst 2</span> de datums in. De ingestelde start- en eindtijd worden standaard gebruikt.</li>
+          <li>Open in <span class="veld">Agenda</span> het onderdeel <span class="veld">Gezonde Ontmoeting (afzonderlijke bijeenkomsten)</span> en voeg bij <span class="veld">Bijeenkomsten</span> een item toe.</li>
+          <li>Kies de <span class="veld">Datum</span> waarop deze bijeenkomst plaatsvindt. Je hoeft geen aparte maand op te geven; de datum bepaalt vanzelf in welke maand de afspraak verschijnt. Je kunt zo veel items toevoegen als nodig, ook meerdere bijeenkomsten in dezelfde maand.</li>
+          <li>Vul eventueel een eigen <span class="veld">Onderwerp</span> in; dit wordt in de agenda bij die datum getoond. Laat het leeg om de Legenda-naam <em>🌿 Gezonde Ontmoeting</em> te gebruiken. De ingestelde start- en eindtijd worden standaard gebruikt.</li>
           <li>Vul alleen bij een afwijkende tijd de start- en/of eindtijd in. Vink <span class="veld">Afgelast</span> aan als een bijeenkomst niet doorgaat.</li>
           <li>Klik op <span class="knop">Save</span>.</li>
         </ol>
@@ -299,7 +310,7 @@
           <li><strong>Ver vooruit invullen mag.</strong> De kalender toont alleen deze en volgende maand. Een activiteit voor over drie maanden verschijnt vanzelf zodra die maand aan de beurt is.</li>
           <li><strong>Houd de titel kort.</strong> Op een computer past ongeveer 15 tot 20 tekens in het vakje van de kalender, met drie puntjes bij een langere titel. Op een telefoon past de hele titel.</li>
           <li><strong>Datum niet zichtbaar?</strong> Controleer of de datum in de volgorde jaar-maand-dag staat. De datumkiezer maakt deze fout niet.</li>
-          <li><strong>Oude items</strong> blijven minimaal zeven dagen beschikbaar voor correcties. Losse activiteiten en eenmalige wijzigingen worden daarna per item verwijderd; maandblokken voor Gezonde Ontmoeting en Diabetes spreekuur worden zeven dagen na afloop van de maand als geheel verwijderd.</li>
+          <li><strong>Oude items</strong> blijven minimaal zeven dagen beschikbaar voor correcties. Losse activiteiten, Beweegspreekuurdatums, Gezonde Ontmoeting-bijeenkomsten en eenmalige wijzigingen worden daarna per datum verwijderd; Diabetes spreekuur-maandblokken worden zeven dagen na afloop van de maand als geheel verwijderd.</li>
         </ul>
 
         <h3>Namen en tijden van de vaste activiteiten aanpassen</h3>
@@ -308,11 +319,11 @@
           <li><span class="veld">Korte naam</span> is wat er in het kalendervakje staat.</li>
           <li><span class="veld">Volledige naam</span> is wat er onder de kalender in de legenda staat.</li>
           <li><span class="veld">Tijd</span> is bijvoorbeeld <kbd>12:00–13:30</kbd>.</li>
-          <li><span class="veld">Eerste keer op</span> staat alleen bij het beweegspreekuur en bepaalt vanaf wanneer dat spreekuur op maandagen verschijnt.</li>
+          <li>De datums van het Beweegspreekuur beheer je apart bij <span class="veld">Beweegspreekuur (afzonderlijke datums)</span>.</li>
         </ul>
 
         <div class="guide-note warn">
-          <p><strong>Let op:</strong> de weekdagen en herhaalpatronen van vaste activiteiten zijn onderdeel van de kalenderlogica. Een naam of tijd aanpassen verandert dus niet de dag of herhaling. Neem contact op met de webbouwer als het patroon of de openingsdagen zelf veranderen.</p>
+          <p><strong>Let op:</strong> de weekdagen en herhaalpatronen van de overige vaste activiteiten zijn onderdeel van de kalenderlogica. Een naam of tijd aanpassen verandert dus niet de dag of herhaling. Neem contact op met de webbouwer als het patroon of de openingsdagen zelf veranderen.</p>
         </div>
       </div>
     </section>
@@ -427,7 +438,7 @@
             <tbody>
               <tr><td><strong>Inloggen</strong></td><td>Ga naar app.pagescms.org en kies Vaste-prik · main</td></tr>
               <tr><td><strong>Opslaan</strong></td><td>Klik op <span class="knop">Save</span> en wacht 2–3 minuten</td></tr>
-              <tr><td><strong>Agenda</strong></td><td>Open Agenda → kies Losse activiteiten, Eenmalige wijzigingen, Gezonde Ontmoeting → Maandblokken of Vaste activiteiten</td></tr>
+              <tr><td><strong>Agenda</strong></td><td>Open Agenda → kies Losse activiteiten, Beweegspreekuur, Gezonde Ontmoeting → Bijeenkomsten, Diabetes spreekuur → Maandblokken of Vaste activiteiten</td></tr>
               <tr><td><strong>Foto's</strong></td><td>Open het onderdeel waar de foto staat en werk ook de beschrijving bij</td></tr>
               <tr><td><strong>Openingstijden</strong></td><td>Werk de teksten bij Bovenaan de pagina, Agenda, Contact en eventuele FAQ-antwoorden bij</td></tr>
             </tbody>

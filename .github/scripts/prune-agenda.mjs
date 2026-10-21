@@ -45,6 +45,9 @@ function maandEinde(item) {
 
 const removed =
   pruneList(agenda, "losse_activiteiten", "Losse activiteiten") +
+  pruneList(agenda.beweegspreekuur, "afspraken", "Beweegspreekuur-afspraken") +
+  pruneList(agenda.gezonde_ontmoeting, "afspraken", "Gezonde Ontmoeting-bijeenkomsten") +
+  // Clean up older content that still uses month-grouped encounters.
   pruneList(agenda.gezonde_ontmoeting, "maanden", "Gezonde Ontmoeting maandblokken", maandEinde) +
   pruneList(agenda.diabetes_spreekuur, "maanden", "Diabetes spreekuur maandblokken", maandEinde) +
   pruneList(agenda.gezonde_ontmoeting, "sessies", "Oude Gezonde Ontmoeting-sessies") +

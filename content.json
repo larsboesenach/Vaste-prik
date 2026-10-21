@@ -100,29 +100,37 @@
         "afgelast": false
       }
     ],
-    "afwijkingen": [
-      {
-        "datum": "2026-11-09",
-        "activiteit": "Beweegspreekuur (met studenten)",
-        "afgelast": false
-      }
-    ],
+    "beweegspreekuur": {
+      "afspraken": [
+        {
+          "datum": "2026-11-02",
+          "afgelast": false
+        },
+        {
+          "datum": "2026-11-16",
+          "afgelast": false
+        },
+        {
+          "datum": "2026-11-30",
+          "afgelast": false
+        },
+        {
+          "datum": "2026-12-14",
+          "afgelast": false
+        }
+      ]
+    },
+    "afwijkingen": [],
     "gezonde_ontmoeting": {
-      "kort": "Wat helpt bij artrose? ",
-      "label": "🌿 Gezonde Ontmoeting ",
+      "label": "🌿 Gezonde Ontmoeting",
       "van": "14:00",
       "tot": "16:00",
-      "maanden": [
+      "afspraken": [
         {
-          "maand": "2026-10-27",
-          "bijeenkomst_1": {
-            "datum": "2026-10-27",
-            "van": "14.00-15.30 ",
-            "afgelast": false
-          },
-          "bijeenkomst_2": {
-            "afgelast": false
-          }
+          "datum": "2026-10-27",
+          "onderwerp": "Wat helpt bij artrose?",
+          "van": "14.00-15.30 ",
+          "afgelast": false
         }
       ]
     },
@@ -159,8 +167,7 @@
       "beweeg": {
         "kort": "Beweegspreekuur",
         "label": "💪 Beweegspreekuur (met studenten)",
-        "tijd": "15:00 tot 17:00",
-        "vanaf": "2026-11-02"
+        "tijd": "15:00 tot 17:00"
       },
       "stoelyoga": {
         "kort": "Stoelyoga",
