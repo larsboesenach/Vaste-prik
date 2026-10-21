@@ -82,6 +82,15 @@
             "tot": "16:00",
             "afgelast": false
           }
+        },
+        {
+          "maand": "2026-10-27",
+          "bijeenkomst_1": {
+            "afgelast": false
+          },
+          "bijeenkomst_2": {
+            "afgelast": false
+          }
         }
       ]
     },
