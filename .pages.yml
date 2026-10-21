@@ -111,7 +111,7 @@ content:
       # ── Agenda ─────────────────────────────────────────
       - name: agenda
         label: "🗓️ Agenda · plan vooruit; website toont 2 maanden"
-        description: "Plan losse activiteiten en bijeenkomsten gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Vaste activiteiten worden automatisch volgens hun patroon herhaald; het Beweegspreekuur en Gezonde Ontmoeting verschijnen alleen op de datums die je hieronder opgeeft. Losse activiteiten, spreekuurdatums, Gezonde Ontmoeting-bijeenkomsten en eenmalige wijzigingen blijven minimaal zeven dagen na hun datum staan. Maandblokken voor Diabetes spreekuur worden zeven dagen na afloop van de maand verwijderd."
+        description: "Plan losse activiteiten en bijeenkomsten gerust ver vooruit: op de website zie je alleen de huidige en volgende maand, zodat de kalender compact blijft. Alleen Koffie & Inloop wordt automatisch elke dinsdag en vrijdag van 11:00 tot 15:00 ingepland. Beweegspreekuur, Gezonde Ontmoeting, Diabetes spreekuur en overige activiteiten verschijnen alleen op de datums die je zelf opgeeft."
         type: object
         fields:
           - name: intro
@@ -180,7 +180,7 @@ content:
                     default: false
           - name: afwijkingen
             label: 🔁 Eenmalige wijzigingen vaste activiteiten
-            description: "Voeg één regel per vaste activiteit en oorspronkelijke datum toe. Gebruik óf Afgelast óf Nieuwe datum. Beheer losse activiteiten en de afzonderlijke datums van het Beweegspreekuur in hun eigen onderdelen."
+            description: "Gebruik dit alleen voor Koffie & Inloop, dat automatisch elke dinsdag en vrijdag van 11:00 tot 15:00 wordt ingepland. Voeg één regel toe met de datum waarop de inloop niet doorgaat en vink Afgelast aan. Gebruik Nieuwe datum alleen als de inloop wordt verplaatst."
             type: object
             list: true
             fields:
@@ -196,9 +196,7 @@ content:
                 type: select
                 options:
                   values:
-                    - "Inloop & koffie"
-                    - "Slimme weegschaal & bloeddruk"
-                    - "Stoelyoga"
+                    - "Koffie & Inloop"
               - name: afgelast
                 label: Afgelast
                 description: "Vink aan als de activiteit op de oorspronkelijke datum niet doorgaat. Laat uit voor een tijdswijziging of verplaatsing."
@@ -264,8 +262,8 @@ content:
                     type: boolean
                     default: false
           - name: diabetes_spreekuur
-            label: 🩺 Diabetes spreekuur (1–2x per maand)
-            description: "Voeg per maand één blok toe met één of twee vrijdagen. Laat de datum van Bijeenkomst 2 leeg als er die maand maar één spreekuur is. Een maandblok wordt zeven dagen na afloop van de maand automatisch verwijderd."
+            label: 🩺 Diabetes spreekuur (afzonderlijke afspraken)
+            description: "Voeg voor elk spreekuur één item toe met de datum waarop het plaatsvindt. Je kunt zelf bepalen hoeveel spreekuren er per maand zijn; een aparte maandkeuze is niet nodig. Oude afspraken worden zeven dagen na de datum automatisch verwijderd."
             type: object
             fields:
               - name: kort
@@ -284,85 +282,49 @@ content:
                 label: Eindtijd (standaard 15:00)
                 type: string
                 default: "15:00"
-              - name: maanden
-                label: Maandblokken
+              - name: afspraken
+                label: Afspraken
                 type: object
                 list:
                   collapsible:
-                    summary: "Maand {maand}"
+                    summary: "Afspraak {datum}"
                 fields:
-                  - name: maand
-                    label: Maand (kies de eerste dag)
+                  - name: datum
+                    label: Datum
                     type: date
                     default: ""
                     options:
                       format: yyyy-MM-dd
-                  - name: bijeenkomst_1
-                    label: Bijeenkomst 1
-                    type: object
-                    fields:
-                      - name: datum
-                        label: Datum (vrijdag)
-                        type: date
-                        default: ""
-                        options:
-                          format: yyyy-MM-dd
-                      - name: van
-                        label: Starttijd (optioneel)
-                        type: string
-                        default: ""
-                      - name: tot
-                        label: Eindtijd (optioneel)
-                        type: string
-                        default: ""
-                      - name: afgelast
-                        label: Afgelast
-                        description: "Vink aan als dit spreekuur niet doorgaat."
-                        type: boolean
-                        default: false
-                  - name: bijeenkomst_2
-                    label: Bijeenkomst 2 (optioneel)
-                    type: object
-                    fields:
-                      - name: datum
-                        label: Datum (vrijdag, optioneel)
-                        type: date
-                        default: ""
-                        options:
-                          format: yyyy-MM-dd
-                      - name: van
-                        label: Starttijd (optioneel)
-                        type: string
-                        default: ""
-                      - name: tot
-                        label: Eindtijd (optioneel)
-                        type: string
-                        default: ""
-                      - name: afgelast
-                        label: Afgelast
-                        description: "Vink aan als dit spreekuur niet doorgaat."
-                        type: boolean
-                        default: false
+                  - name: onderwerp
+                    label: Onderwerp (optioneel; zichtbaar in agenda)
+                    description: "Laat leeg om de Legenda-naam te tonen."
+                    type: string
+                    default: ""
+                  - name: van
+                    label: Starttijd (optioneel)
+                    type: string
+                    default: ""
+                  - name: tot
+                    label: Eindtijd (optioneel)
+                    type: string
+                    default: ""
+                  - name: afgelast
+                    label: Afgelast
+                    description: "Vink aan als dit spreekuur niet doorgaat."
+                    type: boolean
+                    default: false
           - name: activiteiten
-            label: Vaste activiteiten (namen en tijden)
-            description: "Op welke dagen ze vallen staat in de code en kan alleen door de webbouwer worden aangepast."
+            label: Terugkerende activiteit en losse activiteitennamen
+            description: "Alleen Koffie & Inloop verschijnt automatisch op dinsdag en vrijdag van 11:00 tot 15:00. De andere activiteiten voeg je zelf toe bij Losse activiteiten."
             type: object
             fields:
               - name: koffie
-                label: ☕ Inloop & koffie
-                description: "Wordt elke dinsdag en vrijdag herhaald."
+                label: ☕ Koffie & Inloop
+                description: "Wordt elke dinsdag en vrijdag van 11:00 tot 15:00 herhaald. Een geplande dag kun je afzeggen via Eenmalige wijzigingen vaste activiteiten."
                 type: object
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string, default: "☕ Inloop & koffie" }
-                  - { name: tijd, label: Tijd, type: string }
-              - name: weegschaal
-                label: ⚖️ Weegschaal & bloeddruk
-                description: "Wordt elke vrijdag herhaald."
-                type: object
-                fields:
-                  - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string, default: "⚖️ Slimme weegschaal & bloeddruk" }
+                  - { name: label, label: Volledige naam (legenda), type: string, default: "☕ Koffie & Inloop" }
                   - { name: tijd, label: Tijd, type: string }
               - name: beweeg
                 label: 🏃 Beweegspreekuur
@@ -371,14 +333,6 @@ content:
                 fields:
                   - { name: kort, label: Korte naam (in kalender), type: string }
                   - { name: label, label: Volledige naam (legenda), type: string, default: "💪 Beweegspreekuur (met studenten)" }
-                  - { name: tijd, label: Tijd, type: string }
-              - name: stoelyoga
-                label: 🧘 Stoelyoga
-                description: "Wordt elke eerste dinsdag van de maand herhaald."
-                type: object
-                fields:
-                  - { name: kort, label: Korte naam (in kalender), type: string }
-                  - { name: label, label: Volledige naam (legenda), type: string, default: "🪑 Stoelyoga" }
                   - { name: tijd, label: Tijd, type: string }
       # ── Veelgestelde vragen ────────────────────────────
       - name: faq

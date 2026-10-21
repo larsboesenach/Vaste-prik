@@ -373,14 +373,10 @@
     });
   }
 
-  function maandblokkenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackKort, fallbackVan, fallbackTot, kleur, legacyKey, onderwerpPerBijeenkomst = false) {
+  function afsprakenVoorMaand(cfg, jaar, maand, fallbackLabel, fallbackKort, fallbackVan, fallbackTot, kleur, onderwerpPerAfspraak = false) {
     if (!cfg) return [];
 
-    const sessies = Array.isArray(cfg.afspraken)
-      ? cfg.afspraken
-      : Array.isArray(cfg.maanden)
-        ? cfg.maanden.flatMap((blok) => [blok?.bijeenkomst_1, blok?.bijeenkomst_2].filter(Boolean))
-        : legacyKey && Array.isArray(cfg[legacyKey]) ? cfg[legacyKey] : [];
+    const sessies = Array.isArray(cfg.afspraken) ? cfg.afspraken : [];
 
     const uit = [];
     sessies.forEach((sessie) => {
@@ -390,10 +386,10 @@
 
       const label = cfg.label || fallbackLabel;
       const onderwerp = typeof sessie.onderwerp === "string" ? sessie.onderwerp.trim() : "";
-      const titel = onderwerpPerBijeenkomst
+      const titel = onderwerpPerAfspraak
         ? onderwerp || label
         : label;
-      const kort = onderwerpPerBijeenkomst
+      const kort = onderwerpPerAfspraak
         ? titel
         : cfg.kort || fallbackKort || label;
       const tijd = tijdLabel(
@@ -414,25 +410,23 @@
   }
 
   function gezondeOntmoetingVoorMaand(jaar, maand) {
-    return maandblokkenVoorMaand(
+    return afsprakenVoorMaand(
       haal("agenda.gezonde_ontmoeting"), jaar, maand,
-      "🌿 Gezonde Ontmoeting", "Gezonde Ontmoeting", "14:00", "16:00", "rgb(113 182 45)", "sessies", true
+      "🌿 Gezonde Ontmoeting", "Gezonde Ontmoeting", "14:00", "16:00", "rgb(113 182 45)", true
     );
   }
 
   function diabetesSpreekuurVoorMaand(jaar, maand) {
-    return maandblokkenVoorMaand(
+    return afsprakenVoorMaand(
       haal("agenda.diabetes_spreekuur"), jaar, maand,
-      "🥣 Diabetes spreekuur", "Diabetes spreekuur", "13:30", "15:00", "rgb(98 145 203)"
+      "🥣 Diabetes spreekuur", "Diabetes spreekuur", "13:30", "15:00", "rgb(98 145 203)", true
     );
   }
 
   // key → weergave. kleur verwijst naar een palet-variabele.
   // kort/label/tijd worden overschreven door content.json (agenda.activiteiten).
   const ACTIVITEITEN = {
-    koffie: { kort: "Inloop & koffie", label: "☕ Inloop & koffie", tijd: "11:00–15:00", kleur: "var(--vp-green)" },
-    weegschaal: { kort: "Weegschaal", label: "⚖️ Slimme weegschaal & bloeddruk", tijd: "12:00–13:30", kleur: "var(--vp-blue)" },
-    stoelyoga: { kort: "Stoelyoga", label: "🪑 Stoelyoga", tijd: "ochtend", kleur: "var(--vp-rust)" },
+    koffie: { kort: "Koffie & Inloop", label: "☕ Koffie & Inloop", tijd: "11:00–15:00", kleur: "var(--vp-green)" },
   };
 
   const BEWEEGSPREEKUUR = {
@@ -444,11 +438,7 @@
 
   function activiteitSleutel(naam) {
     const zoek = String(naam || "").trim().toLocaleLowerCase("nl-NL");
-    const aliassen = {
-      koffie: ["Inloop & koffie"],
-      weegschaal: ["Weegschaal & bloeddruk", "Slimme weegschaal & bloeddruk"],
-      stoelyoga: [],
-    };
+    const aliassen = { koffie: ["Inloop & koffie", "☕ Inloop & koffie"] };
     return Object.entries(ACTIVITEITEN).find(([sleutel, activiteit]) =>
       [sleutel, activiteit.kort, activiteit.label, ...aliassen[sleutel]].some((waarde) => waarde.toLocaleLowerCase("nl-NL") === zoek)
     )?.[0];
@@ -535,8 +525,6 @@
     const isDinsdag = wd === 2;
     const isVrijdag = wd === 5;
     if (isDinsdag || isVrijdag) keys.push("koffie");
-    if (isDinsdag && dag <= 7) keys.push("stoelyoga"); // eerste dinsdag
-    if (isVrijdag) keys.push("weegschaal");
 
     return keys;
   }

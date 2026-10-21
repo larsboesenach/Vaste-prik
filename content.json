@@ -139,40 +139,27 @@
       "label": "🥣 Leesclub ",
       "van": "12.00",
       "tot": "12.45 ",
-      "maanden": [
+      "afspraken": [
         {
-          "maand": "2026-10-01",
-          "bijeenkomst_1": {
-            "datum": "2026-10-09",
-            "afgelast": false
-          },
-          "bijeenkomst_2": {
-            "datum": "2026-10-16",
-            "afgelast": false
-          }
+          "datum": "2026-10-09",
+          "afgelast": false
+        },
+        {
+          "datum": "2026-10-16",
+          "afgelast": false
         }
       ]
     },
     "activiteiten": {
       "koffie": {
-        "kort": "Inloop & koffie",
-        "label": "☕ Inloop & koffie",
+        "kort": "Koffie & Inloop",
+        "label": "☕ Koffie & Inloop",
         "tijd": "11:00–15:00"
-      },
-      "weegschaal": {
-        "kort": "Bloeddruk op verzoek",
-        "label": "⚖️  bloeddruk meting op verzoek  ",
-        "tijd": "12:00 tot 13:30"
       },
       "beweeg": {
         "kort": "Beweegspreekuur",
         "label": "💪 Beweegspreekuur (met studenten)",
         "tijd": "15:00 tot 17:00"
-      },
-      "stoelyoga": {
-        "kort": "Stoelyoga",
-        "label": "🪑 Stoelyoga",
-        "tijd": "13.30 tot 14.30"
       }
     }
   },

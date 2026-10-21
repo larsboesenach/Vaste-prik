@@ -33,24 +33,11 @@ function pruneList(owner, key, label, dateForItem = (item) => item?.datum) {
   return removed;
 }
 
-function maandEinde(item) {
-  const match = /^(\d{4})-(\d{2})-\d{2}$/.exec(item?.maand || "");
-  if (!match) return null;
-
-  const jaar = Number(match[1]);
-  const maand = Number(match[2]);
-  if (maand < 1 || maand > 12) return null;
-  return new Date(Date.UTC(jaar, maand, 0)).toISOString().slice(0, 10);
-}
-
 const removed =
   pruneList(agenda, "losse_activiteiten", "Losse activiteiten") +
   pruneList(agenda.beweegspreekuur, "afspraken", "Beweegspreekuur-afspraken") +
   pruneList(agenda.gezonde_ontmoeting, "afspraken", "Gezonde Ontmoeting-bijeenkomsten") +
-  // Clean up older content that still uses month-grouped encounters.
-  pruneList(agenda.gezonde_ontmoeting, "maanden", "Gezonde Ontmoeting maandblokken", maandEinde) +
-  pruneList(agenda.diabetes_spreekuur, "maanden", "Diabetes spreekuur maandblokken", maandEinde) +
-  pruneList(agenda.gezonde_ontmoeting, "sessies", "Oude Gezonde Ontmoeting-sessies") +
+  pruneList(agenda.diabetes_spreekuur, "afspraken", "Diabetes spreekuur-afspraken") +
   pruneList(agenda, "afwijkingen", "Eenmalige wijzigingen", (item) => item?.nieuwe_datum || item?.datum);
 
 if (removed === 0) {
