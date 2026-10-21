@@ -102,8 +102,9 @@
     ],
     "afwijkingen": [
       {
-        "datum": "2026-10-27",
-        "afgelast": false
+        "datum": "2026-11-09",
+        "activiteit": "Beweegspreekuur (met studenten)",
+        "afgelast": true
       }
     ],
     "gezonde_ontmoeting": {
