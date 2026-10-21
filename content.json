@@ -80,6 +80,12 @@
         "titel": "Bouwstenentraining ",
         "tijd": "9.30-12.00",
         "afgelast": false
+      },
+      {
+        "datum": "2026-10-29",
+        "titel": "Scholing EAI",
+        "tijd": "12.00-16.00",
+        "afgelast": false
       }
     ],
     "afwijkingen": [
