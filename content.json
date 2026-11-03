@@ -117,12 +117,13 @@
     "gezonde_ontmoeting": {
       "label": "🌿 Gezonde Ontmoeting",
       "van": "14:00",
-      "tot": "16:00",
+      "tot": "15.00 ",
       "afspraken": [
         {
-          "datum": "2026-10-27",
-          "onderwerp": "Wat helpt bij artrose?",
-          "van": "14.00-15.30 ",
+          "datum": "2026-11-10",
+          "onderwerp": "Aan de slag met leefstijl! ",
+          "van": "14.00",
+          "tot": "15.00",
           "afgelast": false
         }
       ]
