@@ -143,19 +143,17 @@
       ]
     },
     "diabetes_spreekuur": {
+      "kort": "Diabetes spreekuur",
       "label": "🥣 Leesclub ",
       "van": "12.00",
       "tot": "12.45 ",
       "afspraken": [
         {
-          "afgelast": false
-        },
-        {
-          "datum": "2026-11-06",
-          "afgelast": false
-        },
-        {
           "datum": "2026-11-13",
+          "afgelast": false
+        },
+        {
+          "datum": "2026-11-20",
           "afgelast": false
         },
         {
