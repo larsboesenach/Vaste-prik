@@ -114,6 +114,19 @@
         }
       ]
     },
+    "afwijkingen": [
+      {
+        "afgelast": false,
+        "nieuwe_datum": "2026-11-20",
+        "tijd": "13.30 "
+      },
+      {
+        "afgelast": false
+      },
+      {
+        "afgelast": false
+      }
+    ],
     "gezonde_ontmoeting": {
       "label": "🌿 Gezonde Ontmoeting",
       "van": "14:00",
@@ -124,6 +137,12 @@
           "onderwerp": "Aan de slag met leefstijl! ",
           "van": "14.00",
           "tot": "15.00",
+          "afgelast": false
+        },
+        {
+          "datum": "2026-11-20",
+          "onderwerp": "Diabetes ",
+          "van": "13.30 ",
           "afgelast": false
         }
       ]
