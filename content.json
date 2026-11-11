@@ -103,12 +103,18 @@
         "datum": "2026-11-20",
         "afgelast": false,
         "nieuwe_datum": "2026-11-20",
-        "tijd": "13.30 "
+        "tijd": "14.00"
       },
       {
         "afgelast": false
       },
       {
+        "afgelast": false,
+        "nieuwe_datum": "2026-11-20",
+        "tijd": "14.00"
+      },
+      {
+        "datum": "2026-11-20",
         "afgelast": false
       }
     ],
@@ -126,31 +132,19 @@
         },
         {
           "datum": "2026-11-20",
-          "onderwerp": "Diabetes ",
-          "van": "13.30 ",
+          "onderwerp": "Goede tips bij diabetes",
+          "van": "14.00  ",
+          "afgelast": false
+        },
+        {
           "afgelast": false
         }
       ]
     },
     "diabetes_spreekuur": {
-      "kort": "Diabetes spreekuur",
       "label": "🥣 Leesclub ",
       "van": "12.00",
-      "tot": "12.45 ",
-      "afspraken": [
-        {
-          "datum": "2026-11-13",
-          "afgelast": false
-        },
-        {
-          "datum": "2026-11-20",
-          "afgelast": false
-        },
-        {
-          "datum": "2026-11-20",
-          "afgelast": false
-        }
-      ]
+      "tot": "12.45 "
     },
     "activiteiten": {
       "koffie": {
