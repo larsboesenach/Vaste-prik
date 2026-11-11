@@ -100,8 +100,9 @@
     },
     "afwijkingen": [
       {
-        "datum": "2026-11-20",
-        "afgelast": false,
+        "datum": "2026-11-25",
+        "activiteit": "Koffie & Inloop",
+        "afgelast": true,
         "nieuwe_datum": "2026-11-20",
         "tijd": "14.00"
       },
