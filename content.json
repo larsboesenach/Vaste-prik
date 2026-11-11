@@ -138,10 +138,17 @@
         },
         {
           "afgelast": false
+        },
+        {
+          "datum": "2026-12-08",
+          "onderwerp": "Gezonde gewoonten volhouden",
+          "van": "14.00-15.00",
+          "afgelast": false
         }
       ]
     },
     "diabetes_spreekuur": {
+      "kort": "Diabetes spreekuur",
       "label": "🥣 Leesclub ",
       "van": "12.00",
       "tot": "12.45 ",
