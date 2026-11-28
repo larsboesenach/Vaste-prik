@@ -96,22 +96,6 @@
     },
     "afwijkingen": [
       {
-        "datum": "2026-11-25",
-        "activiteit": "Koffie & Inloop",
-        "afgelast": true,
-        "nieuwe_datum": "2026-11-20",
-        "tijd": "14.00"
-      },
-      {
-        "afgelast": false
-      },
-      {
-        "afgelast": false,
-        "nieuwe_datum": "2026-11-20",
-        "tijd": "14.00"
-      },
-      {
-        "datum": "2026-11-20",
         "afgelast": false
       }
     ],
@@ -120,12 +104,6 @@
       "van": "14:00",
       "tot": "15.00 ",
       "afspraken": [
-        {
-          "datum": "2026-11-20",
-          "onderwerp": "Goede tips bij diabetes",
-          "van": "14.00  ",
-          "afgelast": false
-        },
         {
           "afgelast": false
         },
@@ -149,10 +127,6 @@
       "van": "12.00",
       "tot": "12.45 ",
       "afspraken": [
-        {
-          "datum": "2026-11-20",
-          "afgelast": false
-        },
         {
           "afgelast": false
         },
